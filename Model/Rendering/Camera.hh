@@ -67,6 +67,7 @@ private:
     vec3 origin;
     vec3 vrp;
     float vfov;
+    vec3 vup;
     // Window: lower_left_corner, horizontal, vertical
     vec3 lower_left_corner;
     vec3 horizontal;
