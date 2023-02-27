@@ -4,28 +4,28 @@ Pràctica 1 - GiVD 2022-23
 En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 ## Equip:
-**lletra i numero de l'equip**
-* estudiant 1
-* estudiant 2
-* estudiant 3
-* estudiant 4
+**F02**
+* Pau Baldillou Salse
+* Pau Hernando Màrmol
+* Esther Ruano Hortoneda
+* Núria Torquet Luna
 
 ### Features (marqueu les que heu fet i qui les ha fet)
 - Fase 0
 
-S'ha decidit que en aquesta fase inicial tots els integrants del grup realitzin totes les tasques per tal de familiaritzar-se amb la pràctica. Per tant, han participat tots els integrants del grup en la implementació de cada feature.
-    - [ ] Background amb degradat
-      - Tots els integrants
-    - [ ] Color Shading
-     - Tots els integrants
-    - [ ] Normal Shading
-     - Tots els integrants
-    - [ ] Depth Shading
-      - Tots els integrants
-    - [ ] Intersecció amb l'escena
-      - Tots els integrants
+    S'ha decidit que en aquesta fase inicial tots els integrants del grup realitzin totes les tasques per tal de familiaritzar-se amb la pràctica. Per tant, han participat tots els integrants del grup en la implementació de cada feature
+    - [X] Background amb degradat
+        - Tots els integrants
+    - [X] Color Shading
+        - Tots els integrants
+    - [X] Normal Shading
+        - Tots els integrants
+    - [X] Depth Shading
+        - Tots els integrants
+    - [X] Intersecció amb l'escena
+        - Tots els integrants
  - Fase 1
-    Creació de nous objectes i interseccions (VIRTUALWORLD) 
+    - Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [ ] Hit Box
           - Estudiants que hi han participat
         - [ ] Hit Triangle
