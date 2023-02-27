@@ -69,11 +69,24 @@ vec3 RayTracer::RayPixel(Ray &ray) {
     vec3 unit_direction;
     HitInfo info;
 
-    if (setup->getBackground()) {
-        vec3 ray2 = normalize(ray.getDirection());
-        color = 0.5f * vec3(ray2.x+1, ray2.y+1, ray2.z+1);
+    if (scene->hit(ray, 0.001, FLT_MAX, info)) {
+        vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, ray.getOrigin());
+        color = clamp(shading_color, vec3(0), vec3(1));
+
     } else {
-        color = vec3(0,0,0);
+        if (setup->getBackground()) {
+            // Get the direction of the ray and normalize it
+            vec3 ray2 = normalize(ray.getDirection());
+
+            vec3 topColor = setup->getTopBackground();
+            vec3 bottomColor = setup->getDownBackground();
+            // Interpolate between white and blue based on the y coordinate
+            float t = 0.5f * (ray2.y + 1.0f);
+            // Compute degradation from white to blue
+            color = (1.0f - t) * bottomColor + t * topColor;
+        } else {
+            color = vec3(0,0,0);
+        }
     }
 
     return color;

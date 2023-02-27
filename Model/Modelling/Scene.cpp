@@ -15,8 +15,26 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // Si un objecte es intersecat pel raig, el parametre  de tipus HitInfo conte
     // la informació sobre la interseccio.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
+    bool hit_anything = false;
+    float closest_t = tmax;
 
-    return true;
+    for (const auto& object : objects) {
+        HitInfo object_hit_info;
+        if (object->hit(raig, tmin, closest_t, object_hit_info)) {
+            hit_anything = true;
+            closest_t = object_hit_info.t;
+            info = object_hit_info;
+        }
+    }
+
+    if (hit_anything) {
+        // Pintar l'esfera de color lila
+        if (info.mat_ptr->Kd == vec3(1.0f, 0.0f, 1.0f)) {
+            info.mat_ptr->Kd = vec3(0.5f, 0.0f, 0.5f);
+        }
+    }
+
+    return hit_anything;
 }
 
 

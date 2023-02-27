@@ -39,7 +39,6 @@ bool Controller::createScene(vec3 position, float radius) {
 }
 bool Controller::createScene() {
     //TODO: Pots posar codi per a fer una escena amb multiples esferes
-
     return true;
 }
 
