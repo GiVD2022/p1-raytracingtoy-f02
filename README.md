@@ -12,6 +12,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 ### Features (marqueu les que heu fet i qui les ha fet)
 - Fase 0
+
 S'ha decidit que en aquesta fase inicial tots els integrants del grup realitzin totes les tasques per tal de familiaritzar-se amb la pràctica. Per tant, han participat tots els integrants del grup en la implementació de cada feature.
     - [ ] Background amb degradat
       - Tots els integrants
