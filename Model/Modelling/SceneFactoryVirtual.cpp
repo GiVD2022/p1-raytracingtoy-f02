@@ -86,6 +86,8 @@ void SceneFactoryVirtual::read(const QJsonObject &json)
             shared_ptr<Object> o;
             if (objectObject.contains("type") && objectObject["type"].isString()) {
                 QString objStr = objectObject["type"].toString().toUpper();
+                bool b = objStr=="MESH";
+                std::cout << b << std::endl;
                 o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
                 o->read(objectObject);
                 scene->objects.push_back(o);

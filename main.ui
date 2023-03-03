@@ -182,6 +182,7 @@
      <string>&amp;File</string>
     </property>
     <addaction name="actionNew_Sphere"/>
+    <addaction name="actionNew_Box"/>
     <addaction name="actionGenerate_Scene"/>
     <addaction name="actionTracing_Settings"/>
     <addaction name="actionOpen_Virtual_Scene"/>
@@ -294,6 +295,11 @@
   <action name="actionNew_Sphere">
    <property name="text">
     <string>New Sphere</string>
+   </property>
+  </action>
+  <action name="actionNew_Box">
+   <property name="text">
+    <string>New Box</string>
    </property>
   </action>
  </widget>

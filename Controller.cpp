@@ -37,6 +37,15 @@ bool Controller::createScene(vec3 position, float radius) {
     return true;
 
 }
+
+bool Controller::createBoxScene(vec3 pmin, vec3 pmax){
+    scene = make_shared<Scene>();
+    auto box = make_shared<Box>(pmin, pmax, 1.0);
+    box->setMaterial(make_shared<Lambertian>(vec3(0.5, 0.2, 0.7)));
+    scene->objects.push_back(box);
+    return true;
+}
+
 bool Controller::createScene() {
     //TODO: Pots posar codi per a fer una escena amb multiples esferes
     return true;
