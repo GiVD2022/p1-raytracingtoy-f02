@@ -1,4 +1,5 @@
 #include "Controller.hh"
+#include <iostream>
 
 Controller::Controller()
 {
@@ -12,6 +13,7 @@ bool Controller::createScene(SceneFactory::SCENE_TYPES currentType, QString name
     shared_ptr<SceneFactory> sf = nullptr;
     switch (currentType)  {
     case SceneFactory::SCENE_TYPES::VIRTUALWORLD:
+        std::cout << "Crea escena virtual" << std::endl;
         sf = make_shared<SceneFactoryVirtual>();
         break;
     case SceneFactory::SCENE_TYPES::REALDATA:
@@ -37,6 +39,15 @@ bool Controller::createScene(vec3 position, float radius) {
     return true;
 
 }
+
+bool Controller::createScene(vec3 v1, vec3 v2, vec3 v3){
+    scene = make_shared<Scene>();
+    auto triangle = make_shared<Triangle>(v1, v2, v3, -1);
+    triangle->setMaterial(make_shared<Lambertian>(vec3(0.3, 0.33, 0.6)));
+    scene->objects.push_back(triangle);
+    return true;
+}
+
 bool Controller::createScene() {
     //TODO: Pots posar codi per a fer una escena amb multiples esferes
     return true;

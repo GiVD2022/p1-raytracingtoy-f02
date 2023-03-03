@@ -1,5 +1,5 @@
 #include "ObjectFactory.hh"
-
+#include <iostream>
 // TODO Fase 1: Crea objectes de més tipus
 // Trobaràs l'enumeració d'OBJECT_TYPES en el fitxer FactoryObject.hh
 shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
@@ -11,6 +11,13 @@ shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
         break;
     case PLANE:
         o = make_shared<Plane>();
+        break;
+    case TRIANGLE:
+        o = make_shared<Triangle>();
+        break;
+    case MESH:
+        std::cout << "it's a mesh!" << std::endl;
+        o = make_shared<Mesh>();
         break;
     default:
         break;
@@ -25,7 +32,9 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
     case SPHERE:
         o = make_shared<Sphere>(data);
         break;
-
+    case MESH:
+        o = make_shared<Mesh>(s, data);
+        break;
     default:
         break;
     }

@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Connect to Data Loaders and Generators
     // TO DO: Fase 1: Ampliar els menús per obtenir nous tipus d'objectes
     QObject::connect(ui->actionNew_Sphere, SIGNAL(triggered()), builder, SLOT(newSphere()));
+    QObject::connect(ui->actionNew_Triangle, SIGNAL(triggered()), builder, SLOT(newTriangle()));
     QObject::connect(ui->actionGenerate_Scene, SIGNAL(triggered()), builder, SLOT(newSimulatedScene()));
     QObject::connect(ui->actionOpen_Virtual_Scene, SIGNAL(triggered()), builder, SLOT(newVirtualScene()));
     QObject::connect(ui->actionOpen_Data, SIGNAL(triggered()), builder, SLOT(newDataScene()));

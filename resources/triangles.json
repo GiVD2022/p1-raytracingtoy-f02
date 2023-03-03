@@ -1,0 +1,38 @@
+{
+"scene": "Triangles",
+"typeScene": "VIRTUAL",
+"objects": [
+{
+  "name": "triangle gris",
+  "type": "triangle",
+  "v1": [0.0, 0.0, 0.0],
+  "v2": [1.0, 0.0, 1.0],
+  "v3": [0.0, 1.0, 1.0],
+  "material": {
+    "type": "lambertian",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.5, 0.5, 0.5],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0
+    }
+},
+{
+  "name": "triangle gran",
+  "type": "triangle",
+  "v1": [1.0, 1.0, 1.0],
+  "v2": [3.0, 0.0, 1.0],
+  "v3": [0.0, 3.0, 1.0],
+  "material": {
+    "type": "lambertian",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.5, 0.5, 0.5],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0
+    }
+}
+]
+}

@@ -1,4 +1,5 @@
 #include "Scene.hh"
+#include <iostream>
 
 Scene::Scene()
 {
@@ -17,10 +18,10 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
     bool hit_anything = false;
     float closest_t = tmax;
-
     for (const auto& object : objects) {
         HitInfo object_hit_info;
         if (object->hit(raig, tmin, closest_t, object_hit_info)) {
+            std::cout << "ha fet hit a algo" << std::endl;
             hit_anything = true;
             closest_t = object_hit_info.t;
             info = object_hit_info;

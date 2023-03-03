@@ -10,6 +10,7 @@
 #include "Model/Rendering/SetUp.hh"
 #include "Model/Rendering/RayTracer.hh"
 #include "Model/Modelling/Objects/Sphere.hh"
+#include "Model/Modelling/Objects/Triangle.hh"
 
 using namespace std;
 
@@ -61,6 +62,7 @@ public:
 
     bool createScene(SceneFactory::SCENE_TYPES currentType, QString name);
     bool createScene(vec3 position, float radius);
+    bool createScene(vec3 v1, vec3 v2, vec3 v3);
     bool createScene();
     bool createScene(int nFrames);
 

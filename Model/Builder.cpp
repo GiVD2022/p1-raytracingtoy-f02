@@ -12,6 +12,20 @@ void Builder::newSphere()
     msgBox.exec();
 }
 
+void Builder::newTriangle()
+{
+    vec3 v1(0.0, 0.0, 0.0);
+    vec3 v2(1.0, 0.0, 0.0);
+    vec3 v3(0.0, 1.0, 0.0);
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createScene(v1, v2, v3)){
+        msgBox.setText("One triangle is created.");
+    }else{
+        msgBox.setText("Not enogh memory. Error!!");
+    }
+    msgBox.exec();
+}
+
 void Builder::newSimulatedScene()
 {
    QMessageBox msgBox;
