@@ -3,21 +3,21 @@
 #include <math.h>
 #include <iostream>
 
+#define EPSILON 0.00001f
 
 Box::Box()
 {
     pmax = vec3(1,1,1);
     pmin = vec3(0,0,0);
+    std::cout << EPSILON<< std::endl;
 }
 
 Box::Box(vec3 p1, vec3 p2,float data) :Object(data) {
-    std::cout << "CREO BOX" << std::endl;
     pmax = p1;
     pmin = p2;
 }
 
 Box::Box(vec3 p1, vec3 p2) {
-    std::cout << "CREO BOX 1" << std::endl;
     pmax = p1;
     pmin = p2;
 }
@@ -31,8 +31,8 @@ bool Box::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     vec3 normal = vec3(0,0,0);
 
     for (int i=0;i<3;i++){
-        if(raig.getDirection()[i] == 0){
-            if(raig.getOrigin()[i] < pmin[i] || raig.getOrigin()[i] < pmax[i] ){
+        if(fabs(raig.getDirection()[i]) < EPSILON){
+            if(raig.getOrigin()[i] < pmin[i] || raig.getOrigin()[i] > pmax[i] ){
                 return false;
             }
         }
