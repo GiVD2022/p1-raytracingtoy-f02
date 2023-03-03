@@ -1,5 +1,6 @@
 #include <QVector>
 #include <QVector3D>
+#include <iostream>
 
 #include "Mesh.hh"
 
@@ -22,14 +23,29 @@ Mesh::~Mesh() {
 }
 
 void Mesh::makeTriangles() {
-    // TO DO Fase 1: A implementar
+    for (Face f : cares) {
+        triangles.push_back(Triangle(vec3(vertexs[f.idxVertices[0]]), vec3(vertexs[f.idxVertices[1]]), vec3(vertexs[f.idxVertices[2]]), -1.0));
+    }
+    std::cout << "s'han creat " << triangles.size() << " triangles" << std::endl;
 }
 
 
 bool Mesh::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
+    bool hit_anything = false;
+    float closest_t = tmax;
 
-    // TODO Fase 1: A implementar
-    return false;
+    for (const auto& triangle : triangles){
+        // el warning del for no he entès què és
+        HitInfo triang_hit_info;
+        if (triangle.hit(raig, tmin, closest_t, triang_hit_info)) {
+            hit_anything = true;
+            closest_t = triang_hit_info.t;
+            info = triang_hit_info;
+            info.mat_ptr = material.get();
+        }
+    }
+    //std::cout << "ha acabat el for de triangles " << hit_anything << std::endl;
+    return hit_anything;
 
 }
 
@@ -39,6 +55,7 @@ void Mesh::aplicaTG(shared_ptr<TG> t) {
 }
 
 void Mesh::load (QString fileName) {
+    std::cout << "fa servir el load de mesh" << std::endl;
     QFile file(fileName);
     if(file.exists()) {
         if(file.open(QFile::ReadOnly | QFile::Text)) {
@@ -87,6 +104,7 @@ void Mesh::load (QString fileName) {
                 }
             }
             file.close();
+            makeTriangles();
         } else {
             qWarning("Boundary object file can not be opened.");
         }
@@ -95,6 +113,7 @@ void Mesh::load (QString fileName) {
 
 void Mesh::read (const QJsonObject &json)
 {
+    std::cout << "fa servir el read de mesh" << std::endl;
     Object::read(json);
     if (json.contains("objFileName") && json["objFileName"].isString()) {
         nom = json["objFileName"].toString();
