@@ -27,11 +27,12 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
  - Fase 1
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [ ] Hit Box
-          - Estudiants que hi han participat
+          - Pau Hernando
         - [ ] Hit Triangle
-          - Estudiants que hi han participat
+          - Pau Baldillou
         - [ ] Hit Malla
-          - Estudiants que hi han participat
+          - Pau Baldillou
+          - Pau Hernando
     - Creació de REAL DATA
         - [ ] FITTED PLANE: Pla de terra
           - Estudiants que hi han participat
