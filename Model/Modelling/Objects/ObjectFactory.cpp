@@ -28,7 +28,8 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
     shared_ptr<Object> o;
     switch (t) {
     case SPHERE:
-        o = make_shared<Sphere>(data);
+        // crear gyzmo d'una esfera, amb centre (0, Y_plaBase, 0) i radi 0.5
+        o = make_shared<Sphere>(vec3(0.0,0.0,0.0), 1.0, data);
         break;
     case BOX:
         o = make_shared<Box>(data);

@@ -119,9 +119,9 @@ void SceneFactoryData::write(QJsonObject &json) const
    QJsonObject jbase;
    // TO DO Fase 1: Opcional: Cal escriure l'objecte base al fitxer:
    // Descomenta les següents línies
-   // scene->baseObj->write(jbase);
-   // auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
-   // jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
+   scene->basePlane->write(jbase);
+   auto value = ObjectFactory::getInstance().getIndexType(scene->basePlane);
+   jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
 
    json["base"] = jbase;
 
@@ -240,8 +240,22 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
     // Dades (x, y, z) --> Escena Virtual (x_v, 0, z_v) i l'objecte escalat segons
     // la relació de y a escala amb el mon virtual
 
+
+    // Obtenim les dimensions del mon virtual
+    float mv_width = mapping->Vxmax - mapping->Vxmin;
+    float mv_depth = mapping->Vzmax - mapping->Vzmin;
+    float mv_height = mapping->Vymax - mapping->Vymin;
+
+    // Obtenim les dimensions del mon real
+    float mr_width = mapping->Rxmax - mapping->Rxmin;
+    float mr_depth = mapping->Rzmax - mapping->Rzmin;
+
     // a. Calcula primer l'escala
+    float scale_x = mr_width / mv_width;
+    float scale_z = mr_depth / mv_depth;
+
     // b. Calcula la translació
+
     // c. Aplica la TG a l'objecte usant
     //        o->aplicaTG(transformacio)
 
