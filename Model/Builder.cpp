@@ -14,8 +14,9 @@ void Builder::newSphere()
 
 void Builder::newBox()
 {
-    vec3 pmin(0.0, 0.0, 0.0);
-    vec3 pmax(1.0,1.0,1.0);
+
+    vec3 pmin(-0.5, -0.5, -0.5);
+    vec3 pmax(0.5, 0.5, 0.5);
     QMessageBox msgBox;
     if (Controller::getInstance()->createBoxScene(pmin, pmax))
             msgBox.setText("One Box is created.");

@@ -6,8 +6,8 @@
 
 Box::Box()
 {
-    pmin = vec3(0,0,0);
-    pmax = vec3(1,1,1);
+    pmin = vec3(-0.5, -0.5, -0.5);
+    pmax = vec3(0.5, 0.5, 0.5);
 }
 
 Box::Box(vec3 p1, vec3 p2,float data) :Object(data) {
@@ -16,8 +16,8 @@ Box::Box(vec3 p1, vec3 p2,float data) :Object(data) {
 }
 
 Box::Box(float data): Object(data){
-    pmin = vec3(0,0,0);
-    pmax = vec3(1,1,1);
+    pmin = vec3(-0.5, -0.5, -0.5);
+    pmax = vec3(0.5, 0.5, 0.5);
 }
 
 
