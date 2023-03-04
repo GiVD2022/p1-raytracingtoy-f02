@@ -28,6 +28,7 @@ SOURCES += \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
     Model/Modelling/Materials/Texture.cpp \
+    Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Face.cpp \
     Model/Modelling/Objects/FittedPlane.cpp \
     Model/Modelling/Objects/Mesh.cpp \
@@ -71,6 +72,7 @@ HEADERS += \
     Model/Modelling/Materials/Material.hh \
     Model/Modelling/Materials/MaterialFactory.hh \
     Model/Modelling/Materials/Texture.hh \
+    Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Face.hh \
     Model/Modelling/Objects/FittedPlane.hh \
     Model/Modelling/Objects/Mesh.hh \
@@ -548,6 +550,7 @@ FORMS += \
 
 DISTFILES += \
     .gitignore \
+    resources/box.json \
     resources/dadesBCN.json \
     resources/dadesBCNOneValue.json \
     resources/data0.json \
