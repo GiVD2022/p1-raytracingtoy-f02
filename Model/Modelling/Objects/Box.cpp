@@ -3,7 +3,6 @@
 #include <math.h>
 #include <iostream>
 
-#define EPSILON 0.00001f
 
 Box::Box()
 {
@@ -30,7 +29,7 @@ bool Box::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     vec3 normal = vec3(0,0,0);
 
     for (int i=0;i<3;i++){
-        if(fabs(raig.getDirection()[i]) < EPSILON){
+        if(fabs(raig.getDirection()[i]) < DBL_EPSILON){
             if(raig.getOrigin()[i] < pmin[i] || raig.getOrigin()[i] > pmax[i] ){
                 return false;
             }
