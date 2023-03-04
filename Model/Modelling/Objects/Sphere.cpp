@@ -46,17 +46,17 @@ bool Sphere::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     return false;
 }
 
-
 void Sphere::aplicaTG(shared_ptr<TG> t) {
-    if (dynamic_pointer_cast<TranslateTG>(t)) {
-        // Per ara només es fan les translacions
+    if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
         vec4 c(center, 1.0);
-        c = t->getTG() * c;
+        c = translateTG->getTG() * c;
         center.x = c.x; center.y = c.y; center.z = c.z;
+    } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
+        glm::vec3 scale = scaleTG->scale;
+        radius *= std::sqrt(scale.x * scale.y * scale.z); // Apply scaling to radius
     }
-    //TODO: Cal ampliar-lo per a acceptar Escalats
-
 }
+
 
 void Sphere::read (const QJsonObject &json)
 {

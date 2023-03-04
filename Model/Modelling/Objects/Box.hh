@@ -4,6 +4,7 @@
 #include "Plane.hh"
 #include "Model/Modelling/Animation.hh"
 #include "Model/Modelling/TG/TranslateTG.hh"
+#include "Model/Modelling/TG/ScaleTG.hh"
 
 class Box: public Object
 {

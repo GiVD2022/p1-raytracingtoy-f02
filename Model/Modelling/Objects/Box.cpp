@@ -70,10 +70,23 @@ bool Box::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 }
 
 void Box::aplicaTG(shared_ptr<TG> t) {
-
-    //TODO: Cal ampliar-lo per a acceptar Escalats
-
+    if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
+        vec4 pmin4(pmin, 1.0);
+        vec4 pmax4(pmax, 1.0);
+        pmin4 = translateTG->getTG() * pmin4;
+        pmax4 = translateTG->getTG() * pmax4;
+        pmin = vec3(pmin4.x, pmin4.y, pmin4.z);
+        pmax = vec3(pmax4.x, pmax4.y, pmax4.z);
+    } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
+        vec3 scale = scaleTG->scale;
+        vec3 center = (pmax + pmin) * 0.5f; // Calculate box center
+        vec3 half_size = (pmax - pmin) * 0.5f; // Calculate box half size
+        half_size *= scale; // Apply scaling to half size
+        pmin = center - half_size; // Calculate new min point
+        pmax = center + half_size; // Calculate new max point
+    }
 }
+
 
 void Box::read (const QJsonObject &json)
 {

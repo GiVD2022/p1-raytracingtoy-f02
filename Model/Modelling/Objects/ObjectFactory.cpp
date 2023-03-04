@@ -30,13 +30,18 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
     case SPHERE:
         o = make_shared<Sphere>(data);
         break;
-
+    case BOX:
+        o = make_shared<Box>(data);
+        break;
     default:
         break;
     }
 
     return o;
 }
+
+
+
 
 ObjectFactory::OBJECT_TYPES ObjectFactory::getIndexType(shared_ptr<Object> l) {
     if (dynamic_pointer_cast<Sphere>(l) != nullptr) {
