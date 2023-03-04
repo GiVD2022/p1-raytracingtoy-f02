@@ -84,12 +84,19 @@ void SceneFactoryData::read(const QJsonObject &json)
 
             // TO DO: Fase 1: PAS 5: Afegeix l'objecte base a l'escena.
             // En aquestes linies es crea però no s'afegeix
-            // o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
-            // o->read(jbase);
 
+            o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
+            o->read(jbase);
+
+            // Afegir objecte base a l'escena
+            if (o) {
+                if (objStr == "FITTEDPLANE") {
+                    scene->basePlane = o;
+                    scene->setDimensions(std::static_pointer_cast<FittedPlane>(o)->getPMin(), std::static_pointer_cast<FittedPlane>(o)->getPMax());
+                    scene->objects.push_back(o);
+                }
+            }
         }
-    }
-
     mapping = make_shared<VisualMapping>();
     mapping->read(json);
     if (json.contains("attributes") && json["attributes"].isArray()) {
@@ -100,6 +107,7 @@ void SceneFactoryData::read(const QJsonObject &json)
           readData(propObject);
       }
     }
+}
 }
 //! [0]
 
@@ -142,7 +150,7 @@ void SceneFactoryData::print(int indentation) const
     QTextStream(stdout) << indent << "scene:\t" << scene->name << "\n";
     QTextStream(stdout) << indent << "typeScene:\t" << SceneFactory::getNameType(currentType) << "\n";
     QTextStream(stdout) << indent << "base:\t\n";
-    // scene->baseObj->print(indentation +2);
+    scene->basePlane->print(indentation +2);
     mapping->print(indentation+2);
 
     QTextStream(stdout) << indent << "Attributes:\t\n";

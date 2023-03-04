@@ -77,7 +77,6 @@ void Plane::aplicaTG(shared_ptr<TG> t) {
 void Plane::read (const QJsonObject &json)
 {
     Object::read(json);
-
     if (json.contains("point") && json["point"].isArray()) {
         QJsonArray auxVec = json["point"].toArray();
         point[0] = auxVec[0].toDouble();

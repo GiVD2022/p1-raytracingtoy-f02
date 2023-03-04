@@ -3,7 +3,6 @@
 #include "Material.hh"
 #include "Lambertian.hh"
 
-
 class MaterialFactory
 {
     MaterialFactory(){};
