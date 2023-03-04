@@ -3,3 +3,6 @@
 
 # pro.user files
 *.pro.user
+
+# Readme files
+*.md
