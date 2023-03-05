@@ -69,13 +69,19 @@ bool SceneFactoryData::save(QString nameFile) const
 //! [0]
 void SceneFactoryData::read(const QJsonObject &json)
 {
-    if (json.contains("scene") && json["scene"].isString())
+    QTextStream(stdout)<<"read"<<"\n";
+    if (json.contains("scene") && json["scene"].isString()){
+        QTextStream(stdout)<<"contains scene"<<"\n";
         scene->name = json["scene"].toString();
+    }
 
-    if (json.contains("typeScene") && json["typeScene"].isString())
+    if (json.contains("typeScene") && json["typeScene"].isString()){
+        QTextStream(stdout)<<"contains typeScene"<<"\n";
         currentType = getSceneFactoryType(json["typeScene"].toString());
+    }
 
     if (json.contains("base") && json["base"].isObject()) {
+        QTextStream(stdout)<<"contains base and is object"<<"\n";
         QJsonObject jbase = json["base"].toObject();
         shared_ptr<Object> o;
         if (jbase.contains("type") && jbase["type"].isString()) {
@@ -97,17 +103,24 @@ void SceneFactoryData::read(const QJsonObject &json)
                 }
             }
         }
-    mapping = make_shared<VisualMapping>();
-    mapping->read(json);
-    if (json.contains("attributes") && json["attributes"].isArray()) {
-      QJsonArray attributeMappingsArray = json["attributes"].toArray();
-      for (int propIndex = 0; propIndex < attributeMappingsArray.size(); propIndex++) {
-          QJsonObject propObject = attributeMappingsArray[propIndex].toObject();
-          mapping->readAttribute(propObject);
-          readData(propObject);
-      }
+        mapping = make_shared<VisualMapping>();
+        mapping->read(json);
+
+        if (json.contains("attributes") && json["attributes"].isArray()) {
+          QTextStream(stdout) << "contains attributes and is array"<< "\n";
+          QJsonArray attributeMappingsArray = json["attributes"].toArray();
+          for (int propIndex = 0; propIndex < attributeMappingsArray.size(); propIndex++) {
+
+              QTextStream(stdout) << "attributes loop" << propIndex << "\n";
+              QJsonObject propObject = attributeMappingsArray[propIndex].toObject();
+              QTextStream(stdout) << "succesfully casted to object" << "\n";
+              mapping->readAttribute(propObject);
+              QTextStream(stdout) << "called readAttribute successfully" << "\n";
+              readData(propObject);
+              QTextStream(stdout) << "data read" << "\n";
+          }
+        }
     }
-}
 }
 //! [0]
 
@@ -202,6 +215,7 @@ void SceneFactoryData::writeData (QJsonObject &json, int i) const {
 
 // Metode que mapeja les dades llegides a una escena virtual segons la informació del Visual Mapping
 shared_ptr<Scene> SceneFactoryData::visualMaps() {
+    QTextStream(stdout)<<"Visual maps"<< dades.size() << "\n";
 
     // TO DO: A partir de les dades carregades, cal contruir l'escena virtual amb tot colocat al seu lloc
     // i a la seva mida
@@ -211,13 +225,14 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 
         // Per cada valor de l'atribut, cal donar d'alta un objecte (gizmo) a l'escena
         for (unsigned int j=0; j<dades[i].second.size(); j++) {
-            auto o = objectMaps(i);
+            auto o = objectMaps(i, j);
             o->setMaterial(materialMaps(i, j));
 
              // Afegir objecte a l'escena virtual ja amb el seu material corresponent
              scene->objects.push_back(o);
          }
     }
+      QTextStream(stdout) << "scene length" << scene->objects.size() << "\n";
     return scene;
 }
 
@@ -226,7 +241,8 @@ shared_ptr<Scene> SceneFactoryData::visualMaps() {
 
 
 
-shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
+shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
+    QTextStream(stdout)<< "soc al objectMaps: "<< i << " " << j <<"\n";
 
     // Gyzmo és el tipus d'objecte
 
@@ -242,8 +258,8 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
 
 
     // Obtenim les dimensions del mon virtual
-    float mv_width = mapping->Vxmax - mapping->Vxmin;
-    float mv_depth = mapping->Vzmax - mapping->Vzmin;
+    float mv_width = mapping->Vxmax - mapping->Vxmin -1;
+    float mv_depth = mapping->Vzmax - mapping->Vzmin -1 ;
     float mv_height = mapping->Vymax - mapping->Vymin;
 
     // Obtenim les dimensions del mon real
@@ -251,13 +267,36 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i) {
     float mr_depth = mapping->Rzmax - mapping->Rzmin;
 
     // a. Calcula primer l'escala
-    float scale_x = mr_width / mv_width;
-    float scale_z = mr_depth / mv_depth;
+    vec3 sc;
+    if(mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().SPHERE){
+        // Perque el major valor tingui radi 1 i la més petita radi 0.0.089 (0.2^(2/3))
+        float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+        sc = vec3(scale);
+    } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX){
+        //only scale y
+        float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+        sc = vec3(1.f, scale, 1.f);
+    } else {
+        QTextStream(stdout)<< "UNKNOWN GYZMO SceneFactoryData::ObjectMaps\n";
+    }
+
 
     // b. Calcula la translació
+    // centre de l'esfera a y = 0
+    float new_x = mapping->Vxmin+ ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * mv_width);
+    float new_y = 0.f;
+    float new_z = mapping->Vzmin + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * mv_depth);
+    vec3 trasl = vec3(new_x, new_y, new_z);
+
+    QTextStream(stdout) << "  "  << "scale:\t" << sc[0] << ", "<< sc[1] << ", "<< sc[2] << "\n";
+    QTextStream(stdout) << "  "  << "traslation:\t" << trasl[0] << ", "<< trasl[1] << ", "<< trasl[2] << "\n";
 
     // c. Aplica la TG a l'objecte usant
     //        o->aplicaTG(transformacio)
+    auto translation = make_shared<TranslateTG>(TranslateTG(trasl));
+    o->aplicaTG(translation);
+    auto scalation = make_shared<ScaleTG>(ScaleTG(sc));
+    o->aplicaTG(scalation);
 
     return o;
 }

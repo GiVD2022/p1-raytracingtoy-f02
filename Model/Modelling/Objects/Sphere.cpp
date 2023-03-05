@@ -54,7 +54,11 @@ void Sphere::aplicaTG(shared_ptr<TG> t) {
     } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
         glm::vec3 scale = scaleTG->scale;
         radius *= std::sqrt(scale.x * scale.y * scale.z); // Apply scaling to radius
+    } else {
+        QTextStream(stdout) << "This print should never be displayed; Sphere::aplicaTG \n";
     }
+    QTextStream(stdout) << "  "  << "center:\t" << center[0] << ", "<< center[1] << ", "<< center[2] << "\n";
+    QTextStream(stdout) << "  " << "radius:\t" << radius<< "\n";
 }
 
 

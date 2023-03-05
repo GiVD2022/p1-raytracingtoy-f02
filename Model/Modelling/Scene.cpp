@@ -30,16 +30,17 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     bool hit_anything = false;
     float closest_t = tmax;
     HitInfo temp_info;
+
     if(basePlane != nullptr && basePlane->hit(raig, tmin, closest_t, temp_info)) {
         info = temp_info;
         hit_anything = true;
-    } else {
-        for (const auto& object : objects) {
-            if (object->hit(raig, tmin, closest_t, temp_info)) {
-                hit_anything = true;
-                closest_t = temp_info.t;
-                info = temp_info;
-            }
+        closest_t = temp_info.t;
+    }
+    for (const auto& object : objects) {
+        if (object->hit(raig, tmin, closest_t, temp_info)) {
+            hit_anything = true;
+            closest_t = temp_info.t;
+            info = temp_info;
         }
     }
 
