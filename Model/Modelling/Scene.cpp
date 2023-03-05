@@ -21,7 +21,6 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     for (const auto& object : objects) {
         HitInfo object_hit_info;
         if (object->hit(raig, tmin, closest_t, object_hit_info)) {
-            std::cout << "ha fet hit a algo" << std::endl;
             hit_anything = true;
             closest_t = object_hit_info.t;
             info = object_hit_info;
