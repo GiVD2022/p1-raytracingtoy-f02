@@ -36,6 +36,7 @@ SOURCES += \
     Model/Modelling/Objects/ObjectFactory.cpp \
     Model/Modelling/Objects/Plane.cpp \
     Model/Modelling/Objects/Sphere.cpp \
+    Model/Modelling/Objects/Triangle.cpp \
     Model/Modelling/Scene.cpp \
     Model/Modelling/SceneFactory.cpp \
     Model/Modelling/SceneFactoryData.cpp \
@@ -81,6 +82,7 @@ HEADERS += \
     Model/Modelling/Objects/ObjectFactory.hh \
     Model/Modelling/Objects/Plane.hh \
     Model/Modelling/Objects/Sphere.hh \
+    Model/Modelling/Objects/Triangle.hh \
     Model/Modelling/Ray.hh \
     Model/Modelling/Scene.hh \
     Model/Modelling/SceneFactory.hh \
