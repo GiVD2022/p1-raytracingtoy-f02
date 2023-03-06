@@ -7,6 +7,18 @@ Scene::Scene()
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
 }
 
+Scene::Scene(shared_ptr<Object> base): basePlane(nullptr), baseSphere(nullptr)
+{
+    pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
+    pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    // Check the type of base object
+    if (auto plane = std::dynamic_pointer_cast<FittedPlane>(base)) {
+        basePlane = plane;
+    } else if (auto sphere = std::dynamic_pointer_cast<Sphere>(base)) {
+        baseSphere = sphere;
+    }
+}
+
 
 bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // TODO FASE 0 i FASE 1:
@@ -18,12 +30,18 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
     bool hit_anything = false;
     float closest_t = tmax;
+    HitInfo temp_info;
+
+    if(basePlane != nullptr && basePlane->hit(raig, tmin, closest_t, temp_info)) {
+        info = temp_info;
+        hit_anything = true;
+        closest_t = temp_info.t;
+    }
     for (const auto& object : objects) {
-        HitInfo object_hit_info;
-        if (object->hit(raig, tmin, closest_t, object_hit_info)) {
+        if (object->hit(raig, tmin, closest_t, temp_info)) {
             hit_anything = true;
-            closest_t = object_hit_info.t;
-            info = object_hit_info;
+            closest_t = temp_info.t;
+            info = temp_info;
         }
     }
 
@@ -33,7 +51,6 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
             info.mat_ptr->Kd = vec3(0.5f, 0.0f, 0.5f);
         }
     }
-
     return hit_anything;
 }
 

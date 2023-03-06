@@ -1,0 +1,8 @@
+# MAC files
+*.DS_Store
+
+# pro.user files
+*.pro.user
+
+# Readme files
+*.md
