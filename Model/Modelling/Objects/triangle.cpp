@@ -138,5 +138,3 @@ void Triangle::print(int indentation) const
     QTextStream(stdout) << indent << "Normal:\t" << normal[0] << ", "<< normal[0] << ", "<< normal[0] << "\n";
 
 }
-
-
