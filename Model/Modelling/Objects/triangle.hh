@@ -31,5 +31,3 @@ private:
     // Normal
     vec3 normal;
 };
-
-

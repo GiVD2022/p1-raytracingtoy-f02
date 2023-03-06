@@ -302,6 +302,7 @@
   <action name="actionNew_Triangle">
    <property name="text">
     <string>New Triangle</string>
+    </property>
   </action>
   <action name="actionNew_Box">
    <property name="text">

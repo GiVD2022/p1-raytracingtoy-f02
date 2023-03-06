@@ -40,7 +40,6 @@ bool Controller::createScene(vec3 position, float radius) {
 
 }
 
-
 bool Controller::createTriangleScene(vec3 v1, vec3 v2, vec3 v3){
     scene = make_shared<Scene>();
     auto triangle = make_shared<Triangle>(v1, v2, v3, -1);
