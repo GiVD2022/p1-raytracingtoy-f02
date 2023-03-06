@@ -17,6 +17,7 @@
 #include "Face.hh"
 #include "Triangle.hh"
 #include "Sphere.hh"
+#include "Box.hh"
 
 #include <iostream>
 
@@ -45,10 +46,13 @@ private:
     vector<Face> cares; // faces o cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
     vector<Triangle> triangles;
-    shared_ptr<Sphere> esferaContenidora;
+    //shared_ptr<Sphere> esferaContenidora;
+    shared_ptr<Box> capsaContenidora;
 
     void load(QString filename);
     void makeTriangles();
-    void makeSphere();
+    //void makeSphere();
+    void makeBox();
+
 };
 
