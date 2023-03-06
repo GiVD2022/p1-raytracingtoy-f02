@@ -40,13 +40,23 @@ bool Controller::createScene(vec3 position, float radius) {
 
 }
 
-bool Controller::createScene(vec3 v1, vec3 v2, vec3 v3){
+
+bool Controller::createTriangleScene(vec3 v1, vec3 v2, vec3 v3){
     scene = make_shared<Scene>();
     auto triangle = make_shared<Triangle>(v1, v2, v3, -1);
     triangle->setMaterial(make_shared<Lambertian>(vec3(0.3, 0.33, 0.6)));
     scene->objects.push_back(triangle);
     return true;
 }
+
+bool Controller::createBoxScene(vec3 pmin, vec3 pmax){
+    scene = make_shared<Scene>();
+    auto box = make_shared<Box>(pmin, pmax, 1.0);
+    box->setMaterial(make_shared<Lambertian>(vec3(0.5, 0.2, 0.7)));
+    scene->objects.push_back(box);
+    return true;
+}
+
 
 bool Controller::createScene() {
     //TODO: Pots posar codi per a fer una escena amb multiples esferes

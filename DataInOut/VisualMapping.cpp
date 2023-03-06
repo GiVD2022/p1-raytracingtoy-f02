@@ -1,6 +1,5 @@
 #include "VisualMapping.hh"
 
-
 //! [0]
 void VisualMapping::read(const QJsonObject &json)
 {

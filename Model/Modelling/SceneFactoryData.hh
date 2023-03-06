@@ -31,7 +31,7 @@ public:
     void writeData (QJsonObject &json, int i) const ;
 
     shared_ptr<Scene>    visualMaps();
-    shared_ptr<Object>   objectMaps(int i);
+    shared_ptr<Object>   objectMaps(int i, int j);
     shared_ptr<Material> materialMaps(int i, int j);
 };
 

@@ -8,6 +8,7 @@
 #include "Object.hh"
 #include "Model/Modelling/Animation.hh"
 #include "Model/Modelling/TG/TranslateTG.hh"
+#include "Model/Modelling/TG/ScaleTG.hh"
 
 class Sphere: public Object  {
 public:

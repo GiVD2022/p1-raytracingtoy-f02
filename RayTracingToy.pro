@@ -28,7 +28,9 @@ SOURCES += \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
     Model/Modelling/Materials/Texture.cpp \
+    Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Face.cpp \
+    Model/Modelling/Objects/FittedPlane.cpp \
     Model/Modelling/Objects/Mesh.cpp \
     Model/Modelling/Objects/Object.cpp \
     Model/Modelling/Objects/ObjectFactory.cpp \
@@ -38,6 +40,7 @@ SOURCES += \
     Model/Modelling/SceneFactory.cpp \
     Model/Modelling/SceneFactoryData.cpp \
     Model/Modelling/SceneFactoryVirtual.cpp \
+    Model/Modelling/TG/ScaleTG.cpp \
     Model/Modelling/TG/TG.cpp \
     Model/Modelling/TG/TranslateTG.cpp \
     Model/Rendering/Camera.cpp \
@@ -70,7 +73,9 @@ HEADERS += \
     Model/Modelling/Materials/Material.hh \
     Model/Modelling/Materials/MaterialFactory.hh \
     Model/Modelling/Materials/Texture.hh \
+    Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Face.hh \
+    Model/Modelling/Objects/FittedPlane.hh \
     Model/Modelling/Objects/Mesh.hh \
     Model/Modelling/Objects/Object.hh \
     Model/Modelling/Objects/ObjectFactory.hh \
@@ -81,6 +86,7 @@ HEADERS += \
     Model/Modelling/SceneFactory.hh \
     Model/Modelling/SceneFactoryData.hh \
     Model/Modelling/SceneFactoryVirtual.hh \
+    Model/Modelling/TG/ScaleTG.hh \
     Model/Modelling/TG/TG.hh \
     Model/Modelling/TG/TranslateTG.hh \
     Model/Rendering/Camera.hh \
@@ -545,6 +551,8 @@ FORMS += \
     main.ui
 
 DISTFILES += \
+    .gitignore \
+    resources/box.json \
     resources/dadesBCN.json \
     resources/dadesBCNOneValue.json \
     resources/data0.json \
