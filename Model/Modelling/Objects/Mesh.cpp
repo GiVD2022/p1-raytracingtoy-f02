@@ -1,5 +1,6 @@
 #include <QVector>
 #include <QVector3D>
+#include <iostream>
 
 #include "Mesh.hh"
 
@@ -22,15 +23,56 @@ Mesh::~Mesh() {
 }
 
 void Mesh::makeTriangles() {
-    // TO DO Fase 1: A implementar
+    for (const auto& f : cares) {
+        triangles.push_back(Triangle(vec3(vertexs[f.idxVertices[0]]), vec3(vertexs[f.idxVertices[1]]), vec3(vertexs[f.idxVertices[2]]), -1.0));
+    }
+}
+
+void Mesh::makeSphere() {
+    float maxDist = 0.0;
+    vec3 extrem1;
+    vec3 extrem2;
+    float auxDist;
+    for (const auto& v1 : vertexs){
+        for (const auto& v2 : vertexs){
+            auxDist = glm::distance(v1, v2);
+            if (auxDist > maxDist){
+                maxDist = auxDist;
+                extrem1 = vec3(v1);
+                extrem2 = vec3(v2);
+            }
+        }
+    }
+
+    // Construim l'esfera centrada al punt mig del segment i de radi maxDist / 2
+    vec3 centre = extrem1 + 0.5f * (extrem2 - extrem1);
+    std::cout << centre.x << " " << centre.y << " " << centre.z << std::endl;
+    std::cout << maxDist << std::endl;
+    esferaContenidora = make_shared<Sphere>(centre, maxDist / 2.0f, -1.0);
 }
 
 
 bool Mesh::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
+    bool hit_anything = false;
+    float closest_t = tmax;
 
-    // TODO Fase 1: A implementar
+    if ( esferaContenidora->hit(raig, tmin, tmax, info)){
+        //Si toca l'esfera, mirem si realment toca l'objecte.
+        for (const auto& triangle : triangles){
+            // el warning del for no he entès què és
+            HitInfo triang_hit_info;
+            if (triangle.hit(raig, tmin, closest_t, triang_hit_info)) {
+                hit_anything = true;
+                closest_t = triang_hit_info.t;
+                info = triang_hit_info;
+                info.mat_ptr = material.get();
+            }
+        }
+        //std::cout << "ha acabat el for de triangles " << hit_anything << std::endl;
+        return hit_anything;
+    }
+    // Si no ha tocat l'esfera, retorna false.
     return false;
-
 }
 
 
@@ -87,6 +129,8 @@ void Mesh::load (QString fileName) {
                 }
             }
             file.close();
+            makeTriangles();
+            makeSphere();
         } else {
             qWarning("Boundary object file can not be opened.");
         }

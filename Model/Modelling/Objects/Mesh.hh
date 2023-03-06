@@ -15,13 +15,17 @@
 
 #include "Object.hh"
 #include "Face.hh"
+#include "triangle.hh"
+#include "Sphere.hh"
+
+#include <iostream>
 
 using namespace std;
 
 class Mesh : public Object
 {
 public:
-    Mesh() {};
+    Mesh() {std::cout << "fa el constructor sense param" << std::endl;};
     Mesh(const QString &fileName);
     Mesh(const QString &fileName, float data);
     virtual bool hit( Ray& r, float tmin, float tmax, HitInfo& info) const override;
@@ -38,10 +42,13 @@ private:
 
 
     QString nom;
-    vector<Face> cares; // facees o cares de l'objecte
+    vector<Face> cares; // faces o cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
+    vector<Triangle> triangles;
+    shared_ptr<Sphere> esferaContenidora;
 
     void load(QString filename);
     void makeTriangles();
+    void makeSphere();
 };
 
