@@ -15,7 +15,7 @@ Triangle::Triangle(vec3 v1, vec3 v2, vec3 v3, float data):Object(data) {
     vertexs[1] = v2;
     vertexs[2] = v3;
     normal = glm::cross(vertexs[1]-vertexs[0], vertexs[2]-vertexs[0]);
-    normal = vec3(0.0, 0.0, 1.0);
+    //normal = vec3(0.0, 0.0, 1.0);
     plane = Plane(normal, vertexs[0], data);
 }
 
