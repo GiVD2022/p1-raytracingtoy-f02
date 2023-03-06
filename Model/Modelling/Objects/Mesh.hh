@@ -15,7 +15,7 @@
 
 #include "Object.hh"
 #include "Face.hh"
-#include "triangle.hh"
+#include "Triangle.hh"
 #include "Sphere.hh"
 
 #include <iostream>
