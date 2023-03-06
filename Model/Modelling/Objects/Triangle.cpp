@@ -1,4 +1,4 @@
-#include "triangle.hh"
+#include "Triangle.hh"
 #include <iostream>
 
 Triangle::Triangle()
