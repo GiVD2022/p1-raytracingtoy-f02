@@ -5,6 +5,7 @@
 #include "Animation.hh"
 #include "Objects/Object.hh"
 #include "Objects/Sphere.hh"
+#include "Objects/FittedPlane.hh"
 
 #include "Materials/Material.hh"
 
