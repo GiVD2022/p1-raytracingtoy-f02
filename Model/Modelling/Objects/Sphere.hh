@@ -26,7 +26,7 @@ public:
     virtual void print(int indentation) const override;
 
 
-    vec3  getCenter() { return center;};
+    vec3  getCenter() { return center;}
     float getRadius() { return radius;}
 
 private:

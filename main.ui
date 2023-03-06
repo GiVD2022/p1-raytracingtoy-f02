@@ -174,7 +174,7 @@
      <x>0</x>
      <y>0</y>
      <width>500</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -182,6 +182,7 @@
      <string>&amp;File</string>
     </property>
     <addaction name="actionNew_Sphere"/>
+    <addaction name="actionNew_Triangle"/>
     <addaction name="actionNew_Box"/>
     <addaction name="actionGenerate_Scene"/>
     <addaction name="actionTracing_Settings"/>
@@ -192,6 +193,7 @@
     <addaction name="actionStart_and_Save_Animation"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -296,6 +298,10 @@
    <property name="text">
     <string>New Sphere</string>
    </property>
+  </action>
+  <action name="actionNew_Triangle">
+   <property name="text">
+    <string>New Triangle</string>
   </action>
   <action name="actionNew_Box">
    <property name="text">

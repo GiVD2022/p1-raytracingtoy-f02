@@ -11,6 +11,7 @@ public:
 
 public slots:
     void newSphere();
+    void newTriangle();
     void newBox();
     void newSimulatedScene();
     void newVirtualScene();

@@ -1,4 +1,5 @@
 #include "Scene.hh"
+#include <iostream>
 
 Scene::Scene()
 {

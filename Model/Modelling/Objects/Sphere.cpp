@@ -1,18 +1,22 @@
 #include "Sphere.hh"
+#include <iostream>
 
 Sphere::Sphere() {
     center=vec3(0.0,0.0,0.0);
     radius = 1.0;
+    std::cout << "Creada esfera sense param" << std::endl;
 }
 
 Sphere::Sphere(vec3 cen, float r, float data) :Object(data) {
     center = cen;
     radius = r;
+    std::cout << "Creada esfera amb param" << std::endl;
 }
 
 Sphere::Sphere(float data) :Object(data) {
     center = vec3(0,0,0);
     radius = 1.0f;
+    std::cout << "Creada esfera nomes data" << std::endl;
 }
 
 bool Sphere::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
@@ -64,6 +68,7 @@ void Sphere::aplicaTG(shared_ptr<TG> t) {
 
 void Sphere::read (const QJsonObject &json)
 {
+    std::cout << "fa servir el read de sphere" << std::endl;
     Object::read(json);
 
     if (json.contains("radius") && json["radius"].isDouble()) {
