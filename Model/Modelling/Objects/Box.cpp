@@ -37,17 +37,19 @@ bool Box::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
         else{
             t1 = (pmin[i] - raig.getOrigin()[i])/raig.getDirection()[i];
             t2 = (pmax[i] - raig.getOrigin()[i])/raig.getDirection()[i];
+            int direction = -1;
 
             if(t1 > t2){
                 float aux = t2;
                 t2 = t1;
                 t1 = aux;
+                direction = 1;
             }
 
             if(t1 > tnear){
                 tnear = t1;
                 normal = vec3(0,0,0);
-                normal[i] = 1;
+                normal[i] = direction;
             }
             if(t2 < tfar){
                 tfar = t2;
