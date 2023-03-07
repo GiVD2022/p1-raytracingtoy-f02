@@ -38,6 +38,17 @@ void Builder::newBox()
     msgBox.exec();
 }
 
+void Builder::newCylinder()
+{
+    vec3 center = vec3(0.0,-0.5,0.0);
+    float radious = 1;
+    float height = 1;
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createCylinderScene(center, radious, height))
+            msgBox.setText("One Cylinder is created.");
+    else msgBox.setText("Not enough memory. Error.");
+    msgBox.exec();
+}
 
 void Builder::newSimulatedScene()
 {

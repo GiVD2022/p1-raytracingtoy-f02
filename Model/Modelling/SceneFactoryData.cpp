@@ -275,7 +275,7 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
     } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX){
         //only scale y
         float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
-        sc = vec3(1.f, scale, 1.f);
+        sc = vec3(0.1, scale, 0.1);
     } else {
         QTextStream(stdout)<< "UNKNOWN GYZMO SceneFactoryData::ObjectMaps\n";
     }
