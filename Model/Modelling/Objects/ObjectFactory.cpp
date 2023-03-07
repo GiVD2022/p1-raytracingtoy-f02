@@ -24,6 +24,10 @@ shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
         break;
     case BOX:
         o = make_shared<Box>();
+        break;
+    case CYLINDER:
+        o = make_shared<Cylinder>();
+        break;
     default:
         break;
     }
@@ -40,6 +44,9 @@ shared_ptr<Object> ObjectFactory::createObject( QString s, float data, OBJECT_TY
         break;
     case BOX:
         o = make_shared<Box>(data);
+        break;
+    case CYLINDER:
+        o = make_shared<Cylinder>(data);
         break;
     case MESH:
         o = make_shared<Mesh>(s, data);
