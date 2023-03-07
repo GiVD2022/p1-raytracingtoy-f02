@@ -7,26 +7,30 @@
 Cylinder::Cylinder()
 {
     center = vec3(0.0,-0.5,0.0); //base del cilindre
-    radious = 1;
+    radius = 1;
     height = 1;
+    axis = vec3(0.0,1.0,0.0);
 }
 
-Cylinder::Cylinder(vec3 c, float h, float r,float data) :Object(data) {
+Cylinder::Cylinder(vec3 c, vec3 a, float h, float r,float data) :Object(data) {
     center = c;
-    radious = r;
+    radius = r;
     height = h;
+    axis = a;
 }
 
 Cylinder::Cylinder(float data): Object(data){
     center = vec3(0.0,-0.5,0.0);
-    radious = 1;
+    radius = 1;
     height = 1;
+    axis = vec3(0.0,1.0,0.0);
 }
 
 // https://inmensia.com/articulos/raytracing/cilindroycono.html
 bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
-    float tnear = -tmax;
-    float tfar = tmax;
+
+    //ASSUMIM QUE AXIS = [0,1,0] SEMPRE
+
     vec3 direction = normalize(raig.getDirection());
     //QTextStream(stdout) << "Cridant al hit \nOrigen: " << raig.getOrigin().x << " " << raig.getOrigin().y << " " << raig.getOrigin().z << " Direccio: " << direction.x << " " << direction.y << " " << direction.z << "\n";
 
@@ -35,7 +39,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     float a = pow(direction.x, 2) +pow(direction.z, 2);
     float b = 2 * k;
-    float c = pow((raig.getOrigin().x - center.x), 2) + pow((raig.getOrigin().z - center.z), 2) - pow(radious, 2);
+    float c = pow((raig.getOrigin().x - center.x), 2) + pow((raig.getOrigin().z - center.z), 2) - pow(radius, 2);
 
     float discriminant= b*b-4*a*c;
 
@@ -66,7 +70,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
         Plane p = Plane(normal, point, 1);
 
         if (p.hit(raig, tmin, tmax, temp_info)) { //xoc amb el pla
-              if( pow( (temp_info.p.x - center.x), 2) + pow(temp_info.p.z - center.z, 2) < radious){ // dins el cilindre
+              if( pow( (temp_info.p.x - center.x), 2) + pow(temp_info.p.z - center.z, 2) < radius){ // dins el cilindre
                   info = temp_info;
                   info.mat_ptr = material.get();
                   return true;
@@ -80,7 +84,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
         Plane p = Plane(normal, center, 1);
 
         if (p.hit(raig, tmin, tmax, temp_info)) { //xoc amb el pla
-              if( pow( (temp_info.p.x - center.x), 2) + pow(temp_info.p.z - center.z, 2) < radious){ // dins el cilindre
+              if( pow( (temp_info.p.x - center.x), 2) + pow(temp_info.p.z - center.z, 2) < radius){ // dins el cilindre
                   info = temp_info;
                   info.mat_ptr = material.get();
                   return true;
@@ -94,57 +98,75 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 }
 
 void Cylinder::aplicaTG(shared_ptr<TG> t) {
-
+    if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
+        QTextStream(stdout)<<"Translating cylinder \n";
+        vec4 c(center, 1.0);
+        c = translateTG->getTG() * c;
+        center.x = c.x; center.y = c.y; center.z = c.z;
+    } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
+        QTextStream(stdout)<<"Scaling cylinder \n";
+        glm::vec3 scale = scaleTG->scale;
+        radius *= std::sqrt(scale.x * scale.y * scale.z); // Apply scaling to radius
+        height *= scale.y;
+    } else {
+        QTextStream(stdout) << "This print should never be displayed; Sphere::aplicaTG \n";
+    }
 }
 
 
 void Cylinder::read (const QJsonObject &json)
-{   /*
+{
     Object::read(json);
-    if(json.contains("punt_min") && json["punt_min"].isArray()){
-        QJsonArray auxVec = json["punt_min"].toArray();
-        pmin[0] = auxVec[0].toDouble();
-        pmin[1] = auxVec[1].toDouble();
-        pmin[2] = auxVec[2].toDouble();
+    if(json.contains("radious") && json["punt_min"].isDouble()){
+        radius = json["radious"].toDouble();
     }
-    if(json.contains("punt_max") && json["punt_max"].isArray()){
-        QJsonArray auxVec = json["punt_max"].toArray();
-        pmax[0] = auxVec[0].toDouble();
-        pmax[1] = auxVec[1].toDouble();
-        pmax[2] = auxVec[2].toDouble();
-    }*/
-
+    if(json.contains("h") && json["h"].isDouble()){
+        height = json["h"].toDouble();
+    }
+    if (json.contains("center") && json["center"].isArray()) {
+        QJsonArray auxVec = json["center"].toArray();
+        center[0] = auxVec[0].toDouble();
+        center[1] = auxVec[1].toDouble();
+        center[2] = auxVec[2].toDouble();
+    }
+    if (json.contains("axis") && json["axis"].isArray()) {
+        QJsonArray auxVec = json["axis"].toArray();
+        axis[0] = auxVec[0].toDouble();
+        axis[1] = auxVec[1].toDouble();
+        axis[2] = auxVec[2].toDouble();
+    }
 }
 
 
 //! [1]
 void Cylinder::write(QJsonObject &json) const
 {
-    /*
+
     Object::write(json);
-    QJsonArray pminArray;
-    pminArray.append(pmin[0]);
-    pminArray.append(pmin[1]);
-    pminArray.append(pmin[2]);
-    json["punt_min"] = pminArray;
 
+    QJsonArray centerArray;
+    centerArray.append(center[0]);centerArray.append(center[1]);centerArray.append(center[2]);
+    json["center"] = centerArray;
 
-    QJsonArray pmaxArray;
-    pmaxArray.append(pmax[0]);
-    pmaxArray.append(pmax[1]);
-    pmaxArray.append(pmax[2]);
-    json["punt_max"] = pmaxArray;
-    */
+    QJsonArray axisArray;
+    axisArray.append(axis[0]);axisArray.append(axis[1]);axisArray.append(axis[2]);
+    json["axis"] = axisArray;
+
+    json["radious"] = radius;
+
+    json["h"] = height;
 
 }
 //! [1]
 
 void Cylinder::print(int indentation) const
 {
-    /*
+
     Object::print(indentation);
     const QString indent(indentation * 2, ' ');
-    QTextStream(stdout) << indent << "pmin:\t" << pmin[0] << ", "<< pmin[1] << ", "<< pmin[2] << "\n";
-    QTextStream(stdout) << indent << "pmax:\t" << pmax[0] << ", "<< pmax[1] << ", "<< pmax[2] << "\n";
-    */
+    QTextStream(stdout) << indent << "center:\t" << center[0] << ", "<< center[1] << ", "<< center[2] << "\n";
+    QTextStream(stdout) << indent << "axis:\t" << axis[0] << ", "<< axis[1] << ", "<< axis[2] << "\n";
+    QTextStream(stdout) << indent << "radius:\t" << radius<< "\n";
+     QTextStream(stdout) << indent << "height:\t" << height<< "\n";
+
 }

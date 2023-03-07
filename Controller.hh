@@ -66,7 +66,7 @@ public:
     bool createScene(vec3 position, float radius);
     bool createTriangleScene(vec3 v1, vec3 v2, vec3 v3);
     bool createBoxScene(vec3 pmin, vec3 pmax);
-    bool createCylinderScene(vec3 base, float radious, float height);
+    bool createCylinderScene(vec3 base, vec3 axis, float radious, float height);
     bool createScene();
     bool createScene(int nFrames);
 

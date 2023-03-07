@@ -18,6 +18,7 @@ public:
     //Crea una esfera unitaria centrada al punt (0,0,0) i de radi 1
     Sphere(float data);
     virtual ~Sphere() {}
+
     virtual bool hit(Ray& r, float tmin, float tmax, HitInfo& info) const override;
     virtual void aplicaTG(shared_ptr<TG> tg) override;
 
