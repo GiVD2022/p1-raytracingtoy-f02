@@ -97,9 +97,14 @@ void SceneFactoryData::read(const QJsonObject &json)
             // Afegir objecte base a l'escena
             if (o) {
                 if (objStr == "FITTEDPLANE") {
-                    scene->basePlane = o;
+                    scene->setBaseObject(o);
                     scene->setDimensions(std::static_pointer_cast<FittedPlane>(o)->getPMin(), std::static_pointer_cast<FittedPlane>(o)->getPMax());
                     scene->objects.push_back(o);
+                } else if(objStr == "SPHERE"){
+                    scene->setBaseObject(o);
+                    scene->setDimensions(std::static_pointer_cast<Sphere>(o)->getPMin(), std::static_pointer_cast<Sphere>(o)->getPMax());
+                    scene->objects.push_back(o);
+                    QTextStream(stdout) << "HELLOp"<< "\n";
                 }
             }
         }
@@ -132,8 +137,8 @@ void SceneFactoryData::write(QJsonObject &json) const
    QJsonObject jbase;
    // TO DO Fase 1: Opcional: Cal escriure l'objecte base al fitxer:
    // Descomenta les següents línies
-   scene->basePlane->write(jbase);
-   auto value = ObjectFactory::getInstance().getIndexType(scene->basePlane);
+   scene->baseObject->write(jbase);
+   auto value = ObjectFactory::getInstance().getIndexType(scene->baseObject);
    jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
 
    json["base"] = jbase;
@@ -163,7 +168,7 @@ void SceneFactoryData::print(int indentation) const
     QTextStream(stdout) << indent << "scene:\t" << scene->name << "\n";
     QTextStream(stdout) << indent << "typeScene:\t" << SceneFactory::getNameType(currentType) << "\n";
     QTextStream(stdout) << indent << "base:\t\n";
-    scene->basePlane->print(indentation +2);
+    scene->baseObject->print(indentation +2);
     mapping->print(indentation+2);
 
     QTextStream(stdout) << indent << "Attributes:\t\n";
@@ -287,10 +292,16 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // b. Calcula la translació
     // centre de l'esfera a y = 0
+    // Per defecte, l'obj base és un pla
+    vec3 trasl;
     float new_x = mapping->Vxmin+ ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * mv_width);
     float new_y = 0.f;
     float new_z = mapping->Vzmin + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * mv_depth);
-    vec3 trasl = vec3(new_x, new_y, new_z);
+    trasl = vec3(new_x, new_y, new_z);
+    // Si és una esfera, modifiquem la translació
+    if (auto sphere = std::dynamic_pointer_cast<Sphere>(scene->baseObject)) {
+        trasl -= sphere->getCenter();
+    }
 
     QTextStream(stdout) << "  "  << "scale:\t" << sc[0] << ", "<< sc[1] << ", "<< sc[2] << "\n";
     QTextStream(stdout) << "  "  << "traslation:\t" << trasl[0] << ", "<< trasl[1] << ", "<< trasl[2] << "\n";

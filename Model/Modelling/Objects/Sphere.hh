@@ -29,6 +29,8 @@ public:
 
     vec3  getCenter() { return center;}
     float getRadius() { return radius;}
+    vec3 getPMin();
+    vec3 getPMax();
 
 private:
     // Centre de l'esfera

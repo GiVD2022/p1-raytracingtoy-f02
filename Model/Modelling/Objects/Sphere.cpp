@@ -102,3 +102,10 @@ void Sphere::print(int indentation) const
     QTextStream(stdout) << indent << "radius:\t" << radius<< "\n";
 }
 
+vec3 Sphere::getPMin() {
+    return center - vec3(radius, radius, radius);
+}
+
+vec3 Sphere::getPMax() {
+    return center + vec3(radius, radius, radius);
+}
