@@ -7,15 +7,17 @@ Scene::Scene()
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
 }
 
-Scene::Scene(shared_ptr<Object> base): basePlane(nullptr), baseSphere(nullptr)
+Scene::Scene(shared_ptr<Object> base): baseObject(nullptr)
 {
     pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
     // Check the type of base object
     if (auto plane = std::dynamic_pointer_cast<FittedPlane>(base)) {
-        basePlane = plane;
+        baseObject = plane;
     } else if (auto sphere = std::dynamic_pointer_cast<Sphere>(base)) {
-        baseSphere = sphere;
+        baseObject = sphere;
+    } else {
+        throw std::invalid_argument("Invalid base object type.");
     }
 }
 
@@ -32,7 +34,7 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     float closest_t = tmax;
     HitInfo temp_info;
 
-    if(basePlane != nullptr && basePlane->hit(raig, tmin, closest_t, temp_info)) {
+    if(baseObject != nullptr && baseObject->hit(raig, tmin, closest_t, temp_info)) {
         info = temp_info;
         hit_anything = true;
         closest_t = temp_info.t;
@@ -65,4 +67,16 @@ void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmin = p1;
     pmax = p2;
 }
+
+void Scene::setBaseObject(shared_ptr<Object> base) {
+    // Check the type of base object
+    if (auto plane = std::dynamic_pointer_cast<FittedPlane>(base)) {
+        baseObject = plane;
+    } else if (auto sphere = std::dynamic_pointer_cast<Sphere>(base)) {
+        baseObject = sphere;
+    } else {
+        throw std::invalid_argument("Invalid base object type.");
+    }
+}
+
 
