@@ -1,6 +1,6 @@
 #include "DepthShading.h"
 
-vec3 DepthShading::shading(shared_ptr<Scene> scene, HitInfo& info, vec3 lookFrom) {
+vec3 DepthShading::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_ptr<Light>> lights, vec3 lookFrom, vec3 globalLight) {
     vec3 hit_point = info.p;
     float distance = length(hit_point - lookFrom);
 

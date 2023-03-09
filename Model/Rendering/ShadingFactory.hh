@@ -1,10 +1,12 @@
 #pragma once
 
-#include "ShadingFactory.hh"
+#include "ShadingStrategy.hh"
 #include "ColorShading.hh"
 #include "ColorShadow.hh"
 #include "NormalShading.h"
 #include "DepthShading.h"
+#include "BlinnPhongShading.hh"
+#include "BlinnPhongShadow.hh"
 
 class ShadingFactory
 {
@@ -16,7 +18,8 @@ public:
         NORMAL,
         DEPTH,
         PHONG,
-        BLINNPHONG
+        BLINNPHONG,
+        BLINNPHONGSHADOW
     } SHADING_TYPES;
 
     static ShadingFactory& getInstance() {
