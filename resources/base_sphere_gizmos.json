@@ -2,11 +2,9 @@
 "scene": "dadesBCN",
 "typeScene": "REALDATA",
 "base" : {
-   "type": "FITTEDPLANE",
-   "normal": [0.0, 1.0, 0.0],
-   "point": [0.0, 0.0, 0.0],
-   "pmin": [-5.0, -5.0],
-   "pmax": [5.0, 5.0],
+   "type": "SPHERE",
+   "center": [0.0, 0.0, 0.0],
+   "radius": 3.0,
    "material": {
    "type": "LAMBERTIAN",
    "ka": [0.1, 0.1, 0.1],

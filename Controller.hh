@@ -12,6 +12,7 @@
 #include "Model/Modelling/Objects/Sphere.hh"
 #include "Model/Modelling/Objects/Triangle.hh"
 #include "Model/Modelling/Objects/Box.hh"
+#include "Model/Modelling/Objects/Cylinder.hh"
 
 using namespace std;
 
@@ -65,6 +66,7 @@ public:
     bool createScene(vec3 position, float radius);
     bool createTriangleScene(vec3 v1, vec3 v2, vec3 v3);
     bool createBoxScene(vec3 pmin, vec3 pmax);
+    bool createCylinderScene(vec3 base, vec3 axis, float radious, float height);
     bool createScene();
     bool createScene(int nFrames);
 

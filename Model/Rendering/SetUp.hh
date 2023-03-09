@@ -10,7 +10,7 @@
 
 #include "Model/Rendering/ShadingFactory.hh"
 #include "Model/Rendering/ShadingStrategy.hh"
-#include "Model/Rendering/ColorShading.hh"
+
 
 class SetUp : public Serializable
 {

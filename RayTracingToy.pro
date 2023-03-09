@@ -29,6 +29,7 @@ SOURCES += \
     Model/Modelling/Materials/MaterialFactory.cpp \
     Model/Modelling/Materials/Texture.cpp \
     Model/Modelling/Objects/Box.cpp \
+    Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
     Model/Modelling/Objects/FittedPlane.cpp \
     Model/Modelling/Objects/Mesh.cpp \
@@ -44,6 +45,8 @@ SOURCES += \
     Model/Modelling/TG/ScaleTG.cpp \
     Model/Modelling/TG/TG.cpp \
     Model/Modelling/TG/TranslateTG.cpp \
+    Model/Rendering/BlinnPhongShading.cpp \
+    Model/Rendering/BlinnPhongShadow.cpp \
     Model/Rendering/Camera.cpp \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
@@ -75,6 +78,7 @@ HEADERS += \
     Model/Modelling/Materials/MaterialFactory.hh \
     Model/Modelling/Materials/Texture.hh \
     Model/Modelling/Objects/Box.hh \
+    Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
     Model/Modelling/Objects/FittedPlane.hh \
     Model/Modelling/Objects/Mesh.hh \
@@ -91,6 +95,8 @@ HEADERS += \
     Model/Modelling/TG/ScaleTG.hh \
     Model/Modelling/TG/TG.hh \
     Model/Modelling/TG/TranslateTG.hh \
+    Model/Rendering/BlinnPhongShading.hh \
+    Model/Rendering/BlinnPhongShadow.hh \
     Model/Rendering/Camera.hh \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \

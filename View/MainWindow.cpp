@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->actionNew_Sphere, SIGNAL(triggered()), builder, SLOT(newSphere()));
     QObject::connect(ui->actionNew_Triangle, SIGNAL(triggered()), builder, SLOT(newTriangle()));
     QObject::connect(ui->actionNew_Box, SIGNAL(triggered()), builder, SLOT(newBox()));
+    QObject::connect(ui->actionNew_Cylinder, SIGNAL(triggered()), builder, SLOT(newCylinder()));
     QObject::connect(ui->actionGenerate_Scene, SIGNAL(triggered()), builder, SLOT(newSimulatedScene()));
     QObject::connect(ui->actionOpen_Virtual_Scene, SIGNAL(triggered()), builder, SLOT(newVirtualScene()));
     QObject::connect(ui->actionOpen_Data, SIGNAL(triggered()), builder, SLOT(newDataScene()));
@@ -48,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // TO DO Fase 2: connectar els shadings d'il·luminació Phong, Bling-Phong i d'altres
     //    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), this, SLOT(activaPhongShader()));
-    //    QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), this, SLOT(activaBlinn_Phong()));
+    QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), builder, SLOT(activaBlinn_Phong()));
     //    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), this, SLOT(activaCell_Shading()));
     //    QObject::connect(ui->actionGooch_Shading, SIGNAL(triggered()), this, SLOT(activaGooch_Shading()));
 

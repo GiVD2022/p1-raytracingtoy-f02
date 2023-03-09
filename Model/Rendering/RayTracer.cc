@@ -70,7 +70,7 @@ vec3 RayTracer::RayPixel(Ray &ray) {
     HitInfo info;
 
     if (scene->hit(ray, 0.001, FLT_MAX, info)) {
-        vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, ray.getOrigin());
+        vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, setup->getLights(), ray.getOrigin(), setup->getGlobalLight());
         color = clamp(shading_color, vec3(0), vec3(1));
 
     } else {

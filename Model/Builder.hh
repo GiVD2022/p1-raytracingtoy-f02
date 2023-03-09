@@ -13,6 +13,7 @@ public slots:
     void newSphere();
     void newTriangle();
     void newBox();
+    void newCylinder();
     void newSimulatedScene();
     void newVirtualScene();
     void newDataScene();
@@ -20,6 +21,7 @@ public slots:
     void activaColorShading();
     void activaDepthShader();
     void activaNormalShader();
+    void activaBlinn_Phong();
 
 signals:
      void settingsChanged();

@@ -38,6 +38,18 @@ void Builder::newBox()
     msgBox.exec();
 }
 
+void Builder::newCylinder()
+{
+    vec3 center = vec3(0.0,-0.5,0.0);
+    vec3 axis = vec3(0.0,1,0.0);
+    float radious = 1;
+    float height = 1;
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createCylinderScene(center,axis, radious, height))
+            msgBox.setText("One Cylinder is created.");
+    else msgBox.setText("Not enough memory. Error.");
+    msgBox.exec();
+}
 
 void Builder::newSimulatedScene()
 {
@@ -110,3 +122,13 @@ void Builder::activaDepthShader() {
     } else msgBox.setText("Error creating shading");
     msgBox.exec();
 }
+
+void Builder::activaBlinn_Phong() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::BLINNPHONG)) {
+        msgBox.setText("Blinn-Phong Shading created.");
+    } else msgBox.setText("Error creating shading");
+    msgBox.exec();
+}
+
+

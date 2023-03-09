@@ -17,6 +17,7 @@
 #include "Face.hh"
 #include "Triangle.hh"
 #include "Sphere.hh"
+#include "Box.hh"
 
 #include <iostream>
 
@@ -45,12 +46,15 @@ private:
     vector<Face> cares; // faces o cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
     vector<Triangle> triangles;
-    shared_ptr<Sphere> esferaContenidora;
+    //shared_ptr<Sphere> esferaContenidora;
+    shared_ptr<Box> capsaContenidora;
 
     bool hitPlane(Ray &raig, float tmin, float tmax, HitInfo& info, vec3 normal, vec3 point) const;
     bool interior(Ray &raig, float tmin, float tmax, HitInfo& info, vec3 n, vec3 a, vec3 b, vec3 c) const;
     void load(QString filename);
     void makeTriangles();
-    void makeSphere();
+    //void makeSphere();
+    void makeBox();
+
 };
 
