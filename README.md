@@ -26,32 +26,36 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - Tots els integrants
  - Fase 1
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
-        - [ ] Hit Box
+        - [X] Hit Box
           - Pau Hernando
-        - [ ] Hit Triangle
+        - [X] Hit Triangle
           - Pau Baldillou
-        - [ ] Hit Malla
+        - [X] Hit Malla
           - Pau Baldillou
           - Pau Hernando
     - Creació de REAL DATA
-        - [ ] FITTED PLANE: Pla de terra
-          - Estudiants que hi han participat
-        - [ ] Transformacions Translació i Escalat amb gizmos esferes
-          - Estudiants que hi han participat
-        - [ ] Gizmo de Box
-          - Estudiants que hi han participat
-        - [ ] Noves dades
-          - Estudiants que hi han participat
+        - [X] FITTED PLANE: Pla de terra
+          - Núria Torquet
+        - [X] Transformacions Translació i Escalat amb gizmos esferes
+          - Esther Ruano
+          - Núria Torquet
+        - [X] Gizmo de Box
+          - Esther Ruano
+        - [X] Noves dades
+          - Esther Ruano
        
 
 - Parts opcionales: 
-  - [ ] Cilindres
-   
+  - [X] Cilindres
+    - Esther Ruano
   - [ ] Escena CSG 
   
-  - [ ] Més d'una propietat en les dades reals
-   
-  - [ ] Mapeig de les dades reals en una esfera
+  - [X] Més d'una propietat en les dades reals
+    - Esther Ruano
+  - [X] Mapeig de les dades reals en una esfera
+    - Núria Torquet
+  - [ ] Afegir nous objectes paramètrics  
+
   
     
     
