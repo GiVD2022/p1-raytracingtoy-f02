@@ -89,21 +89,92 @@ bool Mesh::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     if ( capsaContenidora->hit(raig, tmin, tmax, info)){
         //Si toca l'esfera, mirem si realment toca l'objecte.
-        for (const auto& triangle : triangles){
-            // el warning del for no he entès què és
-            HitInfo triang_hit_info;
-            if (triangle.hit(raig, tmin, closest_t, triang_hit_info)) {
-                hit_anything = true;
-                closest_t = triang_hit_info.t;
-                info = triang_hit_info;
-                info.mat_ptr = material.get();
+            // Hit per cara
+            for (const auto& face : cares)
+            {
+                // Guardem els 3 vertexs i la normal:
+                vec3 v1 = vec3(vertexs[face.idxVertices[0]]);
+                vec3 v2 = vec3(vertexs[face.idxVertices[1]]);
+                vec3 v3 = vec3(vertexs[face.idxVertices[2]]);
+                vec3 n = glm::cross(v2-v1, v3-v1);
+                HitInfo triang_hit_info;
+                if (hitPlane(raig, tmin, closest_t, triang_hit_info, n, v1)){
+                    if (interior(raig, tmin, closest_t, triang_hit_info, n, v1, v2, v3)){
+                        hit_anything = true;
+                        closest_t = triang_hit_info.t;
+                        info = triang_hit_info;
+                        info.mat_ptr = material.get();
+                    }
+                }
             }
-        }
+
         //std::cout << "ha acabat el for de triangles " << hit_anything << std::endl;
         return hit_anything;
     }
     // Si no ha tocat l'esfera, retorna false.
     return false;
+}
+
+bool Mesh::interior(Ray &raig, float tmin, float tmax, HitInfo& info, vec3 n, vec3 a, vec3 b, vec3 c) const{
+    // Comprovació si el punt és interior al triangle
+    vec3 p = info.p;
+
+    vec3 u = b - a;
+    vec3 v = p - a;
+
+    vec3 uv = glm::cross(u, v);
+
+    if(glm::dot(uv, n) <= 0){
+        return false;
+    }
+
+    u = c - b;
+    v = p - b;
+
+    uv = glm::cross(u, v);
+
+    if(glm::dot(uv, n) <= 0){
+        return false;
+    }
+
+    u = a - c;
+    v = p - c;
+
+    uv = glm::cross(u, v);
+
+    if(glm::dot(uv, n) <= 0){
+        return false;
+    }
+
+    return true;
+}
+
+bool Mesh::hitPlane(Ray &raig, float tmin, float tmax, HitInfo& info, vec3 normal, vec3 point) const{
+    if(abs(dot(raig.getDirection(), normal))<DBL_EPSILON){
+        return false;
+    }
+
+    // 1) Calculem la D = -Ax-By-Cz
+    float d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
+
+    // 2) Imposem que la recta p+tv compleixi l'eq del pla
+    vec3 rp = raig.getOrigin();
+    vec3 vp = raig.getDirection();
+    float temp =  -normal[0]*rp[0] - normal[1]*rp[1] - normal[2]*rp[2] - d;
+
+    temp/= normal[0]*vp[0] + normal[1]*vp[1] + normal[2]*vp[2];
+
+    if (temp > tmax || temp < tmin) {
+            return false;
+    }
+
+    // Omplim el camp de info:
+    info.t = temp;
+    info.p = raig.pointAtParameter(info.t);
+
+    // La normal a un pla es la mateixa per tots els punts
+    info.normal = normal;
+    return true;
 }
 
 
@@ -160,7 +231,7 @@ void Mesh::load (QString fileName) {
                 }
             }
             file.close();
-            makeTriangles();
+            //makeTriangles();
             //makeSphere();
             makeBox();
         } else {
