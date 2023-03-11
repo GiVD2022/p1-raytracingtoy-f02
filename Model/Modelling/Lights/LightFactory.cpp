@@ -8,6 +8,9 @@ shared_ptr<Light> LightFactory::createLight( LIGHT_TYPES t) {
     case POINTLIGHT:
         l = make_shared<PointLight>();
         break;
+    case DIRECTIONALLIGHT:
+        l = make_shared<DirectionalLight>();
+        break;
     default:
         break;
     }
@@ -19,6 +22,9 @@ shared_ptr<Light> LightFactory::createLight(vec3 posicio, vec3 Ia, vec3 Id, vec3
     case POINTLIGHT:
         l = make_shared<PointLight>(posicio, Ia, Id, Is, a, b, c);
         break;
+    case DIRECTIONALLIGHT:
+        l = make_shared<DirectionalLight>(direction, Ia, Id, Is, intensity);
+        break;
     default:
         break;
     }
@@ -29,6 +35,9 @@ shared_ptr<Light> LightFactory::createLight(vec3 posicio, vec3 Ia, vec3 Id, vec3
 LightFactory::LIGHT_TYPES LightFactory::getIndexType (shared_ptr<Light> l) {
     if (dynamic_pointer_cast<PointLight>(l) != nullptr) {
         return LIGHT_TYPES::POINTLIGHT;
+    }
+    else if ( dynamic_pointer_cast<DirectionalLight>(l) != nullptr) {
+        return LIGHT_TYPES::DIRECTIONALLIGHT;
     }
     return LIGHT_TYPES::POINTLIGHT;
 }

@@ -20,6 +20,7 @@ SOURCES += \
     Main.cpp \
     Model/Builder.cpp \
     Model/Modelling/Animation.cpp \
+    Model/Modelling/Lights/DirectionalLight.cpp \
     Model/Modelling/Lights/Light.cpp \
     Model/Modelling/Lights/LightFactory.cpp \
     Model/Modelling/Lights/PointLight.cpp \
@@ -48,6 +49,7 @@ SOURCES += \
     Model/Rendering/BlinnPhongShading.cpp \
     Model/Rendering/BlinnPhongShadow.cpp \
     Model/Rendering/Camera.cpp \
+    Model/Rendering/Celshading.cpp \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
     Model/Rendering/DepthShading.cpp \
@@ -68,6 +70,7 @@ HEADERS += \
     Model/Builder.hh \
     Model/Modelling/Animation.hh \
     Model/Modelling/Hitable.hh \
+    Model/Modelling/Lights/DirectionalLight.hh \
     Model/Modelling/Lights/Light.hh \
     Model/Modelling/Lights/LightFactory.hh \
     Model/Modelling/Lights/PointLight.hh \
@@ -98,6 +101,7 @@ HEADERS += \
     Model/Rendering/BlinnPhongShading.hh \
     Model/Rendering/BlinnPhongShadow.hh \
     Model/Rendering/Camera.hh \
+    Model/Rendering/Celshading.hh \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \
     Model/Rendering/DepthShading.h \

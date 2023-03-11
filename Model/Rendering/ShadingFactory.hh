@@ -19,7 +19,8 @@ public:
         DEPTH,
         PHONG,
         BLINNPHONG,
-        BLINNPHONGSHADOW
+        BLINNPHONGSHADOW,
+        CEL
     } SHADING_TYPES;
 
     static ShadingFactory& getInstance() {

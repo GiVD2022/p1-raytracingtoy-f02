@@ -2,6 +2,7 @@
 
 #include "Light.hh"
 #include "PointLight.hh"
+#include "DirectionalLight.hh"
 
 class LightFactory
 {

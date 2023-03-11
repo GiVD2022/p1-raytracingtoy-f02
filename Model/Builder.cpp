@@ -131,4 +131,12 @@ void Builder::activaBlinn_Phong() {
     msgBox.exec();
 }
 
+void Builder::activaCell_Shading() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::CEL)) {
+        msgBox.setText("Cel Shading created.");
+    } else msgBox.setText("Error creating shading");
+    msgBox.exec();
+}
+
 
