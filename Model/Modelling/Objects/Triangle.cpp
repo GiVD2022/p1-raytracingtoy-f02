@@ -71,11 +71,23 @@ bool Triangle::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
 
 void Triangle::aplicaTG(shared_ptr<TG> t) {
-    if (dynamic_pointer_cast<TranslateTG>(t)) {
-        // Per ara només es fan les translacions
-
+    if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
+        vec4 vertex0(vertexs[0], 1.0);
+        vec4 vertex1(vertexs[1], 1.0);
+        vec4 vertex2(vertexs[2], 1.0);
+        vertex0 = translateTG->getTG() * vertex0;
+        vertex1 = translateTG->getTG() * vertex1;
+        vertex2 = translateTG->getTG() * vertex2;
+        vertexs[0] = vec3(vertex0.x, vertex0.y, vertex0.z);
+        vertexs[1] = vec3(vertex1.x, vertex1.y, vertex1.z);
+        vertexs[2] = vec3(vertex2.x, vertex2.y, vertex2.z);
+    } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
+        vec3 center = (vertexs[0] + vertexs[1] + vertexs[2]) / 3.f;
+        vec3 scale = scaleTG->scale;
+        vertexs[0] = center + scale * (vertexs[0] - center);
+        vertexs[1] = center + scale * (vertexs[1] - center);
+        vertexs[2] = center + scale * (vertexs[2] - center);
     }
-    //TODO: Cal ampliar-lo per a acceptar Escalats
 
 }
 

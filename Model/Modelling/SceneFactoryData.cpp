@@ -104,7 +104,6 @@ void SceneFactoryData::read(const QJsonObject &json)
                     scene->setBaseObject(o);
                     scene->setDimensions(std::static_pointer_cast<Sphere>(o)->getPMin(), std::static_pointer_cast<Sphere>(o)->getPMax());
                     scene->objects.push_back(o);
-                    QTextStream(stdout) << "HELLOp"<< "\n";
                 }
             }
         }
@@ -112,17 +111,12 @@ void SceneFactoryData::read(const QJsonObject &json)
         mapping->read(json);
 
         if (json.contains("attributes") && json["attributes"].isArray()) {
-          QTextStream(stdout) << "contains attributes and is array"<< "\n";
           QJsonArray attributeMappingsArray = json["attributes"].toArray();
           for (int propIndex = 0; propIndex < attributeMappingsArray.size(); propIndex++) {
-
-              QTextStream(stdout) << "attributes loop" << propIndex << "\n";
               QJsonObject propObject = attributeMappingsArray[propIndex].toObject();
-              QTextStream(stdout) << "succesfully casted to object" << "\n";
               mapping->readAttribute(propObject);
-              QTextStream(stdout) << "called readAttribute successfully" << "\n";
               readData(propObject);
-              QTextStream(stdout) << "data read" << "\n";
+
           }
         }
     }
@@ -273,17 +267,13 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // a. Calcula primer l'escala
     vec3 sc;
-    if(mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().SPHERE){
+    float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+
+    if(mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().SPHERE || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().TRIANGLE ){
         // Perque el major valor tingui radi 1 i la més petita radi 0.0.089 (0.2^(2/3))
-        float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
         sc = vec3(scale);
-    } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX){
+    } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().CYLINDER){
         //only scale y
-        float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
-        sc = vec3(0.1, scale, 0.1);
-    } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().CYLINDER){
-        //only scale y
-        float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
         sc = vec3(0.1, scale, 0.1);
     } else {
         QTextStream(stdout)<< "UNKNOWN GYZMO SceneFactoryData::ObjectMaps\n";
