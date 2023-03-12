@@ -45,6 +45,7 @@ private:
     QString nom;
     vector<Face> cares; // faces o cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
+    vec3 centre; //centre
     vector<Triangle> triangles;
     //shared_ptr<Sphere> esferaContenidora;
     shared_ptr<Box> capsaContenidora;

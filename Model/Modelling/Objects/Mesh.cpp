@@ -53,10 +53,13 @@ void Mesh::makeSphere() {
 */
 
 void Mesh::makeBox(){
+    // aprofitem el loop per calcular el centre
+    centre = vec3(0.f);
     vec3 minim = vec3(FLT_MAX,FLT_MAX,FLT_MAX);
     vec3 maxim = vec3(-FLT_MAX,-FLT_MAX,-FLT_MAX);
 
     for (const auto& v1 : vertexs){
+        centre += vec3(v1);
         if(v1[0] < minim[0]){
             minim[0] = v1[0];
         }
@@ -77,6 +80,7 @@ void Mesh::makeBox(){
         }
 
     }
+    centre = centre / (float) vertexs.size();
     std::cout << minim.x << " " << minim.y << " " << minim.z << std::endl;
     std::cout << maxim.x << " " << maxim.y << " " << maxim.z << std::endl;
     capsaContenidora = make_shared<Box>(minim,maxim,-1.0);
@@ -180,6 +184,18 @@ bool Mesh::hitPlane(Ray &raig, float tmin, float tmax, HitInfo& info, vec3 norma
 
 void Mesh::aplicaTG(shared_ptr<TG> t) {
     // TO DO: Fase 1
+    if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
+        for (int i = 0; i < vertexs.size(); i++){ //v1 es un vec3 i un 1.0f, com es veu al load
+            vertexs[i] = translateTG->getTG() * vertexs[i];
+
+        }
+    } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
+        vec3 scale = scaleTG->scale;
+        for (int i = 0; i < vertexs.size(); i++){ //v1 es un vec3 i un 1.0f, com es veu al load
+            vec3 v1 = centre + scale * (vec3(vertexs[i]) - centre);
+            vertexs[i] = vec4(v1, 1.f);
+        }
+    }
 }
 
 void Mesh::load (QString fileName) {
