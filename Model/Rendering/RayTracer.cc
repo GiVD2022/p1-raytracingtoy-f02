@@ -38,7 +38,7 @@ void RayTracer::run() {
             float v = (float(height -y)) / float(height);
             vec3 color(0, 0, 0);
             color = getMeanColor(u,v,camera); //Calculem la mitjana per a disminuir l'escalonat
-            //color = sqrt(color); //Correció del color
+            color = sqrt(color); //Correció del color
             color *= 255;
             setPixel(x, y, color);
         }
