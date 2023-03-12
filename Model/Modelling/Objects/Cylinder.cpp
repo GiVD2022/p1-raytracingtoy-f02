@@ -31,8 +31,11 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     //ASSUMIM QUE AXIS = [0,1,0] SEMPRE
 
+    // INTERSECCIO AMB EL CILINDRE
+
+    bool algun_xoc = false;
+
     vec3 direction = normalize(raig.getDirection());
-    //QTextStream(stdout) << "Cridant al hit \nOrigen: " << raig.getOrigin().x << " " << raig.getOrigin().y << " " << raig.getOrigin().z << " Direccio: " << direction.x << " " << direction.y << " " << direction.z << "\n";
 
 
     float k = (raig.getOrigin().x - center.x) * direction.x + (raig.getOrigin().z - center.z) * direction.z;
@@ -43,57 +46,101 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     float discriminant= b*b-4*a*c;
 
-    if( (a < DBL_EPSILON) || discriminant < 0) {// si a zero o discriminant negatiu no podem calcular arrel i no hi ha solució
-        return false;
+    if( (abs(a) > DBL_EPSILON) && discriminant >= DBL_EPSILON) {// si a zero o discriminant negatiu no podem calcular arrel i no hi ha solució al cilindre
+        float t0 = (- b + sqrt(discriminant)) / (2*a);
+        float t1 = (- b - sqrt(discriminant)) / (2*a);
+
+        float intersect_t;
+        bool intersecta_a_temps = true;
+        if (t0 > tmin && t1 > tmin && t1 < tmax && t0 < tmax){
+            intersect_t = qMin(t0, t1);
+        } else if (t0 > tmin && t0 < tmax){
+            intersect_t = t0;
+        } else if (t1 > tmin && t1 < tmax){
+            intersect_t = t1;
+        } else {
+            intersecta_a_temps = false;
+        }
+
+        if(intersecta_a_temps){
+
+            vec3 intersect_p = raig.pointAtParameter(intersect_t);
+
+            if( ( intersect_p.y < (center.y + height) ) && (intersect_p.y  > center.y) ) { //xoc dins el cilindre
+                info.t = intersect_t;
+                info.p = intersect_p;
+                info.normal = normalize(vec3(intersect_p.x, 0.f, intersect_p.z));
+                info.mat_ptr = material.get();
+                algun_xoc = true;
+
+            }
+        }
     }
 
+    // INTERSECCIO AMB LES TAPES
 
-    float t0 = (- b + sqrt(discriminant)) / (2*a);
-    float t1 = (- b - sqrt(discriminant)) / (2*a);
+    // possible xoc amb la tapa superior
 
-    float intersect_t = qMin(t0, t1);
+    vec3  normal = vec3(0,1,0);
+    vec3 point = center + vec3(0,height, 0);
 
-    vec3 intersect_p = raig.pointAtParameter(intersect_t);
+    // 1) Calculem la D = -Ax-By-Cz
+    float d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
 
-    if( ( intersect_p.y < (center.y + height) ) && (intersect_p.y  > center.y) ) { //xoc dins el cilindre
-        info.t = intersect_t;
-        info.p = intersect_p;
+    // 2) Imposem que la recta p+tv compleixi l'eq del pla
+    // A(p1 + tv1) + ... + D = 0
+    // Aillem la t
+    vec3 rp = raig.getOrigin();
+    vec3 vp = raig.getDirection();
+    float temp =  -normal[0]*rp[0] - normal[1]*rp[1] - normal[2]*rp[2] - d;
 
-        info.mat_ptr = material.get();
-        info.normal = vec3(intersect_p.x, 0.f, intersect_p.z);
-        return true;
+    temp/= normal[0]*vp[0] + normal[1]*vp[1] + normal[2]*vp[2];
 
-    } else if ( intersect_p.y > (center.y + height) ) { // possible xoc amb la tapa superior
-        HitInfo temp_info;
-        vec3  normal = vec3(0,1,0);
-        vec3 point = center + vec3(0,height, 0);
-        Plane p = Plane(normal, point, 1);
 
-        if (p.hit(raig, tmin, tmax, temp_info)) { //xoc amb el pla
-              if( pow( (temp_info.p.x - center.x), 2) + pow(temp_info.p.z - center.z, 2) < radius){ // dins el cilindre
-                  info = temp_info;
-                  info.mat_ptr = material.get();
-                  return true;
-              }
+    if (temp < tmax && temp > tmin) { //xoc amb el pla
+        vec3 punt_xoc = raig.pointAtParameter(temp);
+          if ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
+              info.t = punt_xoc.t;
+              info.p = punt_xoc;
+              info.normal = normal;
+              info.mat_ptr = material.get();
+              algun_xoc = true;
 
-         }
-        return false;
-    } else if ( intersect_p.y < (center.y)) { // possible xoc amb la tapa inferior
-        HitInfo temp_info;
-        vec3  normal = vec3(0,-1,0);
-        Plane p = Plane(normal, center, 1);
-
-        if (p.hit(raig, tmin, tmax, temp_info)) { //xoc amb el pla
-              if( pow( (temp_info.p.x - center.x), 2) + pow(temp_info.p.z - center.z, 2) < radius){ // dins el cilindre
-                  info = temp_info;
-                  info.mat_ptr = material.get();
-                  return true;
-              }
-
-         }
-        return false;
+          }
     }
-    return false;
+
+    // possible xoc amb la tapa inferior
+
+    normal = vec3(0,-1,0);
+    point = center;
+
+    // 1) Calculem la D = -Ax-By-Cz
+    d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
+
+    // 2) Imposem que la recta p+tv compleixi l'eq del pla
+    // A(p1 + tv1) + ... + D = 0
+    // Aillem la t
+    rp = raig.getOrigin();
+    vp = raig.getDirection();
+    temp =  -normal[0]*rp[0] - normal[1]*rp[1] - normal[2]*rp[2] - d;
+
+    temp/= normal[0]*vp[0] + normal[1]*vp[1] + normal[2]*vp[2];
+
+
+    if (temp < tmax && temp > tmin) { //xoc amb el pla
+        vec3 punt_xoc = raig.pointAtParameter(temp);
+          if ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
+              info.t = punt_xoc.t;
+              info.p = punt_xoc;
+              info.normal = normal;
+              info.mat_ptr = material.get();
+              algun_xoc = true;
+
+          }
+    }
+
+    return algun_xoc;
+
 
 }
 
