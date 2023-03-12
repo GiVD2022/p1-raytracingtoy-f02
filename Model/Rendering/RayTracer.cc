@@ -8,6 +8,20 @@ RayTracer::RayTracer(QImage *i):
     scene = Controller::getInstance()->getScene();
 }
 
+vec3 RayTracer::getMeanColor(float u, float v, shared_ptr<Camera> camera){
+    vec3 color(0,0,0);
+    float x,y;
+    Ray r;
+    for(int i = 0; i < numSamples; i++){
+        x = linearRand(u - 0.001,u + 0.001);
+        y = linearRand(v - 0.001,v + 0.001);
+        r = camera->getRay(x,y);
+        color += this->RayPixel(r);
+    }
+    color /= numSamples;
+    return clamp(color, vec3(0), vec3(1));;
+}
+
 
 void RayTracer::run() {
 
@@ -20,18 +34,11 @@ void RayTracer::run() {
         std::cerr << "\rScanlines remaining: " << y << ' ' << std::flush;  // Progrés del càlcul
         for (int x = 0; x < width; x++) {
 
-            //TODO FASE 2: mostrejar més rajos per pixel segons el valor de "samples"
-
             float u = (float(x)) / float(width);
             float v = (float(height -y)) / float(height);
             vec3 color(0, 0, 0);
-
-            Ray r = camera->getRay(u, v);
-
-            color = this->RayPixel(r);
-
-            // TODO FASE 2: Gamma correction
-
+            color = getMeanColor(u,v,camera); //Calculem la mitjana per a disminuir l'escalonat
+            //color = sqrt(color); //Correció del color
             color *= 255;
             setPixel(x, y, color);
         }
