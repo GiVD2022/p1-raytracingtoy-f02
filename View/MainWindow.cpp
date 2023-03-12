@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->actionNormal_Shading, SIGNAL(triggered()), builder, SLOT(activaNormalShader()));
 
     // TO DO Fase 2: connectar els shadings d'il·luminació Phong, Bling-Phong i d'altres
-    //    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), this, SLOT(activaPhongShader()));
+    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), builder, SLOT(activaPhongShading()));
     QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), builder, SLOT(activaBlinn_Phong()));
     //    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), this, SLOT(activaCell_Shading()));
     //    QObject::connect(ui->actionGooch_Shading, SIGNAL(triggered()), this, SLOT(activaGooch_Shading()));
