@@ -8,17 +8,18 @@ RayTracer::RayTracer(QImage *i):
     scene = Controller::getInstance()->getScene();
 }
 
-vec3 RayTracer::getMeanColor(float u, float v, shared_ptr<Camera> camera){
+vec3 RayTracer::getMeanColor(int x, int y, int width, int height, shared_ptr<Camera> camera){
     vec3 color(0,0,0);
-    float x,y;
     Ray r;
     for(int i = 0; i < numSamples; i++){
-        x = linearRand(u - 0.001,u + 0.001);
-        y = linearRand(v - 0.001,v + 0.001);
-        r = camera->getRay(x,y);
+        float random_x = linearRand((float)x, (float) x + 1 );//Prenem valors random dins del pixel
+        float random_y = linearRand((float)y, (float) y + 1 );
+        float u = (float(random_x)) / float(width);
+        float v = (float(height) - random_y) / float(height);
+        r = camera->getRay(u,v); //Calculem el raig per cada valor
         color += this->RayPixel(r);
     }
-    color /= numSamples;
+    color /= numSamples; //Calculem la mitjana de tots els rajos
     return clamp(color, vec3(0), vec3(1));;
 }
 
@@ -33,11 +34,8 @@ void RayTracer::run() {
     for (int y = height-1; y >= 0; y--) {
         std::cerr << "\rScanlines remaining: " << y << ' ' << std::flush;  // Progrés del càlcul
         for (int x = 0; x < width; x++) {
-
-            float u = (float(x)) / float(width);
-            float v = (float(height -y)) / float(height);
             vec3 color(0, 0, 0);
-            color = getMeanColor(u,v,camera); //Calculem la mitjana per a disminuir l'escalonat
+            color = getMeanColor(x,y,width,height,camera); //Calculem la mitjana per a disminuir l'escalonat
             color = sqrt(color); //Correció del color
             color *= 255;
             setPixel(x, y, color);

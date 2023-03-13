@@ -26,7 +26,7 @@ class RayTracer {
 
         RayTracer(QImage *i);
         void setPixel(int x, int y, vec3 color);
-        vec3 getMeanColor(float u, float v,shared_ptr<Camera> camera);
+        vec3 getMeanColor(int x, int y, int width, int heigth,shared_ptr<Camera> camera);
         void run();
 
 private:
