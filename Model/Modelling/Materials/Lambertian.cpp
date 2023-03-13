@@ -20,8 +20,7 @@ bool Lambertian::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray &
     vec3 target = rec.p + rec.normal + Hitable::RandomInSphere();
     r_out =  Ray(rec.p, target-rec.p);
     color = Kd;
-    //return true;
-    return false;
+    return true;
 }
 
 vec3 Lambertian::getDiffuse(vec2 uv) const {
