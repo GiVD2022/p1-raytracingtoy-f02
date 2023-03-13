@@ -27,26 +27,8 @@ vec3 BlinnPhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<sh
         vec3 V = normalize(lookFrom - info.p);
         vec3 H = normalize(L + V);
         float dotNH = dot(N, H);
-        lightSpecular += (info.mat_ptr->Ks * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->shininess) * shadowFactor) * depthAttenuation;
+        lightSpecular += (info.mat_ptr->Ks * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->beta) * shadowFactor) * depthAttenuation;
     }
     vec3 color = globalAmbient + lightAmbient + lightDiffuse + lightSpecular;
     return color;
-}
-
-
-
-float BlinnPhongShadow::computeShadow(shared_ptr<Scene> scene, shared_ptr<Light> light, vec3 point)
-{
-    vec3 L = light->vectorL(point);
-    Ray shadowRay(point, L);
-    HitInfo shadowInfo;
-    float maxDist = length(L);
-    if (scene->hit(shadowRay, 0.001f, maxDist, shadowInfo)) {
-        // Point is in shadow
-        return 0.0f;
-    } else {
-        // Point is not in shadow
-        float attenuation = 1.0f / light->attenuation(point);
-        return attenuation;
-    }
 }

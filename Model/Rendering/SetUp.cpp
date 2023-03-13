@@ -229,6 +229,10 @@ void SetUp::setSamples(int s) {
    numSamples = s;
 }
 
+void SetUp::setMAXDEPTH(int s) {
+   MAXDEPTH = s;
+}
+
 void SetUp::setShadows(bool b) {
     shadows = b;
 }

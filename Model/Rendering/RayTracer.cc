@@ -28,7 +28,7 @@ void RayTracer::run() {
 
             Ray r = camera->getRay(u, v);
 
-            color = this->RayPixel(r);
+            color = this->RayPixel(r, 0);
 
             // TODO FASE 2: Gamma correction
 
@@ -63,21 +63,27 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 */
 
 // Funcio recursiva que calcula el color.
-vec3 RayTracer::RayPixel(Ray &ray) {
+vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
     vec3 color = vec3(0);
     vec3 unit_direction;
     HitInfo info;
 
-    if (scene->hit(ray, 0.001, FLT_MAX, info)) {
+    if (depth <= setup->getMAXDEPTH() && scene->hit(ray, 0.001, FLT_MAX, info)) {
         vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, setup->getLights(), ray.getOrigin(), setup->getGlobalLight());
         color = clamp(shading_color, vec3(0), vec3(1));
+
+        vec3 attenuation;
+        Ray scattered_ray;
+        if (info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)) {
+            vec3 reflected_color = RayPixel(scattered_ray, depth + 1);
+            color += reflected_color * attenuation;
+        }
 
     } else {
         if (setup->getBackground()) {
             // Get the direction of the ray and normalize it
             vec3 ray2 = normalize(ray.getDirection());
-
             vec3 topColor = setup->getTopBackground();
             vec3 bottomColor = setup->getDownBackground();
             // Interpolate between white and blue based on the y coordinate
@@ -85,7 +91,7 @@ vec3 RayTracer::RayPixel(Ray &ray) {
             // Compute degradation from white to blue
             color = (1.0f - t) * bottomColor + t * topColor;
         } else {
-            color = vec3(0,0,0);
+            color = setup->getGlobalLight();
         }
     }
 

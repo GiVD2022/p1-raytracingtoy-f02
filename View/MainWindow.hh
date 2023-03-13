@@ -53,6 +53,7 @@ private slots:
     void on_valWidth_valueChanged(int arg1);
     void on_valHeight_valueChanged(int arg1);
     void on_valSamples_valueChanged(int arg1);
+    void on_valMaxDepth_valueChanged(int arg1);
     void on_valReflections_stateChanged();
     void on_valRefractions_stateChanged();
     void on_valTextures_stateChanged();

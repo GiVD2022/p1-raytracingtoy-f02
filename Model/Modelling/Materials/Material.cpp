@@ -1,8 +1,9 @@
 #include "Material.hh"
-
+#define PHONG_RELATION 4
 //Valors arbitraris. Podem decKdir canviar-los
 Material::Material(): Ka(1.0f), Kd(1.0f), Ks(1.0f) {
     shininess = 1.0f;
+    beta = shininess*PHONG_RELATION;
 }
 
 Material::~Material()
@@ -14,6 +15,7 @@ Material::Material(vec3 d) {
     Ka = vec3(1.0f, 1.0f, 1.0f);
     Ks = vec3(1.0f, 1.0f, 1.0f);
     shininess = 1.0f;
+    beta = shininess*PHONG_RELATION;
 
 }
 
@@ -23,6 +25,7 @@ Material::Material(vec3 a, vec3 d, vec3 s, float shin) {
     Kd = d;
     Ks = s;
     shininess = shin;
+    beta = shininess*PHONG_RELATION;
 }
 
 Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac) {
@@ -31,6 +34,7 @@ Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac) {
     Kd = d;
     Ks = s;
     shininess = shin;
+    beta = shininess*PHONG_RELATION;
     opacity = opac;
 }
 

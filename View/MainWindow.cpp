@@ -112,6 +112,13 @@ void MainWindow::on_valSamples_valueChanged(int arg1)
     visSetUp->setSamples(ui->valSamples->value());
 }
 
+void MainWindow::on_valMaxDepth_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+    auto visSetUp = Controller::getInstance()->getSetUp();
+    visSetUp->setMAXDEPTH(ui->valMaxDepth->value());
+}
+
 void MainWindow::on_valReflections_stateChanged()
 {
     auto visSetUp = Controller::getInstance()->getSetUp();

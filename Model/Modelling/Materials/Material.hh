@@ -25,6 +25,7 @@ public:
     vec3 kt;
 
     float shininess;
+    float beta;
     float opacity; // opacity es la fraccio de 0..1 (0 és totalment transparent, 1 és totalment opac)
 
     virtual void read (const QJsonObject &json);
