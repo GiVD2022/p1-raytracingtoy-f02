@@ -27,7 +27,7 @@ vec3 BlinnPhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<sh
         vec3 V = normalize(lookFrom - info.p);
         vec3 H = normalize(L + V);
         float dotNH = dot(N, H);
-        lightSpecular += (info.mat_ptr->Ks * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->shininess) * shadowFactor) * depthAttenuation;
+        lightSpecular += (info.mat_ptr->Ks * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->beta) * shadowFactor) * depthAttenuation;
     }
     vec3 color = globalAmbient + lightAmbient + lightDiffuse + lightSpecular;
     return color;

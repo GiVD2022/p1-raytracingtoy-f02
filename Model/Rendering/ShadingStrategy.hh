@@ -3,6 +3,7 @@
 #include "Model/Modelling/Scene.hh"
 #include "Model/Modelling/Lights/LightFactory.hh"
 
+#define EPS 0.01f
 
 class ShadingStrategy {
  public:
@@ -17,7 +18,7 @@ class ShadingStrategy {
         Ray shadowRay(point, L);
         HitInfo shadowInfo;
         float maxDist = length(L);
-        if (scene->hit(shadowRay, 0.001f, maxDist, shadowInfo)) {
+        if (scene->hit(shadowRay, EPS, maxDist, shadowInfo)) {
             // Point is in shadow
             return 0.0f;
         } else {
