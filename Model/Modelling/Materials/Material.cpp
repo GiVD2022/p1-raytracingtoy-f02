@@ -1,5 +1,21 @@
 #include "Material.hh"
+
+/**
+ * Wikipedia: https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model
+ * Considering that the angle between the halfway vector and the surface normal
+ * is likely to be smaller than the angle between R and V used in Phong's model
+ * (unless the surface is viewed from a very steep angle for which it is likely
+ * to be larger), and since Phong is using ( R ⋅ V )**α, an exponent can be set
+ * α ′ > α such that ( N ⋅ H )**α ′ is closer to the former expression.
+ *
+ * For front-lit surfaces (specular reflections on surfaces facing the viewer),
+ * α ′ = 4 α will result in specular highlights that very closely match the
+ * corresponding Phong reflections.
+ *
+ * */
+
 #define PHONG_RELATION 4
+
 //Valors arbitraris. Podem decKdir canviar-los
 Material::Material(): Ka(1.0f), Kd(1.0f), Ks(1.0f) {
     shininess = 1.0f;
