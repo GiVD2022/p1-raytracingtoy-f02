@@ -3,15 +3,15 @@
 
 RayTracer::RayTracer(QImage *i):
     image(i) {
-
     setup = Controller::getInstance()->getSetUp();
     scene = Controller::getInstance()->getScene();
+
 }
 
 vec3 RayTracer::getMeanColor(int x, int y, int width, int height, shared_ptr<Camera> camera){
     vec3 color(0,0,0);
     Ray r;
-    for(int i = 0; i < numSamples; i++){
+    for(int i = 0; i < setup->getSamples(); i++){
         float random_x = linearRand((float)x, (float) x + 1 );//Prenem valors random dins del pixel
         float random_y = linearRand((float)y, (float) y + 1 );
         float u = (float(random_x)) / float(width);
@@ -19,7 +19,7 @@ vec3 RayTracer::getMeanColor(int x, int y, int width, int height, shared_ptr<Cam
         r = camera->getRay(u,v); //Calculem el raig per cada valor
         color += this->RayPixel(r);
     }
-    color /= numSamples; //Calculem la mitjana de tots els rajos
+    color /= setup->getSamples(); //Calculem la mitjana de tots els rajos
     return clamp(color, vec3(0), vec3(1));;
 }
 
