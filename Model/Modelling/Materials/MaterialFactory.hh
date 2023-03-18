@@ -3,6 +3,7 @@
 #include "Material.hh"
 #include "Lambertian.hh"
 #include "ToonMaterial.hh"
+#include "Transparent.hh"
 #include "Metal.h"
 
 class MaterialFactory

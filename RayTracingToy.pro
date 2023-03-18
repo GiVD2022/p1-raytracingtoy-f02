@@ -31,6 +31,7 @@ SOURCES += \
     Model/Modelling/Materials/Metal.cpp \
     Model/Modelling/Materials/Texture.cpp \
     Model/Modelling/Materials/ToonMaterial.cpp \
+    Model/Modelling/Materials/Transparent.cpp \
     Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
@@ -87,6 +88,7 @@ HEADERS += \
     Model/Modelling/Materials/Metal.h \
     Model/Modelling/Materials/Texture.hh \
     Model/Modelling/Materials/ToonMaterial.hh \
+    Model/Modelling/Materials/Transparent.hh \
     Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
