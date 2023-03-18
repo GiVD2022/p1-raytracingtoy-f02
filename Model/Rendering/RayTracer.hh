@@ -34,6 +34,6 @@ private:
         void init();
         // Funcio recursiva que calcula el color. Inicialment
         // es crida a cada pixel de forma no recursiva.
-        vec3 RayPixel (Ray &ray);
+        vec3 RayPixel (Ray &ray, int depth);
 };
 

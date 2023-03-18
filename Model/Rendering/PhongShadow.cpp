@@ -31,21 +31,3 @@ vec3 PhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_
     vec3 color = lightAmbient + lightDiffuse + lightSpecular;
     return color;
 }
-
-
-
-float PhongShadow::computeShadow(shared_ptr<Scene> scene, shared_ptr<Light> light, vec3 point)
-{
-    vec3 L = light->vectorL(point);
-    Ray shadowRay(point, L);
-    HitInfo shadowInfo;
-    float maxDist = length(L);
-    if (scene->hit(shadowRay, 0.001f, maxDist, shadowInfo)) {
-        // Point is in shadow
-        return 0.0f;
-    } else {
-        // Point is not in shadow
-        float attenuation = 1.0f / light->attenuation(point);
-        return attenuation;
-    }
-}

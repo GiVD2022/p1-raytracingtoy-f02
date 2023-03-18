@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // TO DO Fase 2: connectar els shadings d'il·luminació Phong, Bling-Phong i d'altres
     QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), builder, SLOT(activaPhongShading()));
     QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), builder, SLOT(activaBlinn_Phong()));
-    //    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), this, SLOT(activaCell_Shading()));
+    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), builder, SLOT(activaCell_Shading()));
     //    QObject::connect(ui->actionGooch_Shading, SIGNAL(triggered()), this, SLOT(activaGooch_Shading()));
 
 
@@ -110,6 +110,13 @@ void MainWindow::on_valSamples_valueChanged(int arg1)
     Q_UNUSED(arg1);
     auto visSetUp = Controller::getInstance()->getSetUp();
     visSetUp->setSamples(ui->valSamples->value());
+}
+
+void MainWindow::on_valMaxDepth_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+    auto visSetUp = Controller::getInstance()->getSetUp();
+    visSetUp->setMAXDEPTH(ui->valMaxDepth->value());
 }
 
 void MainWindow::on_valReflections_stateChanged()
