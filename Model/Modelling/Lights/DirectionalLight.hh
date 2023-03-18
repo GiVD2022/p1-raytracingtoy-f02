@@ -19,8 +19,8 @@ public:
     virtual ~DirectionalLight() {}
     vec3 getDirection();
     float getIntensity();
-    //virtual vec3 vectorL(vec3 point) override;
-    //virtual float attenuation(vec3 point) override;
+    virtual vec3 vectorL(vec3 point) override;
+    virtual float attenuation(vec3 point) override;
     virtual float distanceToLight(vec3 point) override;
 
     virtual void read (const QJsonObject &json) override;

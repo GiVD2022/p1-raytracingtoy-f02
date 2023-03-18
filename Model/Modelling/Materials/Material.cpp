@@ -1,5 +1,4 @@
 #include "Material.hh"
-
 //Valors arbitraris. Podem decKdir canviar-los
 Material::Material(): Ka(1.0f), Kd(1.0f), Ks(1.0f) {
     shininess = 1.0f;

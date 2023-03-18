@@ -22,6 +22,9 @@ shared_ptr<ShadingStrategy> ShadingFactory::createShading(SHADING_TYPES t) {
     case BLINNPHONGSHADOW:
         s = make_shared<BlinnPhongShadow>();
         break;
+    case CEL:
+        s = make_shared<CelShading>();
+        break;
     default:
         s = nullptr;
     }

@@ -2,6 +2,7 @@
 
 #include "Material.hh"
 #include "Lambertian.hh"
+#include "ToonMaterial.hh"
 
 class MaterialFactory
 {

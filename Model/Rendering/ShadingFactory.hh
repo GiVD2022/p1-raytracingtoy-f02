@@ -7,6 +7,7 @@
 #include "DepthShading.h"
 #include "BlinnPhongShading.hh"
 #include "BlinnPhongShadow.hh"
+#include "Celshading.hh"
 
 class ShadingFactory
 {

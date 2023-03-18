@@ -29,6 +29,7 @@ SOURCES += \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
     Model/Modelling/Materials/Texture.cpp \
+    Model/Modelling/Materials/ToonMaterial.cpp \
     Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
@@ -80,6 +81,7 @@ HEADERS += \
     Model/Modelling/Materials/Material.hh \
     Model/Modelling/Materials/MaterialFactory.hh \
     Model/Modelling/Materials/Texture.hh \
+    Model/Modelling/Materials/ToonMaterial.hh \
     Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
