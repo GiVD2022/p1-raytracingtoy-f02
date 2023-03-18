@@ -123,6 +123,14 @@ void Builder::activaDepthShader() {
     msgBox.exec();
 }
 
+void Builder::activaPhongShading() {
+    QMessageBox msgBox;
+    if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::PHONG)) {
+        msgBox.setText("Phong Shading created.");
+    } else msgBox.setText("Error creating shading");
+    msgBox.exec();
+}
+
 void Builder::activaBlinn_Phong() {
     QMessageBox msgBox;
     if (Controller::getInstance()->createShading(ShadingFactory::SHADING_TYPES::BLINNPHONG)) {

@@ -2,10 +2,10 @@
 #include "ShadingStrategy.hh"
 
 
-class BlinnPhongShadow: public ShadingStrategy
+class PhongShadow: public ShadingStrategy
 {
 public:
-    BlinnPhongShadow() {};
+    PhongShadow() {};
     vec3 shading(shared_ptr<Scene> scene,  HitInfo& info, vector<shared_ptr<Light>> lights, vec3 lookFrom, vec3 globalLight) override;
-    ~BlinnPhongShadow(){};
+    ~PhongShadow(){};
 };
