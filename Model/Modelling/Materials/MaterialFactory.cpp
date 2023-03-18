@@ -19,9 +19,9 @@ shared_ptr<Material> MaterialFactory::createMaterial(MATERIAL_TYPES t) {
 }
 
 
-shared_ptr<Material> MaterialFactory::createMaterial(vec3 a, vec3 d, vec3 s, float beta, float opacity, MATERIAL_TYPES t) {
+shared_ptr<Material> MaterialFactory::createMaterial(vec3 a, vec3 d, vec3 s, vec3 t, float beta, float opacity, float mu, MATERIAL_TYPES type) {
     shared_ptr<Material> m;
-    switch (t) {
+    switch (type) {
     case LAMBERTIAN:
         m = make_shared<Lambertian>(a, d, s, beta, opacity);
         break;
@@ -29,7 +29,8 @@ shared_ptr<Material> MaterialFactory::createMaterial(vec3 a, vec3 d, vec3 s, flo
         m = make_shared<Metal>(a,d,s,beta, opacity);
         break;
     case TRANSPARENT:
-        m = make_shared<Transparent>(a,d,s,beta, opacity);
+        // En principi nomes transparent fa servir l'index de refraccio i kt
+        m = make_shared<Transparent>(a,d,s,t,beta, opacity,mu);
         break;
     default:
         break;

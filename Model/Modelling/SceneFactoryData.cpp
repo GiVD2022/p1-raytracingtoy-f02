@@ -323,8 +323,10 @@ shared_ptr<Material> SceneFactoryData::materialMaps(int i,  int j) {
     return MaterialFactory::getInstance().createMaterial(propinfo->material->Ka,
                                                          cm->getColor(idx),
                                                          propinfo->material->Ks,
+                                                         propinfo->material->kt,
                                                          propinfo->material->shininess,
-                                                         propinfo->material->opacity, tMat);
+                                                         propinfo->material->opacity,
+                                                         propinfo->material->mu_t,tMat);
 }
 
 vec3 SceneFactoryData::getPuntBase(ObjectFactory::OBJECT_TYPES gyzmo, vec2 puntReal) {
