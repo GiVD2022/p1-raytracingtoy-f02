@@ -13,7 +13,7 @@ vec3 DirectionalLight::getDirection()
 
 
 vec3 DirectionalLight::vectorL(vec3 point) {
-    return -this->direction;
+    return - normalize(this->direction);
 }
 
 
