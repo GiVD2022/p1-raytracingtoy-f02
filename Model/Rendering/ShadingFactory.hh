@@ -9,6 +9,7 @@
 #include "PhongShadow.hh"
 #include "BlinnPhongShading.hh"
 #include "BlinnPhongShadow.hh"
+#include "NormalShadow.hh"
 
 class ShadingFactory
 {
@@ -18,6 +19,7 @@ public:
         COLOR,
         COLORSHADOW,
         NORMAL,
+        NORMALSHADOW,
         DEPTH,
         PHONG,
         PHONGSHADOW,

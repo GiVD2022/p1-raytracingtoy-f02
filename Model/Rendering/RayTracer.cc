@@ -102,6 +102,7 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 void RayTracer::init() {
     auto s = setup->getShadingStrategy();
     auto s_out = ShadingFactory::getInstance().switchShading(s, setup->getShadows());
+    std::cerr << "ENTRO" << s_out<< std::endl;
     if (s_out!=nullptr) setup->setShadingStrategy(s_out);
 }
 

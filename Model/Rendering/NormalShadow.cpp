@@ -1,6 +1,6 @@
-#include "ColorShadow.hh"
+#include "NormalShadow.hh"
 
-vec3 ColorShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_ptr<Light>> lights, vec3 lookFrom, vec3 globalLight) {
+vec3 NormalShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_ptr<Light>> lights, vec3 lookFrom, vec3 globalLight) {
     vec3 lightAmbient = vec3(0.0);
     vec3 lightDiffuse = vec3(0.0);
     vec3 lightSpecular = vec3(0.0);
