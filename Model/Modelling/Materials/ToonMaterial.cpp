@@ -25,7 +25,6 @@ void ToonMaterial::read (const QJsonObject &json)
     if (json.contains("colorGradient") && json["colorGradient"].isArray()){
         QJsonArray colorsArray = json["colorGradient"].toArray();
         for (int colorIndex = 0; colorIndex < colorsArray.size(); colorIndex++) {
-            std::cout << colorIndex << std::endl;
             QJsonArray colorRGB = colorsArray[colorIndex].toArray();
             vec3 auxColor = vec3(0.0);
             auxColor[0] = colorRGB[0].toDouble();

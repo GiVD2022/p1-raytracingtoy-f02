@@ -50,6 +50,7 @@ SOURCES += \
     Model/Rendering/BlinnPhongShading.cpp \
     Model/Rendering/BlinnPhongShadow.cpp \
     Model/Rendering/Camera.cpp \
+    Model/Rendering/CelShadow.cpp \
     Model/Rendering/Celshading.cpp \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
@@ -105,6 +106,7 @@ HEADERS += \
     Model/Rendering/BlinnPhongShading.hh \
     Model/Rendering/BlinnPhongShadow.hh \
     Model/Rendering/Camera.hh \
+    Model/Rendering/CelShadow.h \
     Model/Rendering/Celshading.hh \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \
