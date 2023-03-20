@@ -20,6 +20,7 @@ SOURCES += \
     Main.cpp \
     Model/Builder.cpp \
     Model/Modelling/Animation.cpp \
+    Model/Modelling/Lights/DirectionalLight.cpp \
     Model/Modelling/Lights/Light.cpp \
     Model/Modelling/Lights/LightFactory.cpp \
     Model/Modelling/Lights/PointLight.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
     Model/Modelling/Materials/Texture.cpp \
+    Model/Modelling/Materials/ToonMaterial.cpp \
     Model/Modelling/Objects/Box.cpp \
     Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
@@ -48,6 +50,8 @@ SOURCES += \
     Model/Rendering/BlinnPhongShading.cpp \
     Model/Rendering/BlinnPhongShadow.cpp \
     Model/Rendering/Camera.cpp \
+    Model/Rendering/CelShadow.cpp \
+    Model/Rendering/Celshading.cpp \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
     Model/Rendering/DepthShading.cpp \
@@ -71,6 +75,7 @@ HEADERS += \
     Model/Builder.hh \
     Model/Modelling/Animation.hh \
     Model/Modelling/Hitable.hh \
+    Model/Modelling/Lights/DirectionalLight.hh \
     Model/Modelling/Lights/Light.hh \
     Model/Modelling/Lights/LightFactory.hh \
     Model/Modelling/Lights/PointLight.hh \
@@ -80,6 +85,7 @@ HEADERS += \
     Model/Modelling/Materials/Material.hh \
     Model/Modelling/Materials/MaterialFactory.hh \
     Model/Modelling/Materials/Texture.hh \
+    Model/Modelling/Materials/ToonMaterial.hh \
     Model/Modelling/Objects/Box.hh \
     Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
@@ -101,6 +107,8 @@ HEADERS += \
     Model/Rendering/BlinnPhongShading.hh \
     Model/Rendering/BlinnPhongShadow.hh \
     Model/Rendering/Camera.hh \
+    Model/Rendering/CelShadow.h \
+    Model/Rendering/Celshading.hh \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \
     Model/Rendering/DepthShading.h \

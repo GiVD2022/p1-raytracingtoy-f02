@@ -10,6 +10,8 @@
 #include "BlinnPhongShading.hh"
 #include "BlinnPhongShadow.hh"
 #include "NormalShadow.hh"
+#include "Celshading.hh"
+#include "CelShadow.h"
 
 class ShadingFactory
 {
@@ -24,7 +26,9 @@ public:
         PHONG,
         PHONGSHADOW,
         BLINNPHONG,
-        BLINNPHONGSHADOW
+        BLINNPHONGSHADOW,
+        CEL,
+        CELSHADOW
     } SHADING_TYPES;
 
     static ShadingFactory& getInstance() {

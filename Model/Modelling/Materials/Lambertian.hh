@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Material.hh"
+#include "ToonMaterial.hh"
 
-class Lambertian : public Material
+class Lambertian : public ToonMaterial
 {
 
 public:

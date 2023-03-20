@@ -3,9 +3,24 @@
 
 RayTracer::RayTracer(QImage *i):
     image(i) {
-
     setup = Controller::getInstance()->getSetUp();
     scene = Controller::getInstance()->getScene();
+
+}
+
+vec3 RayTracer::getMeanColor(int x, int y, int width, int height, shared_ptr<Camera> camera){
+    vec3 color(0,0,0);
+    Ray r;
+    for(int i = 0; i < setup->getSamples(); i++){
+        float random_x = linearRand((float)x, (float) x + 1 );//Prenem valors random dins del pixel
+        float random_y = linearRand((float)y, (float) y + 1 );
+        float u = (float(random_x)) / float(width);
+        float v = (float(height) - random_y) / float(height);
+        r = camera->getRay(u,v); //Calculem el raig per cada valor
+        color += this->RayPixel(r,0);
+    }
+    color /= setup->getSamples(); //Calculem la mitjana de tots els rajos
+    return clamp(color, vec3(0), vec3(1));;
 }
 
 
@@ -19,19 +34,9 @@ void RayTracer::run() {
     for (int y = height-1; y >= 0; y--) {
         std::cerr << "\rScanlines remaining: " << y << ' ' << std::flush;  // Progrés del càlcul
         for (int x = 0; x < width; x++) {
-
-            //TODO FASE 2: mostrejar més rajos per pixel segons el valor de "samples"
-
-            float u = (float(x)) / float(width);
-            float v = (float(height -y)) / float(height);
             vec3 color(0, 0, 0);
-
-            Ray r = camera->getRay(u, v);
-
-            color = this->RayPixel(r, 0);
-
-            // TODO FASE 2: Gamma correction
-
+            color = getMeanColor(x,y,width,height,camera); //Calculem la mitjana per a disminuir l'escalonat
+            color = sqrt(color); //Correció del color
             color *= 255;
             setPixel(x, y, color);
         }
@@ -75,10 +80,10 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
         vec3 attenuation;
         Ray scattered_ray;
-        if (info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)) {
+        /*if (info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)) {
             vec3 reflected_color = RayPixel(scattered_ray, depth + 1);
             color += reflected_color * attenuation;
-        }
+        }*/
 
     } else {
         if (setup->getBackground()) {
@@ -101,8 +106,7 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
 void RayTracer::init() {
     auto s = setup->getShadingStrategy();
-    auto s_out = ShadingFactory::getInstance().switchShading(s, setup->getShadows());
-    std::cerr << "ENTRO" << s_out<< std::endl;
+    auto s_out = ShadingFactory::getInstance().switchShading(s, (bool) setup->getShadows());
     if (s_out!=nullptr) setup->setShadingStrategy(s_out);
 }
 
