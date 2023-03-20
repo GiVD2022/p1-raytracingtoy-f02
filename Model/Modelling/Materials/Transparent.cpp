@@ -24,7 +24,7 @@ bool Transparent::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray 
     float mu_i = 1.0f; //Assumim que el medi es el buit
     float mu_it = mu_i / mu_t;
 
-    vec3  incident = normalize(r_in.getDirection());
+    vec3 incident = normalize(r_in.getDirection());
     vec3 normal = normalize(rec.normal);
 
     // Si va de dins a fora, canviem la normal i el quocient
@@ -33,19 +33,19 @@ bool Transparent::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray 
         mu_it = 1.f/mu_it;
     }
 
-    // Calcular un unic raig transmes
-    vec3 vec_out = glm::refract(incident, normal, mu_it);
-    r_out = Ray(rec.p, vec_out);
-
     // Si reflexio interna: ks; si no, k
+    // Calcular un unic raig transmes
+    vec3 t = glm::refract(incident, normal, mu_it);
 
-    //Reflexio interna si 1 - mu_it^2 * (sin^2(angle incidencia)) < 0
-    // || u x v || = |u| * |v| * sin(uv)
-    float sin_incidencia = glm::length(glm::cross(incident, normal));
-    if ( (1 - pow(mu_it, 2) * pow (sin_incidencia, 2)) < FLT_EPSILON) {
+    // Reflexio interna
+    if ( glm::length(t) < FLT_EPSILON) {
+        // Calcular un unic raig transmes
+        vec3 vec_out = glm::reflect(r_in.getDirection(), rec.normal);
+        r_out = Ray(rec.p, vec_out);
         color = Ks;
     // Reflexio no interna
     } else {
+        r_out = Ray(rec.p, t);
         color = kt;
     }
     return true;
