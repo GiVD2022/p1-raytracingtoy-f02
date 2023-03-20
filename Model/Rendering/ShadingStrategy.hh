@@ -23,7 +23,7 @@ class ShadingStrategy {
             return 0.0f;
         } else {
             // Point is not in shadow
-            float attenuation = 1.0f / light->attenuation(point);
+            float attenuation = 1.0f;
             return attenuation;
         }
 

@@ -73,8 +73,8 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
     vec3 color = vec3(0);
     vec3 unit_direction;
     HitInfo info;
-
-    if (depth <= setup->getMAXDEPTH() && scene->hit(ray, 0.001, FLT_MAX, info)) {
+    //setup->getMAXDEPTH()
+    if (depth <= 0  && scene->hit(ray, 0.001, FLT_MAX, info)) {
         vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, setup->getLights(), ray.getOrigin(), setup->getGlobalLight());
         color = clamp(shading_color, vec3(0), vec3(1));
 
