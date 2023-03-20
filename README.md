@@ -43,6 +43,37 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
           - Esther Ruano
         - [X] Noves dades
           - Esther Ruano
+  -Fase 2
+    - Pas 1
+        - [X] Afegir numSamples i Gamma correction
+            - Pau Hernando
+    - Pas 2
+        - [X] Implementar Blinn-Phong Shading
+            - Núria Torquet
+        - [X] Implementar Phong Shading
+            - Esther Ruano
+        - [X] Implementar Cel Shading
+            - Pau Baldillou
+    - Pas 3
+        - [X] Implementar Blinn-Phong Shadow
+            - Núria Torquet
+        - [X] Implementar Phong Shadow
+            - Esther Ruano
+        - [X] Implementar Cel Shadow
+            - Pau Baldillou
+        - [X] Implementar Color i Normal Shadow
+            - Pau Hernando
+    - Pas 4
+        - [ ] Recursió per rajos secundaris
+            - Núria Torquet
+        - [X] Nou material metàl·lic
+            - Pau Baldillou
+        - [X] Recursió per objectes transparents
+            - Núria Torquet
+        - [X] Nou material transparent
+            - Esther Ruano
+    - Pas 4
+        - [ ] Adapta la visualització per mostrar dades des d'un fitxer
        
 
 - Parts opcionales: 
@@ -55,6 +86,8 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
   - [X] Mapeig de les dades reals en una esfera
     - Núria Torquet
   - [ ] Afegir nous objectes paramètrics  
+  - [X] Llums direccionals
+    - Pau Baldillou
 
   
     
