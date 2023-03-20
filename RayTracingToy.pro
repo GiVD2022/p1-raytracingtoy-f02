@@ -584,6 +584,7 @@ DISTFILES += \
     resources/mapBCN.png \
     resources/mapZoom.png \
     resources/meshExample.json \
+    resources/metallSpheres.json \
     resources/oneSphere.json \
     resources/setupDataBCN.json \
     resources/setupDataBCNOneValue.json \
