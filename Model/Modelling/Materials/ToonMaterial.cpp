@@ -17,6 +17,10 @@ ToonMaterial::ToonMaterial(vec3 a, vec3 d, vec3 s, float shininess, float opacit
 {
 }
 
+ToonMaterial::ToonMaterial(vec3 a, vec3 d, vec3 s, vec3 t, float shininess, float opacity, float mu): Material(a, d, s, t, shininess, opacity, mu)
+{
+}
+
 
 void ToonMaterial::read (const QJsonObject &json)
 {
