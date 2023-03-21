@@ -32,11 +32,13 @@ vec3 CelShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_pt
         float alpha = std::max(glm::dot(N, L), 0.0f);
 
         ToonMaterial* toonMat = dynamic_cast<ToonMaterial*>(info.mat_ptr);
+        vec3 V = normalize(lookFrom - info.p);
+        vec3 H = normalize(L + V);
 
-        if ( toonMat ){ // If successful cast
-            //find shadow
-            float shadowFactor = computeShadow(scene, light, info.p);
+        //find shadow
+        float shadowFactor = computeShadow(scene, light, info.p);
 
+        if ( toonMat && toonMat->getGradient().size() > 0){ // If successful cast
             // Find interval and toon lightning
             n = toonMat->getGradient().size();
             j = std::min( static_cast<int>(floor(n * alpha)), n-1 );//incloem 1 a l'últim interval
@@ -44,9 +46,22 @@ vec3 CelShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_pt
 
             // Calculate the specular component
 
-            vec3 V = normalize(lookFrom - info.p);
-            vec3 H = normalize(L + V);
+
             vec3 kd0 = toonMat->getGradient()[n-1]; //el color més clar
+            float dotNH = dot(N, H);
+            lightSpecular += kd0 * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->beta) * shadowFactor;
+
+            //Siluetes
+            rimDot = (1-dot(V, N)) > 0.75 ? 1.0 : 0.0;
+            rimComponent += kd0 * toonMat->Ks * rimDot * shadowFactor;
+        } else{
+            // Versió simplificada si no hi ha vector de tonalitats
+            n = 4;
+            j = std::min( static_cast<int>(floor(n * alpha)), n-1);
+            toonLight += info.mat_ptr->Kd * static_cast<float>(j) / 4.0f * shadowFactor;
+
+            // Calculate the specular component
+            vec3 kd0 = info.mat_ptr->Kd * 3.0f / 4.0f; //el color més clar
             float dotNH = dot(N, H);
             lightSpecular += kd0 * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->beta) * shadowFactor;
 
