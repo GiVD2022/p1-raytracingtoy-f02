@@ -5,6 +5,8 @@
 #include <stdlib.h>
 
 #include "Controller.hh"
+#include "Model/Modelling/Materials/Material.hh"
+#include "Model/Modelling/Materials/Transparent.hh"
 #include "SetUp.hh"
 #include "glm/gtc/random.hpp"
 #include "glm/glm.hpp"
