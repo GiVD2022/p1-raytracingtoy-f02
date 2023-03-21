@@ -54,6 +54,6 @@ vec3 CelShading::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_p
             rimComponent += kd0 * toonMat->Ks * rimDot;
         }
     }
-    returnColor += toonLight + lightSpecular + rimComponent + lightSpecular;
+    returnColor += lightAmbient + toonLight + lightSpecular + rimComponent + lightSpecular;
     return returnColor;
 }
