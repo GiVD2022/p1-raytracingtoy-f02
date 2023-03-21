@@ -106,6 +106,7 @@ void Material::read (const QJsonObject &json)
     }
     if (json.contains("shininess") && json["shininess"].isDouble())
         shininess = json["shininess"].toDouble();
+        beta = shininess * PHONG_RELATION;
     if (json.contains("opacity") && json["opacity"].isDouble())
         opacity = json["opacity"].toDouble();
     if (json.contains("nut") && json["nut"].isDouble())
