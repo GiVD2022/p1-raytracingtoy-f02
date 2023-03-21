@@ -1,4 +1,5 @@
 #include "Metal.h"
+#include <iostream>
 
 Metal::Metal(const vec3& color): ToonMaterial()
 {
