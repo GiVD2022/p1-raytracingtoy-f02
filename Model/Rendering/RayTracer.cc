@@ -1,5 +1,5 @@
 #include "RayTracer.hh"
-
+#define EPS 0.001f
 
 RayTracer::RayTracer(QImage *i):
     image(i) {
@@ -70,23 +70,24 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 // Funcio recursiva que calcula el color.
 vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
-    vec3 color = vec3(0);
-    vec3 unit_direction;
+    vec3 color = vec3(0); // initialize the color to black
     HitInfo info;
-    //setup->getMAXDEPTH()
-    if (depth <= 0  && scene->hit(ray, 0.001, FLT_MAX, info)) {
+    const vec3& global_light = setup->getGlobalLight();
+
+    if (scene->hit(ray, EPS, FLT_MAX, info)) { //en el cas d'intersecar amb un objecte
         vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, setup->getLights(), ray.getOrigin(), setup->getGlobalLight());
-        color = clamp(shading_color, vec3(0), vec3(1));
-
-        vec3 attenuation;
-        Ray scattered_ray;
-        /*if (info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)) {
-            vec3 reflected_color = RayPixel(scattered_ray, depth + 1);
-            color += reflected_color * attenuation;
-        }*/
-
-    } else {
-        if (setup->getBackground()) {
+        color = shading_color;
+        // Check if the maximum depth has been reached
+        if(depth < setup->getMAXDEPTH()){
+            // Trace secondary rays
+            vec3 attenuation;
+            Ray scattered_ray;
+            if(info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)){
+                color += RayPixel(scattered_ray, depth + 1) * attenuation;
+            }
+        }
+    } else{
+        if (setup->getBackground() && depth == 0){ //if background and primary ray
             // Get the direction of the ray and normalize it
             vec3 ray2 = normalize(ray.getDirection());
             vec3 topColor = setup->getTopBackground();
@@ -95,11 +96,10 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
             float t = 0.5f * (ray2.y + 1.0f);
             // Compute degradation from white to blue
             color = (1.0f - t) * bottomColor + t * topColor;
-        } else {
-            color = setup->getGlobalLight();
+        } else{ //if secondary ray that doesn't intesect, global light
+            color = global_light;
         }
     }
-
     return color;
 }
 
