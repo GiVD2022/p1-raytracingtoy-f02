@@ -1,5 +1,5 @@
 #include "RayTracer.hh"
-#define EPS 0.01f
+#define EPS 0.001f
 
 RayTracer::RayTracer(QImage *i):
     image(i) {
@@ -71,38 +71,36 @@ void RayTracer::setPixel(int x, int y, vec3 color) {
 vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
     vec3 color = vec3(0); // initialize the color to black
-    vec3 unit_direction;
     HitInfo info;
     const vec3& global_light = setup->getGlobalLight();
 
-    // Check if the maximum recursion depth has been reached
-    if(depth > setup->getMAXDEPTH()){
-        // If so, return the global light color
-        return global_light;
-    }
     if (scene->hit(ray, EPS, FLT_MAX, info)) { //en el cas d'intersecar amb un objecte
         vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, setup->getLights(), ray.getOrigin(), setup->getGlobalLight());
         color = shading_color;
-
-        vec3 attenuation;
-        Ray scattered_ray;
-        if (info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)) {
-            color += RayPixel(scattered_ray, depth + 1) * attenuation;
+        // Check if the maximum depth has been reached
+        if(depth < setup->getMAXDEPTH()){
+            // Trace secondary rays
+            vec3 attenuation;
+            Ray scattered_ray;
+            if(info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)){
+                color += RayPixel(scattered_ray, depth + 1) * attenuation;
+            }
         }
-        return color;
+    } else{
+        if (setup->getBackground() && depth == 0){ //if background and primary ray
+            // Get the direction of the ray and normalize it
+            vec3 ray2 = normalize(ray.getDirection());
+            vec3 topColor = setup->getTopBackground();
+            vec3 bottomColor = setup->getDownBackground();
+            // Interpolate between white and blue based on the y coordinate
+            float t = 0.5f * (ray2.y + 1.0f);
+            // Compute degradation from white to blue
+            color = (1.0f - t) * bottomColor + t * topColor;
+        } else{ //if secondary ray that doesn't intesect, global light
+            color = global_light;
+        }
     }
-    if (setup->getBackground() && depth == 0){ //en el cas de ser un raig primari i background
-        // Get the direction of the ray and normalize it
-        vec3 ray2 = normalize(ray.getDirection());
-        vec3 topColor = setup->getTopBackground();
-        vec3 bottomColor = setup->getDownBackground();
-        // Interpolate between white and blue based on the y coordinate
-        float t = 0.5f * (ray2.y + 1.0f);
-        // Compute degradation from white to blue
-        color = (1.0f - t) * bottomColor + t * topColor;
-        return color;
-    }
-    return global_light;
+    return color;
 }
 
 
