@@ -1,4 +1,5 @@
 #include "RayTracer.hh"
+#include <iostream>
 #define EPS 0.001f
 
 RayTracer::RayTracer(QImage *i):
@@ -76,6 +77,9 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
     if (scene->hit(ray, EPS, FLT_MAX, info)) { //en el cas d'intersecar amb un objecte
         vec3 shading_color = setup->getShadingStrategy()->shading(scene, info, setup->getLights(), ray.getOrigin(), setup->getGlobalLight());
+        if (dynamic_cast<Transparent*>(info.mat_ptr) != nullptr) {
+            shading_color*=(1.0f - info.mat_ptr->kt);
+        }
         color = shading_color;
         // Check if the maximum depth has been reached
         if(depth < setup->getMAXDEPTH()){
@@ -83,11 +87,11 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
             vec3 attenuation;
             Ray scattered_ray;
             if(info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)){
-                color += RayPixel(scattered_ray, depth + 1) * attenuation;
-            }
+                    color += RayPixel(scattered_ray, depth + 1) * attenuation;
+                }
         }
     } else{
-        if (setup->getBackground() && depth == 0){ //if background and primary ray
+        if (setup->getBackground()){ //if background and primary ray
             // Get the direction of the ray and normalize it
             vec3 ray2 = normalize(ray.getDirection());
             vec3 topColor = setup->getTopBackground();
