@@ -24,7 +24,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - Tots els integrants
     - [X] Intersecció amb l'escena
         - Tots els integrants
- - Fase 1
+- Fase 1
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
         - [X] Hit Box
           - Pau Hernando
@@ -43,7 +43,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
           - Esther Ruano
         - [X] Noves dades
           - Esther Ruano
-  -Fase 2
+- Fase 2
     - Pas 1
         - [X] Afegir numSamples i Gamma correction
             - Pau Hernando
@@ -74,7 +74,20 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             - Esther Ruano
     - Pas 4
         - [ ] Adapta la visualització per mostrar dades des d'un fitxer
+ - Fase 3
+    - Pas 1
+        - [X] Afegir nou material textura al pla base
+            - Esther Ruano
+    - Pas 2
+        - [X] Prova amb diferents jocs de dades i mapes
+            - Esther Ruano
+    - Pas 3
+        - [X] Genera diferents jocs de dades i mapes
+            - Esther Ruano
+    - Pas 4
+        - [ ] Genera noves escenes i resultats finals de la pràctica
        
+ 
 
 - Parts opcionales: 
   - [X] Cilindres
@@ -149,8 +162,26 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     La mateixa imatge amb una bola vermella i més samples.
     
 * **Fase 3**:
-    - Amb el fitxer de setup setupDataEuropa.json quina de les dues imatges obtens? Raona per què.
+    - **Amb el fitxer de setup setupDataEuropa.json quina de les dues imatges obtens? Raona per què.**
+    
       Ens trobem en la situació de la dreta: és fàcil de veure, si mirem dadesEuropa.json, trobem que el pla correspon a l'equació {y=-1}, i està afitat per valors d'x i z entre -50 i 50. Com que és un fitxer de tipus RealData, per les esferes en coneixem el valor x i z del centre, i li donem valor y = 0 per defecte al centre. A més, pel nostre escalat, l'esfera més gran tindrà radi = 1. Per tant, cap de les esferes travessarà el pla com es veu a la imatge 1. 
+      
+    - **Qui calcularà les coordenades (u, v) del punt d’intersecció amb el pla?**
+    
+      Les calcularà la classe fitted plane i les desarà a l'atribut uv de la classe HitInfo, perquè hi pugui accedir el shading corresponent.
+      
+    - **Quina de les dues visualitzacions obtens? **
+    
+      Obtenim la segona visualització:
+      
+      ![imagen](https://user-images.githubusercontent.com/80753129/227035406-78d659d9-ff69-4768-8ae6-e33469b71009.png "Visualització Fase 3 1.3")
+      
+    -  **Visualitzacions associades a dadesBCN_Zoom i dadesBCN**
+    -  
+
+    
+
+
 * **Opcionals**:
     - Directional Light
     
