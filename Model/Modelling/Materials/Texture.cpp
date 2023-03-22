@@ -2,6 +2,7 @@
 // Created by anna on 20/01/2022.
 //
 #include "Texture.hh"
+#include <QTextStream>
 
 Texture::Texture(QString nomfitxer)
 {
@@ -17,4 +18,8 @@ vec3 Texture::getColorPixel(vec2 uv) {
         return(vec3(c.redF(), c.greenF(), c.blueF()));
     }
     return vec3(0.0f);
+}
+
+bool Texture::getSuccess(){
+    return success;
 }

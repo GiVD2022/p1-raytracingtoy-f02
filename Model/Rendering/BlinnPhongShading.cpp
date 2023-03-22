@@ -16,7 +16,9 @@ vec3 BlinnPhongShading::shading(shared_ptr<Scene> scene, HitInfo& info, vector<s
         vec3 L = light->vectorL(info.p); //normalized
         vec3 N = info.normal;
         float dotLN = dot(L, N);
-        lightDiffuse += (info.mat_ptr->Kd * light->getId() * std::max(dotLN, 0.0f)) * depthAttenuation;
+
+        // si no es texture, info.mat_ptr->getDiffuse(info.uv)  retorna el kd
+        lightDiffuse += (info.mat_ptr->getDiffuse(info.uv) * light->getId() * std::max(dotLN, 0.0f)) * depthAttenuation;
 
         // Calculate the specular component
         vec3 V = normalize(lookFrom - info.p);

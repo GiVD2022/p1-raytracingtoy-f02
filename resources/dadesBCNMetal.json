@@ -23,8 +23,7 @@
 "Virtual": {
   "minPoint": [-5,  -1, -5],
   "maxPoint": [ 5,  2,  5.31]
-},
-"attributes": [
+},"attributes": [
 {
 "name": "AssistenciaConcerts",
 "gyzmo": "sphere",

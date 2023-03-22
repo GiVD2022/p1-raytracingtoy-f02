@@ -284,9 +284,9 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
     // centre de l'esfera a y = 0
     // Per defecte, l'obj base és un pla
     vec3 trasl;
-    float new_x = mapping->Vxmin+ ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * mv_width);
+    float new_x = mapping->Vxmin + 1 + ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * (mv_width - 2));
     float new_y = 0.f;
-    float new_z = mapping->Vzmin + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * mv_depth);
+    float new_z = mapping->Vzmin + 1 + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * (mv_depth -2 ));
     trasl = vec3(new_x, new_y, new_z);
     // Si és una esfera, modifiquem la translació
     if (auto sphere = std::dynamic_pointer_cast<Sphere>(scene->baseObject)) {
