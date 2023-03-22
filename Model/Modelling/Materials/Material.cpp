@@ -14,12 +14,10 @@
  *
  * */
 
-#define PHONG_RELATION 4
-
 //Valors arbitraris. Podem decKdir canviar-los
 Material::Material(): Ka(1.0f), Kd(1.0f), Ks(1.0f) {
     shininess = 1.0f;
-    beta = shininess*PHONG_RELATION;
+    beta = shininess;
 }
 
 Material::~Material()
@@ -32,7 +30,7 @@ Material::Material(vec3 d) {
     Ks = vec3(1.0f, 1.0f, 1.0f);
     kt = vec3(1.0f) - Ks;
     shininess = 1.0f;
-    beta = shininess*PHONG_RELATION;
+    beta = shininess;
     mu_t = 0.0f;
 
 }
@@ -44,7 +42,7 @@ Material::Material(vec3 a, vec3 d, vec3 s, float shin) {
     Ks = s;
     kt = vec3(1.0f) - Ks;
     shininess = shin;
-    beta = shininess*PHONG_RELATION;
+    beta = shin;
     mu_t = 0.0f;
 }
 
@@ -55,7 +53,7 @@ Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac) {
     Ks = s;
     kt = vec3(1.0f) - Ks;
     shininess = shin;
-    beta = shininess*PHONG_RELATION;
+    beta = shin;
     opacity = opac;
     mu_t = 0.0f;
 }
@@ -67,7 +65,7 @@ Material::Material(vec3 a, vec3 d, vec3 s, vec3 t, float shin, float opac, float
     Ks = s;
     kt = t;
     shininess = shin;
-    beta = shininess*PHONG_RELATION;
+    beta = shin;
     opacity = opac;
     mu_t = mu;
 }
@@ -106,7 +104,7 @@ void Material::read (const QJsonObject &json)
     }
     if (json.contains("shininess") && json["shininess"].isDouble())
         shininess = json["shininess"].toDouble();
-        beta = shininess * PHONG_RELATION;
+        beta = shininess;
     if (json.contains("opacity") && json["opacity"].isDouble())
         opacity = json["opacity"].toDouble();
     if (json.contains("nut") && json["nut"].isDouble())
