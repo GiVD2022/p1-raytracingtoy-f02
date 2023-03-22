@@ -147,7 +147,10 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     ![Captura de Pantalla 2023-03-20 a las 21 36 41](https://user-images.githubusercontent.com/69910092/226461176-0803796c-25bb-4497-a74b-0646fc1fec5b.png "Tot junt, bola vermella") 
     
     La mateixa imatge amb una bola vermella i més samples.
-
+    
+* **Fase 3**:
+    - Amb el fitxer de setup setupDataEuropa.json quina de les dues imatges obtens? Raona per què.
+      Ens trobem en la situació de la dreta: és fàcil de veure, si mirem dadesEuropa.json, trobem que el pla correspon a l'equació {y=-1}, i està afitat per valors d'x i z entre -50 i 50. Com que és un fitxer de tipus RealData, per les esferes en coneixem el valor x i z del centre, i li donem valor y = 0 per defecte al centre. A més, pel nostre escalat, l'esfera més gran tindrà radi = 1. Per tant, cap de les esferes travessarà el pla com es veu a la imatge 1. 
 * **Opcionals**:
     - Directional Light
     
