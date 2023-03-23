@@ -152,14 +152,14 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
    
    - Intersecció dels rajos amb una esfera
     
-    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="200">
-    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="200">
-    <img src="" alt="Depth shading una esfera" width="200">
+    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="300">
+    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="300">
+    <img src="" alt="Depth shading una esfera" width="300">
     
     - Intersecció dels rajos amb dues esferes
     
-    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="200">
-    <img src="" alt="Depth shading dues esferes" width="200">
+    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="300">
+    <img src="" alt="Depth shading dues esferes" width="300">
 
 
 * **Fase 1**: 
