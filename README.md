@@ -205,18 +205,18 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits** 
         
-        - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
-    
+    - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
         <imgsrc="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="300">
         <imgsrc="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="300">
         <imgsrc="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="300">
         
-        - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
+    - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
     
-    <imgsrc="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="300">
+        <imgsrc="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="300">
+        <imgsrc="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="300">
     
-        - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
+    
+    - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
     
     <imgsrc="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="300">
     <imgsrc="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="300">
