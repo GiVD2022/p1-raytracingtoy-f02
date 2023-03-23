@@ -226,21 +226,21 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - Visualitzacions dels shadings Phong, Cel i Normal amb mateix setup file i fitxer de dades.
             - Phong Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_20.png" alt="Amb Max Depth 1" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_21.png" alt="Amb Max Depth 3" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_22.png" alt="Amb Max Depth 10" width="300">
 
-            - Cel Shading:
-            
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
-            
             - Normal Shading:
+            
+                <img src="screenshots/FASE_02/RRR/RRR_23.png" alt="Amb Max Depth 1" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_24.png" alt="Amb Max Depth 3" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_25.png" alt="Amb Max Depth 10" width="300">
+            
+            - Cel Shading:
 
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_26.png" alt="Amb Max Depth 1" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_27.png" alt="Amb Max Depth 3" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_28.png" alt="Amb Max Depth 10" width="300">
     
     * **Pas 5: Afegir recursió al mètode RayPixel per a tindre en compte objectes transparents**
         
