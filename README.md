@@ -119,6 +119,48 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
 ### Screenshots de cada fase
 * **Fase 0**: 
+    * 3.b. Quina escena es té carregada? Qui la crea? Quin setup té la classe? Des d'on es crea?
+        La classe RayTracer és la responsable de trçar rajos per a renderitzar imatges d'una escena en 3D. La imatge és emmagatzemada en un objecte QImage, que es passa com a paràmetre al constructor de la classe RayTracer. El mètode run() de la classe RayTracer conté el bucle principal del renderitzat, on cada píxel de la imatge es renderitza mitjançant el llançament de rajos. Els objectes necessaris per a la renderització, com ara el setup i l'escena, s'obtenen de la classe Controller, utilitzant mètodes estàtics. Per tant, la classe Controller és responsable de crear i gestionar la configuració de la renderització i l'escena, i es fa servir per la classe RayTracer per obtenir aquestes dades.
+    * 3.c. Per què es veu un degradat en l'escena? A quin mètode es calcula aquest color?
+        Si prems el botó de Trace, es veu un degradat perquè el mètode RayPixel() de la classe RayTracer retorna un degradat en cas que l'opció de "background" estigui activada en la configuració del renderitzat.
+
+        En aquest cas, el degradat es calcula a la part superior del mètode RayPixel(), on es normalitza la direcció del raig i s'utilitza per calcular el color de fons. El càlcul es fa mitjançant la creació d'un vector que té les seves components normalitzades i, a continuació, es transforma aquest vector a un color RGB de 24 bits.
+    * 3.d. Si desactives el flag de background, i tornes a fer Trace, quin efecte et trobes? Per què? Pots veure com ha arribat el flag de background al teu RayTracer?
+        Si desactives el flag de background i tornes a fer Trace, es veurà una imatge negra sense cap mena de degradat. Això és degut a que el càlcul del color de fons només es fa si el flag de background està activat. En desactivar-lo, el color de fons es posa a negre per defecte.
+
+        El flag de background es pot trobar al mètode init() de la classe RayTracer, on es comprova si aquesta opció està activada en la configuració del renderitzat. Aquesta configuració es carrega en el constructor del RayTracer a través del controlador, que obté la configuració i l'escena corresponents.
+    * 3.e. En quina variable trobes els colors per fer el degradat?
+        Es poden obtindre els colors de background superior i inferior fent les següents crides amb la variables setup:
+            setup->getTopBackground();
+            setup->getDownBackground();
+    * 3.f. I si volguessis canviar els colors del degradat? On els canviaries?
+        A la interfície seleccionaria uns altres colors de la paleta, i amb aquests canvis obtindria uns nous valors de retorns en els getters de background de setup.
+    * 3.g. Des del menú de File pots crea una esfera unitària amb centre al punt (0, 0, 0). Si prems Trace, no la veuràs, per què?
+        La raó per la qual no es veu la nova esfera és que encara no s'ha implementat la intersecció amb objectes de l'escena en el càlcul de colors per cada píxel. El mètode RayPixel actual només retorna el color del degradat de fons, i no fa cap comprovació per veure si el raig interseca amb algun objecte de l'escena. Per tant, fins que no s'implementi la intersecció amb objectes de l'escena, no es podrà veure cap objecte nou afegit a l'escena.
+    * 3.h. Com pots accedir a les diferents estratègies? A quina variable pots aconseguir l’estratègia a cridar? Com es crea aquesta estratègia des del menú? 
+        Mitjançant la variable setup, cridant el mètode getShadingStrategy() per obtenir el shading que s'està aplicant. I per aplicar el shading concret a l'escena, amb el mètode shading. Aquest es troba definit de forma virtual a la classe ShadingStrategy i implementat de forma diferent en cada classe shading.
+        Per a crear aquesta estratègia des del menú, quan l'usuari clica un dels shadings, en la MainWindow es llença el senyal de que s'executi activaXXShading(), localitzat en Builder. Builder crida a Controller per a que creï una instància del shading XX i estableixi en la variable setup que el shading a aplicar sigui aquest (setShadingStrategy). Aleshores en el mètode rayPixel de RayTracer es comprova des de setup quin shading s'ha d'aplicar i es crida el mètode shading corresponent a la classe.
+    * 3.i. Com faràs per a crear una nova estratègia de shading?
+        S'ha de crear una nova classe per a gestionar el shading que heredi de ShadingStrategy. A continuació s'implementa el mètode virtual shading() amb la implementació concreta del shading que es vulgui. S'ha d'afegir aquest nou tipus a l'enum SHADING_TYPES del fitxer ShadingFactory. I s'ha d'inicialitzar correctament amb l'ajuda de l'enum a la classe ShadingFactory.
+    * 3.j. Com aconsegueixes que els colors del depth shading estiguin normalitzats? 
+        Es pot dividir la distància entre el punt de vista (lookFrom) i el punt d'intersecció amb l'objecte per un valor de distància màxim predefinit, per evitar la sobreexposició dels píxels llunyans. En el nostre cas, s'ha establert que sigui 10. Si el valor màxim de distància és 10 unitats, qualsevol distància superior a 10 es considerarà el màxim i es normalitzarà per aquest valor.
+        Per tant,  es normalitza la distància real (distance) dividint-la pel valor màxim de distància (max_distance). Això produeix un valor entre 0 i 1, que representa la distància normalitzada. Aquesta normalització és important per garantir que la funció de shading es comporti de manera coherent independentment de la distància entre el punt de vista i el punt d'impacte.
+    * 3.k. Per què veus només una esfera? On està situada a la teva escena? Amb quin radi? Per què? Per què és lila i no de color "kd": [0.7,0.6,0.5] com posa el fitxer?
+        El fitxer de dades real data0.json defineix una escena amb només una esfera perquè només hi ha un element en la llista "attributes". Aquest element té un nom "temperatura", un gizmo "sphere" i un únic punt de dades en la posició -2,-1 amb un valor de 0.5. Aquest punt es representa com una esfera perquè el gizmo de l'atribut és "sphere".
+        L'esfera es troba a la posició (-2, 0, -1) a la nostra escena virtual, ja que el fitxer de configuració especifica que el rang de coordenades en la dimensió Y és de 0 a 2.0. El radi de l'esfera es defineix per defecte a 0.5, ja que no s'especifica cap valor de radi a la configuració de l'atribut.
+        La raó per la qual la esfera és lila en lloc de tenir el color especificat per "kd": [0.7, 0.6, 0.5] és perquè el valor de "colorMap" a l'atribut és "COLOR_MAP_TYPE_INFERNO". Això significa que es fa servir un mapa de colors anomenat "inferno" per assignar colors a l'atribut segons el seu valor. El mapa de colors "inferno" és una gradació de colors que comença amb tons de blau i morat, passa a través de vermells i grocs brillants, i acaba amb tons de groc verdós. En aquest cas, el valor de 0.5 es correspon a un to de morat en el mapa de colors "inferno", de manera que l'esfera es veu lila.
+   
+   - Intersecció dels rajos amb una esfera
+    
+    ![Color shading una esfera](screenshots/FASE_00/05_esfera_color_shading.png?raw=true "Color shading una esfera")
+    ![Normal shading una esfera](screenshots/FASE_00/06_esfera_normal_shading.png?raw=true "Color shading una esfera")
+    ![Depth shading una esfera](?raw=true "Depth shading una esfera")
+    
+    - Intersecció dels rajos amb dues esferes
+    
+    ![Depth shading dues esferes](?raw=true "Depth shading dues esferes")
+    ![Color shading dues esferes](screenshots/FASE_00/08_virtualscene_color_shading.png?raw=true "Color shading dues esferes")
+
 
 * **Fase 1**: 
 
