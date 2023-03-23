@@ -249,7 +249,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         - Resultats obtinguts al visualitzar el fitxer spheresMetalTransp.json i el setupRenderTwoSpheres.json. Max depth pren els valors 1, 2 i 3, i el nombre de samples és 10.
         
-            <img src="screenshots/FASE_02/RRR/RRR_9.png" alt="Amb Max Depth 1" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_09.png" alt="Amb Max Depth 1" width="300">
             <img src="screenshots/FASE_02/RRR/RRR_10.png" alt="Amb Max Depth 2" width="300">
             <img src="screenshots/FASE_02/RRR/RRR_11.png" alt="Amb Max Depth 3" width="300">
     
