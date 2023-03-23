@@ -203,43 +203,44 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
     La mateixa imatge amb una bola vermella i més samples.
     
-    * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits** 
+    * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
-    - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
-        <imgsrc="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="300">
-        <imgsrc="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="300">
-        <imgsrc="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="300">
+        - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
         
-    - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
+        <img src="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="300">
+        
+        - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
     
-        <imgsrc="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="300">
-        <imgsrc="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="300">
     
     
-    - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
+        - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
     
-    <imgsrc="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="300">
-    
+        <img src="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="300">
+
         - Visualitzacions dels shadings Phong, Cel i Normal amb mateix setup file i fitxer de dades.
             - Phong Shading:
             
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
-    
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
+
             - Cel Shading:
             
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
             
             - Normal Shading:
 
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 1" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 3" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_.png" alt="Amb Max Depth 10" width="300">
     
     * **Pas 5: Afegir recursió al mètode RayPixel per a tindre en compte objectes transparents**
         
@@ -248,36 +249,36 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         - Resultats obtinguts al visualitzar el fitxer spheresMetalTransp.json i el setupRenderTwoSpheres.json. Max depth pren els valors 1, 2 i 3, i el nombre de samples és 10.
         
-    <imgsrc="screenshots/FASE_02/RRR/RRR_9.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_10.png" alt="Amb Max Depth 2" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_11.png" alt="Amb Max Depth 3" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_09.png" alt="Amb Max Depth 1" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_10.png" alt="Amb Max Depth 2" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_11.png" alt="Amb Max Depth 3" width="300">
     
         - Modificant el punt de vista amb valors de lookFrom (-5, 0, 1) i lookAt (-2, 0, 0) i canviat el valor de kd a [0.7, 0.7, 0.7]
     
-    <imgsrc="screenshots/FASE_02/RRR/RRR_12.png" alt="Amb Max Depth 3" width="300">
-    
+            <img src="screenshots/FASE_02/RRR/RRR_12.png" alt="Amb Max Depth 3" width="300">
+
         - **Per què si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?**
             Si tenim el valor MAX_DEPTH a 1, això significa que només es farà un rebot de llum, és a dir, només es seguirà un raig de llum després de xocar amb l'objecte. Per tant, si l'objecte és opac, no es veurà res més enllà d'aquest objecte, ja que només es considera un únic rebot de llum.
         
         - Visualitzacions amb el fitxer fourSpheres.json i el setupRenderFourSpheres.json i nivells de recursivitat MAXDEPTH = 1, 2, i 4. Nombre de samples és 10.
         
-    <imgsrc="screenshots/FASE_02/RRR/RRR_13.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_14.png" alt="Amb Max Depth 2" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_15.png" alt="Amb Max Depth 4" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_13.png" alt="Amb Max Depth 1" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_14.png" alt="Amb Max Depth 2" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_15.png" alt="Amb Max Depth 4" width="300">
     
         - **Si assignes el color ambient global enlloc del de background en els rajos secundaris que no intersequen amb res. Com et canvia la visualització? Raona el per què?**
             Si assignem el color ambient global en lloc del color de fons (background) en els rajos secundaris que no intersequen amb cap objecte, la visualització canvia perquè tots els píxels que no estan directament en la línia de visió dels objectes de la nostra escena reben el mateix color ambient, creant una mena d'il·luminació uniforme en la imatge. Això pot ser útil per crear un efecte d'illuminació ambiental a la nostra escena, però també pot provocar que la imatge aparegui una mica "plana" i sense profunditat.
             
         - Visualització de l'escena anterior fent que els rajos secundaris que no intersequen amb l'escena rebin el color ambient global.
         
-    <imgsrc="screenshots/FASE_02/RRR/RRR_16.png" alt="Amb Max Depth 1" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_16.png" alt="Amb Max Depth 1" width="300">
     
         - Visualització de l'escena anterior fent que no es ponderi el color local.
     
-    <imgsrc="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="300">
-    <imgsrc="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="300">
-        
+            <img src="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="300">
+
         - **Raona per què en aquests casos l'escena es veu més clara**
             Si no es pondera el color local amb (1- colorScattered) els materials transparents no absorveixen la llum que travessa l'objecte, cosa que significa que la llum passa per ells sense ser atenuada. Això pot fer que les escenes semblin més brillants i clares en general, però també afecta negativament en la percepció de la profunditat i oclusió de la imatge.
     
