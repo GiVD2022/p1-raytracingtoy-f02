@@ -111,13 +111,13 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
   
   * **Decisions a destacar**
     * Comenteu les decisions que heu pres 
-    * **Cel Shading**. Hem implementat el Cel shading per un nombre arbitrari de tons per cada objecte. Aquests tons es llegeixen del material de l'objecte al JSON de l'escena. **Necessites afegir informació al material?** Sí, hem creat una classe abstracta "ToonMaterial". Aquesta classe hereta de Material i alhora és la mare de tots els altres materials. En aquesta classe hem afegit l'atribut "gradientColor" que és un vector de colors. Hem hagut d'implementar els mètodes de llegir i escriure a fitxer. Aquestes funcions criden a les respectives funcions de Material, però a més llegeixen o escriuen el vector de tonalitats. 
+    * **Cel Shading**. Hem implementat el Cel shading per un nombre arbitrari de tons per cada objecte. Aquests tons es llegeixen del material de l'objecte al JSON de l'escena. Necessites afegir informació al material? Sí, hem creat una classe abstracta "ToonMaterial". Aquesta classe hereta de Material i alhora és la mare de tots els altres materials. En aquesta classe hem afegit l'atribut "gradientColor" que és un vector de colors. Hem hagut d'implementar els mètodes de llegir i escriure a fitxer. Aquestes funcions criden a les respectives funcions de Material, però a més llegeixen o escriuen el vector de tonalitats. 
     A part del Cel shading com a tal, hem implementat també les extensions explicades a classe, on hem incorporat la component especular, i la llum ambient. A més, hem afegit la silueta dels objectes, que surten ressaltats dins l'escena.
     Per admetre un nombre arbitrari d'intervals, per calcular el color en cada punt calculem $t = \lfloor n \cdot x \rfloor$ on x ès el cosinus entre l'angle de llum i la normal, i n el nombre d'intervals. Aleshores t és l'índex de l'interval corresponent. En cas que el cosinus sigui 1, hem decidit posar el color més clar del que disposem.
     
     * **Llum direccional**. Hem implementat una nova classe de llum, la direccional. Aquesta no té posició, doncs està situada a l'infinit. A més, la seva atenuació sempre és 1, pel mateix motiu. Té 2 atributs propis: intensitat i direcció.
     
-### Screenshots de cada fase
+### Resposta a les preguntes plantejades
 * **Fase 0**: 
     * **3.b. Quina escena es té carregada? Qui la crea? Quin setup té la classe? Des d'on es crea?**
         La classe RayTracer és la responsable de trçar rajos per a renderitzar imatges d'una escena en 3D. La imatge és emmagatzemada en un objecte QImage, que es passa com a paràmetre al constructor de la classe RayTracer. El mètode run() de la classe RayTracer conté el bucle principal del renderitzat, on cada píxel de la imatge es renderitza mitjançant el llançament de rajos. Els objectes necessaris per a la renderització, com ara el setup i l'escena, s'obtenen de la classe Controller, utilitzant mètodes estàtics. Per tant, la classe Controller és responsable de crear i gestionar la configuració de la renderització i l'escena, i es fa servir per la classe RayTracer per obtenir aquestes dades.
@@ -149,7 +149,35 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         El fitxer de dades real data0.json defineix una escena amb només una esfera perquè només hi ha un element en la llista "attributes". Aquest element té un nom "temperatura", un gizmo "sphere" i un únic punt de dades en la posició -2,-1 amb un valor de 0.5. Aquest punt es representa com una esfera perquè el gizmo de l'atribut és "sphere".
         L'esfera es troba a la posició (-2, 0, -1) a la nostra escena virtual, ja que el fitxer de configuració especifica que el rang de coordenades en la dimensió Y és de 0 a 2.0. El radi de l'esfera es defineix per defecte a 0.5, ja que no s'especifica cap valor de radi a la configuració de l'atribut.
         La raó per la qual la esfera és lila en lloc de tenir el color especificat per "kd": [0.7, 0.6, 0.5] és perquè el valor de "colorMap" a l'atribut és "COLOR_MAP_TYPE_INFERNO". Això significa que es fa servir un mapa de colors anomenat "inferno" per assignar colors a l'atribut segons el seu valor. El mapa de colors "inferno" és una gradació de colors que comença amb tons de blau i morat, passa a través de vermells i grocs brillants, i acaba amb tons de groc verdós. En aquest cas, el valor de 0.5 es correspon a un to de morat en el mapa de colors "inferno", de manera que l'esfera es veu lila.
-   
+
+* **Fase 1**:
+    * **Pas 3**:
+        **3.a. Modifica la classe ```ObjectFactory``` per a carregar i crear malles poligonals en fora de ```Mesh```. En aquest cas, el ```read``` de la classe ```Mesh```ja està implementat. Quan penses que és millor crear els triangles de la malla?**
+            Ho hem implementat de manera que no cal crear els triangles, doncs ho calculem directament amb les cares. Tanmateix, en cas que volguéssim fer servir els triangles, els calcularíem quan fem el ```read```, desprès de llegir les cares. D'aquesta manera, només cal fer-ho una vegada i és quan es carrega l'objecte, i no cada cop que volem fer hit. Si calculessim els triangles quan els necessitem al ```hit```, aleshores el nostre algorisme seria molt lent.
+        ** 3.b. Implementa les dues possibilitats, la de la *bounding box* i la de la *bounding sphere*. Quina creus que teòricament és millor? Com funcionen en realitat?
+            ... tests ... En realitat, tot funcionarà de la forma de l'objecte. Si la nostra malla té una forma esfèrica, la *bounding sphere* serà més similar, fent-la més eficient a l'hora de calcular el hit previ. En canvi, si la malla és allargada (un el·lipsoide per exemple), la caixa serà millor. En la implementació actual, les caixes estan sempre aliniades amb els eixos. Això també podria fer que per una figura cúbica rotada de la manera adequada, la *bounding sphere* fos millor. 
+
+* **Fase 2**:
+    * **Pas 1**:
+        * **2. On afegiries un atribut ```numSamples``` que defineixi el nombre de rajos per píxel i així controlar aquest fet?**
+
+        * **3. Per aclarir la imatge, s'utilitza una correcció del color final calculat. Aquest fet s'anomena *Gamma Correction*. Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faràs aquesta correcció?
+    
+    * **Pas 2**:
+        * **3. Implementa *Phong Shading*. Què necessites canviar?**
+        
+        * **4. Implementa *Cel Shading*. Necessites afegir informació en el material?**
+            Sí. Cal afegir els diferents colors (més foscos i més clars) que volem que tingui cada material. Això ho hem fet creant una classe abstracta ```ToonMaterial``` que conté un vector de colors (vec3) de mida arbitrària (```colorGradient```). Aquests colors, ordenats segons la seva claror, són els que s'utilitzen per pintar les figures, depenent de l'angle d'incidència de la llum. La classe ```ToonMaterial``` hereta de ```Material```. Alhora, tots els altres materials són classes filles de ```ToonMaterial```.
+    * **Pas 3*:
+        * **2. En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, quina component de la fórmula Blinn-Phong s'haurà de tenir en compte?**
+    * **Pas 4*:
+        * **3. Tingues en compte que necessitaràs la *nu_t* per a definir el material transparent. Tot i que ara el codi no està llegint aquesta nu_t, on hauries de llegir-la?**
+        
+        **Si assignes el color ambient global en lloc del de *background* en els rajos secundaris que no intersequen amb res, com et canvia la visualització? Raona el per què.**
+           
+    
+### Screenshots de cada fase
+* **Fase 0**:
    - Intersecció dels rajos amb una esfera
     
     <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="300">
@@ -165,44 +193,45 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 * **Fase 1**: 
 
 * **Fase 2**:
-    - Cel Shading i les seves ombres
+    * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
+        - Cel Shading i les seves ombres (Pas 3)
 
-    ![Captura de Pantalla 2023-03-20 a las 21 14 03](https://user-images.githubusercontent.com/69910092/226461156-e1d1c1fa-fd01-4c8f-91ab-8ff6ee3161ef.png "Component ambient") 
-    
-    Component ambient amb nSamples = 1
+            ![Captura de Pantalla 2023-03-20 a las 21 14 03](https://user-images.githubusercontent.com/69910092/226461156-e1d1c1fa-fd01-4c8f-91ab-8ff6ee3161ef.png "Component ambient") 
 
-    ![Captura de Pantalla 2023-03-20 a las 21 15 35](https://user-images.githubusercontent.com/69910092/226461161-db5e0a35-dc12-4920-bf2b-e3f71a749348.png "Component 'Toon'")
-    
-    Component "Toon": només els colors de les tonalitats. Això correspon a com es veu sense extensions.
+            Component ambient amb nSamples = 1
 
-    ![Captura de Pantalla 2023-03-20 a las 21 17 08](https://user-images.githubusercontent.com/69910092/226461163-1616e794-7a76-4caf-9399-71f432c08789.png "Component especular") 
-    
-    Component especular amb shininess = 100 (es veu una taca blanca molt petita)
+            ![Captura de Pantalla 2023-03-20 a las 21 15 35](https://user-images.githubusercontent.com/69910092/226461161-db5e0a35-dc12-4920-bf2b-e3f71a749348.png "Component 'Toon'")
 
-    ![Captura de Pantalla 2023-03-20 a las 21 18 23](https://user-images.githubusercontent.com/69910092/226461167-55b3f04f-7ed9-48d5-92d1-a6753c4be73b.png "Rim")
-    
-    Rim (la silueta)
+            Component "Toon": només els colors de les tonalitats. Això correspon a com es veu sense extensions.
 
-    ![Captura de Pantalla 2023-03-20 a las 21 19 39](https://user-images.githubusercontent.com/69910092/226461168-cd62da50-5270-47e1-bef1-13547391bb33.png "Tot junt sense ombra")
-    
-    Tot junt sense ombra amb nSamples baix.
+            ![Captura de Pantalla 2023-03-20 a las 21 17 08](https://user-images.githubusercontent.com/69910092/226461163-1616e794-7a76-4caf-9399-71f432c08789.png "Component especular") 
 
-    ![Captura de Pantalla 2023-03-20 a las 21 25 00](https://user-images.githubusercontent.com/69910092/226461171-1998cbfa-be59-46b9-bdde-08ea7d507406.png  "Tot junt sense ombra II")
-    
-    Tot junt sense ombra amb més samples.
+            Component especular amb shininess = 100 (es veu una taca blanca molt petita)
 
-    ![Captura de Pantalla 2023-03-20 a las 21 25 11](https://user-images.githubusercontent.com/69910092/226461175-7b8918c1-03bd-4f05-a1f9-a986ca4960cd.png "Tot junt amb ombra") 
-    
-    Tot junt amb ombra.
+            ![Captura de Pantalla 2023-03-20 a las 21 18 23](https://user-images.githubusercontent.com/69910092/226461167-55b3f04f-7ed9-48d5-92d1-a6753c4be73b.png "Rim")
 
-    ![Captura de Pantalla 2023-03-20 a las 21 36 51](https://user-images.githubusercontent.com/69910092/226461179-01a6ec7b-fa1b-4e82-94d6-5fb12ca44a55.png "Tot junt, bola vermella II") 
-    
-    La mateixa imatge amb una bola vermella, ombra i 10 samples.
+            Rim (la silueta)
 
-    ![Captura de Pantalla 2023-03-20 a las 21 36 41](https://user-images.githubusercontent.com/69910092/226461176-0803796c-25bb-4497-a74b-0646fc1fec5b.png "Tot junt, bola vermella") 
-    
-    La mateixa imatge amb una bola vermella i més samples.
-    
+            ![Captura de Pantalla 2023-03-20 a las 21 19 39](https://user-images.githubusercontent.com/69910092/226461168-cd62da50-5270-47e1-bef1-13547391bb33.png "Tot junt sense ombra")
+
+            Tot junt sense ombra amb nSamples baix.
+
+            ![Captura de Pantalla 2023-03-20 a las 21 25 00](https://user-images.githubusercontent.com/69910092/226461171-1998cbfa-be59-46b9-bdde-08ea7d507406.png  "Tot junt sense ombra II")
+
+            Tot junt sense ombra amb més samples.
+
+            ![Captura de Pantalla 2023-03-20 a las 21 25 11](https://user-images.githubusercontent.com/69910092/226461175-7b8918c1-03bd-4f05-a1f9-a986ca4960cd.png "Tot junt amb ombra") 
+
+            Tot junt amb ombra.
+
+            ![Captura de Pantalla 2023-03-20 a las 21 36 51](https://user-images.githubusercontent.com/69910092/226461179-01a6ec7b-fa1b-4e82-94d6-5fb12ca44a55.png "Tot junt, bola vermella II") 
+
+            La mateixa imatge amb una bola vermella, ombra i 10 samples.
+
+            ![Captura de Pantalla 2023-03-20 a las 21 36 41](https://user-images.githubusercontent.com/69910092/226461176-0803796c-25bb-4497-a74b-0646fc1fec5b.png "Tot junt, bola vermella") 
+
+            La mateixa imatge amb una bola vermella i més samples.
+
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
         - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
