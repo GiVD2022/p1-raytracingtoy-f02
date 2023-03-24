@@ -152,16 +152,16 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 * **Fase 1**:
     * **Pas 3**:
-        **3.a. Modifica la classe ```ObjectFactory``` per a carregar i crear malles poligonals en fora de ```Mesh```. En aquest cas, el ```read``` de la classe ```Mesh```ja està implementat. Quan penses que és millor crear els triangles de la malla?**
+        **3.a. Modifica la classe ```ObjectFactory``` per a carregar i crear malles poligonals en fora de ```Mesh```. En aquest cas, el ```read``` de la classe ```Mesh``` ja està implementat. Quan penses que és millor crear els triangles de la malla?**
             Ho hem implementat de manera que no cal crear els triangles, doncs ho calculem directament amb les cares. Tanmateix, en cas que volguéssim fer servir els triangles, els calcularíem quan fem el ```read```, desprès de llegir les cares. D'aquesta manera, només cal fer-ho una vegada i és quan es carrega l'objecte, i no cada cop que volem fer hit. Si calculessim els triangles quan els necessitem al ```hit```, aleshores el nostre algorisme seria molt lent.
-        ** 3.b. Implementa les dues possibilitats, la de la *bounding box* i la de la *bounding sphere*. Quina creus que teòricament és millor? Com funcionen en realitat?
+        ** 3.b. Implementa les dues possibilitats, la de la *bounding box* i la de la *bounding sphere*. Quina creus que teòricament és millor? Com funcionen en realitat?**
             ... tests ... En realitat, tot funcionarà de la forma de l'objecte. Si la nostra malla té una forma esfèrica, la *bounding sphere* serà més similar, fent-la més eficient a l'hora de calcular el hit previ. En canvi, si la malla és allargada (un el·lipsoide per exemple), la caixa serà millor. En la implementació actual, les caixes estan sempre aliniades amb els eixos. Això també podria fer que per una figura cúbica rotada de la manera adequada, la *bounding sphere* fos millor. 
 
 * **Fase 2**:
     * **Pas 1**:
         * **2. On afegiries un atribut ```numSamples``` que defineixi el nombre de rajos per píxel i així controlar aquest fet?**
 
-        * **3. Per aclarir la imatge, s'utilitza una correcció del color final calculat. Aquest fet s'anomena *Gamma Correction*. Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faràs aquesta correcció?
+        * **3. Per aclarir la imatge, s'utilitza una correcció del color final calculat. Aquest fet s'anomena *Gamma Correction*. Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faràs aquesta correcció?**
     
     * **Pas 2**:
         * **3. Implementa *Phong Shading*. Què necessites canviar?**
