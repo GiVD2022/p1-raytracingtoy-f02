@@ -101,6 +101,8 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
   - [ ] Afegir nous objectes paramètrics  
   - [X] Llums direccionals
     - Pau Baldillou
+  - [X] Llum spotlight
+    - Pau Baldillou
 
   
     
