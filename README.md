@@ -298,8 +298,18 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
       
       ![imagen](https://user-images.githubusercontent.com/80753129/227035406-78d659d9-ff69-4768-8ae6-e33469b71009.png "Visualització Fase 3 1.3")
       
-    -  **Visualitzacions associades a dadesBCN_Zoom i dadesBCN**
-    -  
+    - **Visualitzacions associades a dadesBCN_Zoom i dadesBCN**
+       ![imagen](https://user-images.githubusercontent.com/80753129/227382648-703f0c93-9b22-420a-bb83-43fcc99a51b6.png)
+  
+    - **Prova també a posar les esferes metàl·liques i transparents, com feies a la Fase 2**
+      
+      Hem afegit quatre esferes transparents, i n'adjuntem les visualitzacions a continuació. Corresponen al fitxer dadesEuropaCustom.json, amb el setup setupDataEuropa.json
+      
+      ![imagen](https://user-images.githubusercontent.com/80753129/227384815-20342c98-d36f-4ebe-b27a-165c915cb3e7.png)
+
+    - **Cal incloure com a mínim un nou joc de dades amb un mínim d’una propietat, amb un mínim de 15 dades i amb algun altre mapa**
+    
+      Creem un arxiu anomenat fase31.json i un setupFase31.json. Modelen la població d'ànec xiulador (esferes transparents), així com l'ànec blanc (box metal·lics), l'ànec griset (cilindres lambertians) al Delta de l'Ebre.
 
     
 
