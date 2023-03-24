@@ -24,6 +24,7 @@ SOURCES += \
     Model/Modelling/Lights/Light.cpp \
     Model/Modelling/Lights/LightFactory.cpp \
     Model/Modelling/Lights/PointLight.cpp \
+    Model/Modelling/Lights/SpotLight.cpp \
     Model/Modelling/Materials/ColorMapStatic.cpp \
     Model/Modelling/Materials/Lambertian.cpp \
     Model/Modelling/Materials/Material.cpp \
@@ -80,6 +81,7 @@ HEADERS += \
     Model/Modelling/Lights/Light.hh \
     Model/Modelling/Lights/LightFactory.hh \
     Model/Modelling/Lights/PointLight.hh \
+    Model/Modelling/Lights/SpotLight.hh \
     Model/Modelling/Materials/ColorMap.hh \
     Model/Modelling/Materials/ColorMapStatic.hh \
     Model/Modelling/Materials/Lambertian.hh \
