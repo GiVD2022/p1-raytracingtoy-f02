@@ -71,7 +71,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - [X] Recursió per objectes transparents
             - Núria Torquet
         - [X] Nou material transparent
-            - Esther Ruano
+            - Esther Ruano 
     - Pas 4
         - [ ] Adapta la visualització per mostrar dades des d'un fitxer
  - Fase 3
@@ -99,12 +99,8 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
   - [X] Mapeig de les dades reals en una esfera
     - Núria Torquet
   - [ ] Afegir nous objectes paramètrics  
-  - [X] Llums direccionals
+  - [X] Llums direccionals i spotlight
     - Pau Baldillou
-  - [X] Llum spotlight
-    - Pau Baldillou
-
-  
     
     
 ### Explicació de la pràctica    
@@ -119,6 +115,12 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     * **SceneFactoryData**: //explicar quines dimensions i translacions hem decidit.
     
     * **Llum direccional**. Hem implementat una nova classe de llum, la direccional. Aquesta no té posició, doncs està situada a l'infinit. A més, la seva atenuació sempre és 1, pel mateix motiu. Té 2 atributs propis: intensitat i direcció.
+    * **Llum spotlight**. Hem implementat una nova classe de llum, la spotlight (o focus). Al igual que la point light, aquesta sí que té posició. I similarment a la direccional, també té una direcció, ja que, a diferència de la point light, no il·lumina en totes direccions. Les llums spotlight, només il·luminen en una regió cònica amb vèrtex la posició de la llum i direcció la recta que seria l'eix de revolució. El con es defineix amb l'angle d'il·luminació (que és l'angle entre la direcció de la llum i la vora del con). Per tot això, la nova classe té com a atributs la posició, la direcció, l'angle de tall (a partir del qual considerarem que un punt no està il·luminat) i l'exponent (que controla com concentrada és la llum).
+    
+    
+        <img src="https://user-images.githubusercontent.com/69910092/227730288-714c1fe8-d328-42c4-b775-66b53943805a.png"> 
+        
+        Per tal de controlar des de la llum, quins punts pot il·luminar, hem canviat la funció que retorna l'atenuació. Aquesta serà 0 en els putns que queden fora del con. Pel punts que queden dins del con, és la següent funció: $\cos(\theta)^{\alpha}$ on $\theta$ és l'angle entre la direcció i el vector que uneix el punt que volem il·luminar i la posició de la llum, i $\alpha$ és l'exponent que guarda la llum.
     
 ### Resposta a les preguntes plantejades
 * **Fase 0**: 
