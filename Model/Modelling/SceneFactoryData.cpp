@@ -267,14 +267,14 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // a. Calcula primer l'escala
     vec3 sc;
-    float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+    float scale = 1 + 2.0 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
 
     if(mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().SPHERE || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().TRIANGLE ){
         // Perque el major valor tingui radi 1 i la més petita radi 0.0.089 (0.2^(2/3))
         sc = vec3(scale);
     } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().CYLINDER){
         //only scale y
-        sc = vec3(0.1, scale, 0.1);
+        sc = vec3(0.5, scale, 0.5);
     } else {
         QTextStream(stdout)<< "UNKNOWN GYZMO SceneFactoryData::ObjectMaps\n";
     }
@@ -292,6 +292,7 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
     if (auto sphere = std::dynamic_pointer_cast<Sphere>(scene->baseObject)) {
         trasl -= sphere->getCenter();
     }
+
 
     QTextStream(stdout) << "  "  << "scale:\t" << sc[0] << ", "<< sc[1] << ", "<< sc[2] << "\n";
     QTextStream(stdout) << "  "  << "traslation:\t" << trasl[0] << ", "<< trasl[1] << ", "<< trasl[2] << "\n";

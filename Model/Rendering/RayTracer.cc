@@ -87,8 +87,11 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
             vec3 attenuation;
             Ray scattered_ray;
             if(info.mat_ptr->scatter(ray, info, attenuation, scattered_ray)){
-                    color += RayPixel(scattered_ray, depth + 1) * attenuation;
-                }
+                // Some scatters do not return ray
+               if(length(scattered_ray.getDirection()) > FLT_EPSILON){
+                   color += RayPixel(scattered_ray, depth + 1) * attenuation;
+               }
+            }
         }
     } else{
         if (setup->getBackground()){ //if background and primary ray

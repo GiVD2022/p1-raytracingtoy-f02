@@ -2,18 +2,18 @@
 "renderType": "ONLINE",
 "output": "resultat.ppm",
 "camera": {
-    "lookFrom": [0.0, 20.0, 0.0],
-    "lookAt": [0, 0, 0],
-    "vup": [0, 0,-1],
-    "vfov": 20.0,
-    "aspectRatio": 1.0,
-    "pixelsX": 500,
+    "lookFrom": [0.0, 8.0, 14.0],
+    "lookAt:": [0, 0, 0],
+    "vup": [0, 0.5, 0],
+    "vfov": 60.0,
+    "aspectRatio": 2.0,
+    "pixelsX": 600,
     "defocusBlur": {
         "enabled": false,
         "aperture": 0.0
     }
 },
-"globalLight": [ 0.1, 0.1, 0.1],
+"globalLight": [ 0.2, 0.2, 0.2],
 "lights" : [
 {
  "type": "pointLight",
@@ -47,12 +47,14 @@
   }
  ],
   "background": false,
-  "MAXDEPTH": 0,
+  "MAXDEPTH": 2,
   "colorTopBackground": [ 1, 1, 1],
   "colorDownBackground": [0.5, 0.7, 1],
  "shading": "BlinnPhong",
  "shadows":true,
- "numSamples": 10
+ "numSamples": 10,
+"reflections": true,
+ "numSamples": 5
  }
 
 

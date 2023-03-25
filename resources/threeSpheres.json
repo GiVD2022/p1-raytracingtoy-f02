@@ -18,6 +18,21 @@
     }
 },
 {
+  "name": "Esfera mitjana",
+  "type": "sphere",
+  "center": [-3.0, 1.0, 0.0],
+  "radius": 1.0,
+  "material": {
+    "type": "metal",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.7, 0.6, 0.5],
+    "ks": [0.7, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0
+   }
+},
+{
   "name": "Esfera gran",
   "type": "sphere",
   "center": [0.0,-100.5,-1.0],
@@ -27,21 +42,6 @@
     "ka": [0.2, 0.2, 0.2],
     "kd": [0.8, 0.8, 0.0],
     "ks": [1.0, 1.0, 1.0],
-    "shininess": 10.0,
-    "kt": [0.0, 0.0, 0.0],
-    "nut": 0.0
-    }
-},
-{
-  "name": "Esfera metall",
-  "type": "sphere",
-  "center": [-3.0,1.0,0.0],
-  "radius": 1.0,
-  "material": {
-    "type": "metal",
-    "ka": [0.2, 0.2, 0.2],
-    "kd": [0.7, 0.6, 0.5],
-    "ks": [0.7, 0.7, 0.7],
     "shininess": 10.0,
     "kt": [0.0, 0.0, 0.0],
     "nut": 0.0

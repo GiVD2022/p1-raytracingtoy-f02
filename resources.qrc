@@ -5,5 +5,6 @@
         <file>resources/europa.png</file>
         <file>resources/mapBCN.png</file>
         <file>resources/mapZoom.png</file>
+        <file>resources/mapDelta.png</file>
     </qresource>
 </RCC>
