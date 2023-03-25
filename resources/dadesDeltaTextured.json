@@ -55,7 +55,7 @@
 "maxValue": 40000,
 "colorMap": "COLOR_MAP_TYPE_PLASMA",
 "material": {
-    "type": "metallic",
+    "type": "metal",
     "ka": [0.2, 0.2, 0.2],
     "kd": [0.7,0.6,0.5],
     "ks": [0.7, 0.7, 0.7],
@@ -79,7 +79,7 @@
 "maxValue": 40000,
 "colorMap": "COLOR_MAP_TYPE_PLASMA",
 "material": {
-    "type": "metallic",
+    "type": "metal",
     "ka": [0.2, 0.2, 0.2],
     "kd": [0.7,0.6,0.5],
     "ks": [0.7, 0.7, 0.7],
