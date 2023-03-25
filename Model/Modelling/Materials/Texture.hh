@@ -26,6 +26,7 @@ public:
     virtual ~Texture();
 
     vec3 getColorPixel(vec2 uv);
+    bool getSuccess();
 
 };
 

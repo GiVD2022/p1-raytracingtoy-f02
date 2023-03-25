@@ -18,7 +18,7 @@ vec3 PhongShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_
         // Check if the point is in shadow
         float shadowFactor = computeShadow(scene, light, info.p);
 
-        lightDiffuse += (info.mat_ptr->Kd * light->getId() * std::max(dot(L, N), 0.0f)  * shadowFactor )* depthAttenuation;
+        lightDiffuse += ((info.mat_ptr->getDiffuse(info.uv)) * light->getId() * std::max(dot(L, N), 0.0f)  * shadowFactor )* depthAttenuation;
 
 
         // Calculate the specular component

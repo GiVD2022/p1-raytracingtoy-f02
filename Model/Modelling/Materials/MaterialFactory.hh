@@ -4,6 +4,7 @@
 #include "Lambertian.hh"
 #include "ToonMaterial.hh"
 #include "Transparent.hh"
+#include "MaterialTextura.hh"
 #include "Metal.h"
 
 class MaterialFactory

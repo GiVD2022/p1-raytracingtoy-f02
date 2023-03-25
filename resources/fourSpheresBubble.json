@@ -3,14 +3,14 @@
 "typeScene": "VIRTUAL",
 "objects": [
 {
-  "name": "Esfera petita",
+  "name": "Esfera centre",
   "type": "sphere",
-  "center": [0.0, 0.0, 0.0],
+  "center": [0.0, 0.0, -1.0],
   "radius": 0.5,
   "material": {
     "type": "lambertian",
     "ka": [0.2, 0.2, 0.2],
-    "kd": [0.5, 0.5, 0.5],
+    "kd": [0.1, 0.2, 0.5],
     "ks": [1.0, 1.0, 1.0],
     "shininess": 10.0,
     "kt": [0.0, 0.0, 0.0],
@@ -33,14 +33,14 @@
     }
 },
 {
-"name": "Esfera metalica",
+"name": "Esfera metalica (dreta)",
 "type":  "sphere",
-  "center": [-3.0,1.0,0.0],
-  "radius": 1.0,
+  "center": [1.0,0.0,-1.0],
+  "radius": 0.5,
   "material": {
     "type": "metal",
     "ka": [0.2, 0.2, 0.2],
-    "kd": [0.7, 0.6, 0.5],
+    "kd": [0.8, 0.6, 0.2],
     "ks": [0.7, 0.7, 0.7],
     "shininess": 10.0,
     "kt": [0.0, 0.0, 0.0],
@@ -48,9 +48,9 @@
     }
 },
 {
-"name": "Esfera transparent",
+"name": "Esfera transparent (esquerra)",
 "type":  "sphere",
-  "center": [0.0,1.0,0.0],
+  "center": [0.0, 1.0, 0.0],
   "radius": 1.0,
   "material": {
     "type": "transparent",
@@ -58,23 +58,24 @@
     "kd": [0.7,0.6,0.5],
     "ks": [0.7, 0.7, 0.7],
     "shininess": 10.0,
-    "kt": [0.3, 0.3, 0.3],
+    "kt": [1.0, 1.0, 1.0],
     "nut": 1.5
     }
-  },
-  {
-  "name": "Br Objecte",
-  "type":  "MESH",
-    "objFileName": "://resources/cube.obj",
+},
+{
+  "name": "Esfera transparent interior (esquerra)",
+  "type":  "sphere",
+    "center": [0.0, 1.0, 0.0],
+    "radius": -0.98,
     "material": {
-      "type": "lambertian",
+      "type": "transparent",
       "ka": [0.2, 0.2, 0.2],
       "kd": [0.7,0.6,0.5],
       "ks": [0.7, 0.7, 0.7],
       "shininess": 10.0,
-      "kt": [0.0, 0.0, 0.0],
-      "nut": 1
-      }
+      "kt": [1.0, 1.0, 1.0],
+      "nut": 1.5
     }
+}
 ]
 }

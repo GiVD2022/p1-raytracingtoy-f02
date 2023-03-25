@@ -58,10 +58,12 @@ vec3 CelShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_pt
             // Versió simplificada si no hi ha vector de tonalitats
             n = 4;
             j = std::min( static_cast<int>(floor(n * alpha)), n-1);
-            toonLight += info.mat_ptr->Kd * static_cast<float>(j) / 4.0f * shadowFactor;
+
+            // Si no es texture, info.mat_ptr->getDiffuse(info.uv)  retorna el kd
+            toonLight += (info.mat_ptr->getDiffuse(info.uv)) * static_cast<float>(j) / 4.0f * shadowFactor;
 
             // Calculate the specular component
-            vec3 kd0 = info.mat_ptr->Kd * 3.0f / 4.0f; //el color més clar
+            vec3 kd0 = (info.mat_ptr->getDiffuse(info.uv)) * 3.0f / 4.0f; //el color més clar
             float dotNH = dot(N, H);
             lightSpecular += kd0 * light->getIs() * pow(std::max(dotNH, 0.0f), info.mat_ptr->beta) * shadowFactor;
 
