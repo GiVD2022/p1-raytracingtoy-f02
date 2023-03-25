@@ -342,7 +342,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     - **Cal incloure com a mínim un nou joc de dades amb un mínim d’una propietat, amb un mínim de 15 dades i amb algun altre mapa**
     
       Creem un arxiu anomenat fase31.json i un setupFase31.json. Modelen la població d'ànec xiulador (esferes transparents), així com l'ànec blanc (box metal·lics), l'ànec griset (cilindres lambertians) al Delta de l'Ebre.
-      ![imagen](https://user-images.githubusercontent.com/80753129/227720574-b2a2cd89-84a2-40cb-8b19-2aad3dec5e55.png)
+      ![imagen](https://user-images.githubusercontent.com/80753129/227723119-793a260c-6e7d-4864-8bd6-a15be05aa83b.png)
 
     
 
