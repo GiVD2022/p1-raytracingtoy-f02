@@ -116,6 +116,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     * **Cel Shading**. Hem implementat el Cel shading per un nombre arbitrari de tons per cada objecte. Aquests tons es llegeixen del material de l'objecte al JSON de l'escena. Necessites afegir informació al material? Sí, hem creat una classe abstracta "ToonMaterial". Aquesta classe hereta de Material i alhora és la mare de tots els altres materials. En aquesta classe hem afegit l'atribut "gradientColor" que és un vector de colors. Hem hagut d'implementar els mètodes de llegir i escriure a fitxer. Aquestes funcions criden a les respectives funcions de Material, però a més llegeixen o escriuen el vector de tonalitats. 
     A part del Cel shading com a tal, hem implementat també les extensions explicades a classe, on hem incorporat la component especular, i la llum ambient. A més, hem afegit la silueta dels objectes, que surten ressaltats dins l'escena.
     Per admetre un nombre arbitrari d'intervals, per calcular el color en cada punt calculem $t = \lfloor n \cdot x \rfloor$ on x ès el cosinus entre l'angle de llum i la normal, i n el nombre d'intervals. Aleshores t és l'índex de l'interval corresponent. En cas que el cosinus sigui 1, hem decidit posar el color més clar del que disposem.
+    * **SceneFactoryData**: //explicar quines dimensions i translacions hem decidit.
     
     * **Llum direccional**. Hem implementat una nova classe de llum, la direccional. Aquesta no té posició, doncs està situada a l'infinit. A més, la seva atenuació sempre és 1, pel mateix motiu. Té 2 atributs propis: intensitat i direcció.
     
@@ -341,6 +342,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     - **Cal incloure com a mínim un nou joc de dades amb un mínim d’una propietat, amb un mínim de 15 dades i amb algun altre mapa**
     
       Creem un arxiu anomenat fase31.json i un setupFase31.json. Modelen la població d'ànec xiulador (esferes transparents), així com l'ànec blanc (box metal·lics), l'ànec griset (cilindres lambertians) al Delta de l'Ebre.
+      ![imagen](https://user-images.githubusercontent.com/80753129/227720574-b2a2cd89-84a2-40cb-8b19-2aad3dec5e55.png)
 
     
 
