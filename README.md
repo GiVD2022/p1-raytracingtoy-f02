@@ -327,10 +327,10 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             <img src="screenshots/FASE_02/SS/visualitzacio_esferes01.png" alt="Visualització del fitxer sheres" width="400">
             <img src="screenshots/FASE_02/SS/visualitzacio_esferes02.png" alt="Visualització del fitxer sheres" width="400">
             
-        - Escena més complexa modificant el fitxer spheres.json amb 10 objectes
+        - Escena més complexa modificant el fitxer spheres.json amb 10 objectes i Blinn-Phong Shading
         
-            <img src="screenshots/FASE_02/SS/visualitzacio_alt.png" alt="Visualització del fitxer multiple_spheres" width="400">
-            
+            <img src="screenshots/FASE_02/SS/visualitzacio_alt01.png" alt="Visualització del fitxer multiple_spheres" width="400">
+            <img src="screenshots/FASE_02/SS/visualitzacio_alt02.png" alt="Visualització del fitxer multiple_spheres" width="400">
             
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
