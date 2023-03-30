@@ -61,7 +61,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             - Esther Ruano
         - [X] Implementar Cel Shadow
             - Pau Baldillou
-        - [X] Implementar Color, Normal i Depth Shadow
+        - [X] Implementar Color i Normal Shadow
             - Pau Hernando
     - Pas 4
         - [X] Recursió per rajos secundaris
@@ -73,8 +73,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - [X] Nou material transparent
             - Esther Ruano
     - Pas 5
-        - [X] Adapta la visualització per mostrar dades des d'un fitxer
-            - Pau Hernando
+        - [ ] Adapta la visualització per mostrar dades des d'un fitxer
  - Fase 3
     - Pas 1
         - [X] Afegir nou material textura al pla base
@@ -147,7 +146,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         Mitjançant la variable setup, cridant el mètode getShadingStrategy() per obtenir el shading que s'està aplicant. I per aplicar el shading concret a l'escena, amb el mètode shading. Aquest es troba definit de forma virtual a la classe ShadingStrategy i implementat de forma diferent en cada classe shading.
         Per a crear aquesta estratègia des del menú, quan l'usuari clica un dels shadings, en la MainWindow es llença el senyal de que s'executi activaXXShading(), localitzat en Builder. Builder crida a Controller per a que creï una instància del shading XX i estableixi en la variable setup que el shading a aplicar sigui aquest (setShadingStrategy). Aleshores en el mètode rayPixel de RayTracer es comprova des de setup quin shading s'ha d'aplicar i es crida el mètode shading corresponent a la classe.
     * **3.i. Com faràs per a crear una nova estratègia de shading?**
-        S'ha de crear una nova classe per a gestionar el shading que heredi de ShadingStrategy. A continuació s'implementa el mètode virtual shading() amb la implementació concreta del shading que es vulgui. S'ha d'afegir aquest nou tipus a l'eSa SHADING_TYPES del fitxer ShadingFactory. I s'ha d'inicialitzar correctament amb l'ajuda de l'enum a la classe ShadingFactory.
+        S'ha de crear una nova classe per a gestionar el shading que heredi de ShadingStrategy. A continuació s'implementa el mètode virtual shading() amb la implementació concreta del shading que es vulgui. S'ha d'afegir aquest nou tipus a l'enum SHADING_TYPES del fitxer ShadingFactory. I s'ha d'inicialitzar correctament amb l'ajuda de l'enum a la classe ShadingFactory.
     * **3.j. Com aconsegueixes que els colors del depth shading estiguin normalitzats?** 
         Es pot dividir la distància entre el punt de vista (lookFrom) i el punt d'intersecció amb l'objecte per un valor de distància màxim predefinit, per evitar la sobreexposició dels píxels llunyans. En el nostre cas, s'ha establert que sigui 10. Si el valor màxim de distància és 10 unitats, qualsevol distància superior a 10 es considerarà el màxim i es normalitzarà per aquest valor.
         Per tant,  es normalitza la distància real (distance) dividint-la pel valor màxim de distància (max_distance). Això produeix un valor entre 0 i 1, que representa la distància normalitzada. Aquesta normalització és important per garantir que la funció de shading es comporti de manera coherent independentment de la distància entre el punt de vista i el punt d'impacte.
@@ -161,35 +160,49 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         **3.a. Modifica la classe ```ObjectFactory``` per a carregar i crear malles poligonals en fora de ```Mesh```. En aquest cas, el ```read``` de la classe ```Mesh``` ja està implementat. Quan penses que és millor crear els triangles de la malla?**  
             Ho hem implementat de manera que no cal crear els triangles, doncs ho calculem directament amb les cares. Tanmateix, en cas que volguéssim fer servir els triangles, els calcularíem quan fem el ```read```, desprès de llegir les cares. D'aquesta manera, només cal fer-ho una vegada i és quan es carrega l'objecte, i no cada cop que volem fer hit. Si calculessim els triangles quan els necessitem al ```hit```, aleshores el nostre algorisme seria molt lent.
         ** 3.b. Implementa les dues possibilitats, la de la *bounding box* i la de la *bounding sphere*. Quina creus que teòricament és millor? Com funcionen en realitat?**  
-            En realitat, tot funcionarà de la forma de l'objecte. Si la nostra malla té una forma esfèrica, la *bounding sphere* serà més similar, fent-la més eficient a l'hora de calcular el hit previ. En canvi, si la malla és allargada (un el·lipsoide per exemple), la caixa serà millor. En la implementació actual, les caixes estan sempre aliniades amb els eixos. Això també podria fer que per una figura cúbica rotada de la manera adequada, la *bounding sphere* fos millor. Tot i així, hem decidit fer tests per veure quina de les dos opcions és més eficient, en quant a temps es refereix. Vam fer els test amb la teapot com a objecte, ja que vam considerar que era el més imparcial possible. Ens van donar uns resultats molt semblants, aixi que vam decidir implementar la bounding bo perquè és molt més senzill d'implementar i per tant es necessiten menys càluls.
+            ... tests ... En realitat, tot funcionarà de la forma de l'objecte. Si la nostra malla té una forma esfèrica, la *bounding sphere* serà més similar, fent-la més eficient a l'hora de calcular el hit previ. En canvi, si la malla és allargada (un el·lipsoide per exemple), la caixa serà millor. En la implementació actual, les caixes estan sempre aliniades amb els eixos. Això també podria fer que per una figura cúbica rotada de la manera adequada, la *bounding sphere* fos millor. 
             
     * **Pas 5**:
         * **5.c. Com calcularàs el centre del teu objecte en l'escena virtual? Com calcularàs la seva escala?**
+            Al fitxer de dades se'ns proporciona els punts mínims i màxims del món real i de l'escena virtual. Al llegir les dades, per cada gyzmo també tenim en quina posició del món real prové la dada geolocalitzada. Per tant, cal calcular el centre com un canvi de coordenades del món real al món virtual. Posem la y = 0 per estar a l'altura del pla. Per fer-ho calculem una traslació adequada:
+            ```
+            float new_x = mapping->Vxmin + 1 + ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * (mv_width - 2));
+            float new_y = 0.f;
+            float new_z = mapping->Vzmin + 1 + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * (mv_depth -2 ));
+            ```
             
+            (L'1 és per no sortir-nos del pla)
+            
+            Respecte l'escala de l'objecte, les dades també ens donen el valor (d'allò que estem mesurant) en aquella localització i els valors mínims i màxims que pot tenir. Llavors calculem l'escala de l'objecte amb la següent fórmula:
+            ```
+                float scale = 1 + 1.85 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+            ```
+            (Els valors 1 i 1.85 els hem escollit nosaltres per tal d'obtenir visualitzacions que considerem en una escala correcta)
 
 * **Fase 2**:
     * **Pas 1**:
         * **2. On afegiries un atribut ```numSamples``` que defineixi el nombre de rajos per píxel i així controlar aquest fet?**
-        Hem afegit l'atribut numSamples dins de setUp, ja que es modifica directament des del mainUI, de la mateixa forma que les shadow o refractons. D'aquesta manera, mitjançant un onValueChanged(), el controlador agafa la instància de setUp i seteja aquesta variable.
 
         * **3. Per aclarir la imatge, s'utilitza una correcció del color final calculat. Aquest fet s'anomena *Gamma Correction*. Es tracta de fer l'arrel quadrada de cada canal del color just abans de pintar-lo. On faràs aquesta correcció?**
-        Aquesta correció es fa just després de calcular el mean Color de cada pixel, ja que d'aquesta forma només hem de calcular l'arrel quadrada un cop per píxel.
     
     * **Pas 2**:
+
         * **3. Implementa *Phong Shading*. Què necessites canviar?**
+
             En general, la diferència més notable entre la implementació de Blinn-Phong shading i Phong shading és la forma en què es calcula el component especular. Mentre que Blinn-Phong utilitza el vector de vista i el vector de mitjana com a paràmetres per a la funció de distribució especular, Phong shading utilitza el vector de reflexió i el vector de vista.
             Concretament, la fórmula per al component especular en Blinn-Phong shading és:
             ```(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(N,H), 0.0f), info.mat_ptr->beta)) * depthAttenuation;```
             Mentre que en Phong shading és:
             ```(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(R,V), 0.0f), info.mat_ptr->shininess)) * depthAttenuation;```
-            A més, en Blinn-Phong s'utilitza un paràmetre "beta" per controlar la distribució especular, mentre que en Phong s'utilitza el paràmetre "shininess" per controlar la concentració del brillantor. Ara bé, a la pràctica s'ha utilitzat el mateix valor per als paràmetres "beta" i "shininess".        
-        
+            A més, en Blinn-Phong s'utilitza un paràmetre "beta" per controlar la distribució especular, mentre que en Phong s'utilitza el paràmetre "shininess" per controlar la concentració del brillantor. Ara bé, a la pràctica s'ha utilitzat el mateix valor per als paràmetres "beta" i "shininess".   
+            
         * **4. Implementa *Cel Shading*. Necessites afegir informació en el material?**
             Sí. Cal afegir els diferents colors (més foscos i més clars) que volem que tingui cada material. Això ho hem fet creant una classe abstracta ```ToonMaterial``` que conté un vector de colors (vec3) de mida arbitrària (```colorGradient```). Aquests colors, ordenats segons la seva claror, són els que s'utilitzen per pintar les figures, depenent de l'angle d'incidència de la llum. La classe ```ToonMaterial``` hereta de ```Material```. Alhora, tots els altres materials són classes filles de ```ToonMaterial```.
             
     * **Pas 3**:
         * **2. En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, quina component de la fórmula Blinn-Phong s'haurà de tenir en compte?**
         En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, la component que s'haurà de tenir en compte és la difusa, ja que és la que es veu afectada per la presència d'ombres.
+        
     * **Pas 4**:
         * **3. Tingues en compte que necessitaràs la *nu_t* per a definir el material transparent. Tot i que ara el codi no està llegint aquesta nu_t, on hauries de llegir-la?**
         A la classe Material, al mètode read() s'ha de llegir també el paràmetre nu-t; si el fitxer json conté el paràmetre nut i aquest valor és de tipus double, s'ha d'assignar el valor a la variable nu-t del material.
@@ -221,16 +234,6 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 
 * **Fase 1**: 
-* * **Pas 3b. Tests per trobar què és mes eficaç: Boundong box o spgere?**
-    - Codi utilitzat per a fer els tests:
-        <img src="screenshots/FASE_01/test_code.png" alt="Codi utiliitzat per realitzar els tests" width="400">
-    - Resultat per a la bounding Box:
-    
-     <img src="screenshots/FASE_01/box_time.png" alt="Temps emprat amb la bounding box" width="400">
-        
-    - Resultat per a la bounding Sphere:
-    
-     <img src="screenshots/FASE_01/sphere_time.png" alt="Temps emprat amb la bounding sphere" width="400">
 
 * **Fase 2**:
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
@@ -457,6 +460,17 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     ![Captura de Pantalla 2023-03-20 a las 22 09 24](https://user-images.githubusercontent.com/69910092/226466784-43696e94-f314-4e6f-b6ce-b553b32f6b78.png "Directional Light (1, -0.6, -0.3)")
 
     El groc clar que es veu "independentment d'on ve la llum" és el rim de la bola gran.
+    
+    - SpotLight
+
+    ![image](https://user-images.githubusercontent.com/69910092/228891430-8c54e9af-a8ee-43ef-8bfc-da23f5d081bb.png)
+    
+    Imatge que mostra una spotlight amg els atributs: 
+      "direction": [-1.0, -1.0, 0.0],
+      "position": [1.0, 3.0, 0.0],
+      "cosineCutoff": 0.97,
+      "exponent": 1.5
+
     
 
 * **Més visualitzacions**:
