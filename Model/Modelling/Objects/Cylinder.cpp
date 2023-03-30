@@ -6,7 +6,7 @@
 
 Cylinder::Cylinder()
 {
-    center = vec3(0.0,-0.5,0.0); //base del cilindre
+    center = vec3(0.0,0.0,0.0); //base del cilindre
     radius = 1;
     height = 1;
     axis = vec3(0.0,1.0,0.0);
@@ -20,7 +20,7 @@ Cylinder::Cylinder(vec3 c, vec3 a, float h, float r,float data) :Object(data) {
 }
 
 Cylinder::Cylinder(float data): Object(data){
-    center = vec3(0.0,-0.5,0.0);
+    center = vec3(0.0,0.0,0.0);
     radius = 1;
     height = 1;
     axis = vec3(0.0,1.0,0.0);
@@ -46,7 +46,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     float discriminant= b*b-4*a*c;
 
-    if( (abs(a) > DBL_EPSILON) && discriminant >= DBL_EPSILON) {// si a zero o discriminant negatiu no podem calcular arrel i no hi ha solució al cilindre
+    if( (abs(a) > 0.01) && discriminant >= 0.01) {// si a zero o discriminant negatiu no podem calcular arrel i no hi ha solució al cilindre
         float t0 = (- b + sqrt(discriminant)) / (2*a);
         float t1 = (- b - sqrt(discriminant)) / (2*a);
 
@@ -66,7 +66,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
             vec3 intersect_p = raig.pointAtParameter(intersect_t);
 
-            if( ( intersect_p.y < (center.y + height) ) && (intersect_p.y  > center.y) ) { //xoc dins el cilindre
+            if( ( intersect_p.y < (center.y + height/2.f) ) && (intersect_p.y  >  (center.y - height/2.f) ) ) { //xoc dins el cilindre
                 info.t = intersect_t;
                 info.p = intersect_p;
                 info.normal = normalize(vec3(intersect_p.x, 0.f, intersect_p.z));
@@ -82,7 +82,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // possible xoc amb la tapa superior
 
     vec3  normal = vec3(0,1,0);
-    vec3 point = center + vec3(0,height, 0);
+    vec3 point = center + vec3(0,height/2, 0);
 
     // 1) Calculem la D = -Ax-By-Cz
     float d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
@@ -99,7 +99,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     if (temp < tmax && temp > tmin) { //xoc amb el pla
         vec3 punt_xoc = raig.pointAtParameter(temp);
-          if ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
+          if ( ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) ) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
               info.t = punt_xoc.t;
               info.p = punt_xoc;
               info.normal = normal;
@@ -112,7 +112,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // possible xoc amb la tapa inferior
 
     normal = vec3(0,-1,0);
-    point = center;
+    point = center - vec3(0,height/2, 0);
 
     // 1) Calculem la D = -Ax-By-Cz
     d = -normal[0]*point[0] - normal[1]*point[1] - normal[2]*point[2];
@@ -129,7 +129,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
     if (temp < tmax && temp > tmin) { //xoc amb el pla
         vec3 punt_xoc = raig.pointAtParameter(temp);
-          if ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
+          if ( ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) ) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
               info.t = punt_xoc.t;
               info.p = punt_xoc;
               info.normal = normal;
@@ -153,10 +153,10 @@ void Cylinder::aplicaTG(shared_ptr<TG> t) {
     } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
         QTextStream(stdout)<<"Scaling cylinder \n";
         glm::vec3 scale = scaleTG->scale;
-        radius *= std::sqrt(scale.x * scale.y * scale.z); // Apply scaling to radius
+        radius *= std::sqrt(scale.x * scale.z); // Apply scaling to radius
         height *= scale.y;
     } else {
-        QTextStream(stdout) << "This print should never be displayed; Sphere::aplicaTG \n";
+        QTextStream(stdout) << "This print should never be displayed; Cylinder::aplicaTG \n";
     }
 }
 
