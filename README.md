@@ -324,7 +324,8 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             
         - Visualització del fitxer spheres.json amb el setup setupRenderSpheres.json
         
-            <img src="screenshots/FASE_02/SS/visualitzacio_esferes.png" alt="Visualització del fitxer sheres" width="400">
+            <img src="screenshots/FASE_02/SS/visualitzacio_esferes01.png" alt="Visualització del fitxer sheres" width="400">
+            <img src="screenshots/FASE_02/SS/visualitzacio_esferes02.png" alt="Visualització del fitxer sheres" width="400">
             
         - Escena més complexa modificant el fitxer spheres.json amb 10 objectes
         
