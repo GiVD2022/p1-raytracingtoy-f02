@@ -5,10 +5,12 @@
 #include "ColorShadow.hh"
 #include "NormalShading.h"
 #include "DepthShading.h"
+#include "DepthShadow.hh"
 #include "PhongShading.hh"
 #include "PhongShadow.hh"
 #include "BlinnPhongShading.hh"
 #include "BlinnPhongShadow.hh"
+#include "NormalShadow.hh"
 #include "Celshading.hh"
 #include "CelShadow.h"
 
@@ -20,7 +22,9 @@ public:
         COLOR,
         COLORSHADOW,
         NORMAL,
+        NORMALSHADOW,
         DEPTH,
+        DEPTHSHADOW,
         PHONG,
         PHONGSHADOW,
         BLINNPHONG,

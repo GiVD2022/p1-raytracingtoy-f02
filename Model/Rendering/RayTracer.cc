@@ -113,7 +113,7 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
 
 void RayTracer::init() {
     auto s = setup->getShadingStrategy();
-    auto s_out = ShadingFactory::getInstance().switchShading(s, setup->getShadows());
+    auto s_out = ShadingFactory::getInstance().switchShading(s, (bool) setup->getShadows());
     if (s_out!=nullptr) setup->setShadingStrategy(s_out);
 }
 
