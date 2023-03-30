@@ -264,7 +264,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         e. Proves amb el fitxer data10.json
         
-        <img src="screenshots/FASE_01/REALDATA/mixed_gizmos.png" alt="" width="400">
+        <img src="screenshots/FASE_01/REALDATA/all_spheres.png" alt="" width="400">
     
 
 * **Fase 2**:
