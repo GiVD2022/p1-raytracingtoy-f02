@@ -235,7 +235,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 
 * **Fase 1**: 
-    * * **Pas 3b. Tests per trobar què és mes eficaç: Boundong box o spgere?**
+    * **Pas 3b. Tests per trobar què és mes eficaç: Boundong Box o Sphere?**
         - Codi utilitzat per a fer els tests:
         
         <img src="screenshots/FASE_01/test_code.png" alt="Codi utiliitzat per realitzar els tests" width="400">
@@ -247,6 +247,25 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - Resultat per a la bounding Sphere:
 
          <img src="screenshots/FASE_01/sphere_time.png" alt="Temps emprat amb la bounding sphere" width="400">
+         
+    * **Pas 5. Creació de l'escena a partir de dades geolocalitzades**
+    
+        b. Visualització del pla afitat amb el fitxer fittedPlane.json
+    
+        <img src="screenshots/FASE_01/REALDATA/fitted_plane.png" alt="Visualització del fitted plane definit en fitted_plane.json" width="400">
+        
+        c. Visualització dels "gizmos" tipus Sphere del fitxer data0.json
+        
+        <img src="screenshots/FASE_01/REALDATA/sphere_gizmos.png" alt="" width="400">
+        
+        d. Visualització dels "gizmos" tipus Box del fitxer data_box0.json
+        
+        <img src="screenshots/FASE_01/REALDATA/box_gizmos.png" alt="" width="400">
+        
+        e. Proves amb el fitxer data10.json
+        
+        <img src="screenshots/FASE_01/REALDATA/mixed_gizmos.png" alt="" width="400">
+    
 
 * **Fase 2**:
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
