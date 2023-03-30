@@ -64,15 +64,15 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - [X] Implementar Color i Normal Shadow
             - Pau Hernando
     - Pas 4
-        - [ ] Recursió per rajos secundaris
+        - [X] Recursió per rajos secundaris
             - Núria Torquet
         - [X] Nou material metàl·lic
             - Pau Baldillou
         - [X] Recursió per objectes transparents
             - Núria Torquet
-        - [X] Nou material transparent
-            - Esther Ruano 
-    - Pas 4
+        - [X] Nou material transparent
+            - Esther Ruano
+    - Pas 5
         - [ ] Adapta la visualització per mostrar dades des d'un fitxer
  - Fase 3
     - Pas 1
@@ -170,35 +170,104 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
     * **Pas 2**:
         * **3. Implementa *Phong Shading*. Què necessites canviar?**
+            En general, la diferència més notable entre la implementació de Blinn-Phong shading i Phong shading és la forma en què es calcula el component especular. Mentre que Blinn-Phong utilitza el vector de vista i el vector de mitjana com a paràmetres per a la funció de distribució especular, Phong shading utilitza el vector de reflexió i el vector de vista.
+            Concretament, la fórmula per al component especular en Blinn-Phong shading és:
+            ```(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(N,H), 0.0f), info.mat_ptr->beta)) * depthAttenuation;```
+            Mentre que en Phong shading és:
+            ```(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(R,V), 0.0f), info.mat_ptr->shininess)) * depthAttenuation;```
+            A més, en Blinn-Phong s'utilitza un paràmetre "beta" per controlar la distribució especular, mentre que en Phong s'utilitza el paràmetre "shininess" per controlar la concentració del brillantor. Ara bé, a la pràctica s'ha utilitzat el mateix valor per als paràmetres "beta" i "shininess".        
         
         * **4. Implementa *Cel Shading*. Necessites afegir informació en el material?**
             Sí. Cal afegir els diferents colors (més foscos i més clars) que volem que tingui cada material. Això ho hem fet creant una classe abstracta ```ToonMaterial``` que conté un vector de colors (vec3) de mida arbitrària (```colorGradient```). Aquests colors, ordenats segons la seva claror, són els que s'utilitzen per pintar les figures, depenent de l'angle d'incidència de la llum. La classe ```ToonMaterial``` hereta de ```Material```. Alhora, tots els altres materials són classes filles de ```ToonMaterial```.
-    * **Pas 3*:
+            
+    * **Pas 3**:
         * **2. En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, quina component de la fórmula Blinn-Phong s'haurà de tenir en compte?**
-    * **Pas 4*:
+        En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, la component que s'haurà de tenir en compte és la difusa, ja que és la que es veu afectada per la presència d'ombres.
+    * **Pas 4**:
         * **3. Tingues en compte que necessitaràs la *nu_t* per a definir el material transparent. Tot i que ara el codi no està llegint aquesta nu_t, on hauries de llegir-la?**
+        A la classe Material, al mètode read() s'ha de llegir també el paràmetre nu-t; si el fitxer json conté el paràmetre nut i aquest valor és de tipus double, s'ha d'assignar el valor a la variable nu-t del material.
         
-        **Si assignes el color ambient global en lloc del de *background* en els rajos secundaris que no intersequen amb res, com et canvia la visualització? Raona el per què.**
-           
+        * **Per què si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?**
+        Si tenim el valor MAX_DEPTH a 1, això significa que només es farà un rebot de llum, és a dir, només es seguirà un raig de llum després de xocar amb l'objecte. Per tant, si l'objecte és opac, no es veurà res més enllà d'aquest objecte, ja que només es considera un únic rebot de llum.
+
+        * **Si assignes el color ambient global en lloc del de *background* en els rajos secundaris que no intersequen amb res, com et canvia la visualització? Raona el per què.**
+        Si assignem el color ambient global en lloc del color de fons (background) en els rajos secundaris que no intersequen amb cap objecte, la visualització canvia perquè tots els píxels que no estan directament en la línia de visió dels objectes de la nostra escena reben el mateix color ambient, creant una mena d'il·luminació uniforme en la imatge. Això pot ser útil per crear un efecte d'illuminació ambiental a la nostra escena, però també pot provocar que la imatge aparegui una mica "plana" i sense profunditat.
+
+        * **Raona per què en aquests casos l'escena es veu més clara**
+        Si no es pondera el color local amb (1- colorScattered) els materials transparents no absorveixen la llum que travessa l'objecte, cosa que significa que la llum passa per ells sense ser atenuada. Això pot fer que les escenes semblin més brillants i clares en general, però també afecta negativament en la percepció de la profunditat i oclusió de la imatge.
+        
+
+    
     
 ### Screenshots de cada fase
 * **Fase 0**:
    - Intersecció dels rajos amb una esfera
     
-    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="300">
-    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="300">
-    <img src="screenshots/FASE_00/10_esfera_depth_shading.png" alt="Depth shading una esfera" width="300">
+    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="400">
+    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="400">
+    <img src="screenshots/FASE_00/10_esfera_depth_shading.png" alt="Depth shading una esfera" width="400">
     
     - Intersecció dels rajos amb dues esferes
     
-    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="300">
-    <img src="screenshots/FASE_00/11_virtualscene_depth_shading.png" alt="Depth shading dues esferes" width="300">
+    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="400">
+    <img src="screenshots/FASE_00/11_virtualscene_depth_shading.png" alt="Depth shading dues esferes" width="400">
 
 
 * **Fase 1**: 
 
 * **Fase 2**:
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
+        - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
+
+            a. Si només es calcula la component ambient
+            
+            <img src="screenshots/FASE_02/SS/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="400">
+            
+            b. Si només es calcula la component difosa
+            
+            <img src="screenshots/FASE_02/SS/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
+            
+            c. Si només es calcula l'especular
+            
+            <img src="screenshots/FASE_02/SS/BP_especular.png" alt="Blinn-Phong amb component especular" width="400">
+            
+            d. Ara les tres juntes
+            
+            <img src="screenshots/FASE_02/SS/BP_tres.png" alt="Blinn-Phong amb les tres components" width="400">
+            
+            e. I afegint atenuació amb profunditat
+            
+            <img src="screenshots/FASE_02/SS/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="400">
+            
+            f. I afegint l'ambient global
+            
+            <img src="screenshots/FASE_02/SS/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="400">
+
+
+        - Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
+            a. Si només es calcula la component ambient
+            
+            <img src="screenshots/FASE_02/SS/P_ambient.png" alt="Phong amb component ambient" width="400">
+            
+            b. Si només es calcula la component difosa
+            
+            <img src="screenshots/FASE_02/SS/P_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
+            
+            c. Si només es calcula l'especular
+            
+            <img src="screenshots/FASE_02/SS/P_especular.png" alt="Phong amb component especular" width="400">
+            
+            d. Ara les tres juntes
+            
+            <img src="screenshots/FASE_02/SS/P_tres.png" alt="Phong amb les tres components" width="400">
+            
+            e. I afegint atenuació amb profunditat
+            
+            <img src="screenshots/FASE_02/SS/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="400">
+            
+            f. Phong Shading no té llum ambient global, només té component ambient local
+
+
         - Cel Shading i les seves ombres (Pas 3)
 
             ![Captura de Pantalla 2023-03-20 a las 21 14 03](https://user-images.githubusercontent.com/69910092/226461156-e1d1c1fa-fd01-4c8f-91ab-8ff6ee3161ef.png "Component ambient") 
@@ -236,85 +305,99 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             ![Captura de Pantalla 2023-03-20 a las 21 36 41](https://user-images.githubusercontent.com/69910092/226461176-0803796c-25bb-4497-a74b-0646fc1fec5b.png "Tot junt, bola vermella") 
 
             La mateixa imatge amb una bola vermella i més samples.
+    
+    * **Pas 3. Afegeix ombres**
 
+        - Blinn Phong Shadow des de dos punts de vista
+        
+            <img src="screenshots/FASE_02/SS/BP_shadow01.png" alt="Blinn-Phong shadow amb x=0" width="350">
+            <img src="screenshots/FASE_02/SS/BP_shadow02.png" alt="Blinn-Phong shadow amb x=2" width="350">
+            
+        - Phong Shadow des de dos punts de vista
+        
+            <img src="screenshots/FASE_02/SS/P_shadow01.png" alt="Blinn-Phong amb les tres components" width="350">
+            <img src="screenshots/FASE_02/SS/P_shadow02.png" alt="Blinn-Phong amb les tres components" width="350">
+            
+        - Normal Shadow
+        
+            <img src="screenshots/FASE_02/SS/NORMAL_shadow.png" alt="Blinn-Phong amb les tres components" width="350">
+            
+        - Visualització del fitxer spheres.json amb el setup setupRenderSpheres.json
+        
+            <img src="screenshots/FASE_02/SS/visualitzacio_esferes01.png" alt="Visualització del fitxer sheres" width="400">
+            <img src="screenshots/FASE_02/SS/visualitzacio_esferes02.png" alt="Visualització del fitxer sheres" width="400">
+            
+        - Escena més complexa modificant el fitxer spheres.json (reanomenat spheres_10.json) amb 10 objectes i Blinn-Phong Shading
+        
+            <img src="screenshots/FASE_02/SS/visualitzacio_alt01.png" alt="Visualització del fitxer multiple_spheres" width="400">
+            <img src="screenshots/FASE_02/SS/visualitzacio_alt02.png" alt="Visualització del fitxer multiple_spheres" width="400">
+            
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
         - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
         
-        <img src="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="300">
-        <img src="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="300">
-        <img src="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="400">
         
         - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
     
-        <img src="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="300">
-        <img src="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="400">
     
     
         - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
     
-        <img src="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="300">
-        <img src="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="300">
-        <img src="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="300">
+        <img src="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="400">
 
         - Visualitzacions dels shadings Phong, Cel i Normal amb mateix setup file i fitxer de dades.
             - Phong Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_20.png" alt="Amb Max Depth 1" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_21.png" alt="Amb Max Depth 3" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_22.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_20.png" alt="Amb Max Depth 1" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_21.png" alt="Amb Max Depth 3" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_22.png" alt="Amb Max Depth 10" width="400">
 
             - Normal Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_23.png" alt="Amb Max Depth 1" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_24.png" alt="Amb Max Depth 3" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_25.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_23.png" alt="Amb Max Depth 1" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_24.png" alt="Amb Max Depth 3" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_25.png" alt="Amb Max Depth 10" width="400">
             
             - Cel Shading:
 
-                <img src="screenshots/FASE_02/RRR/RRR_26.png" alt="Amb Max Depth 1" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_27.png" alt="Amb Max Depth 3" width="300">
-                <img src="screenshots/FASE_02/RRR/RRR_28.png" alt="Amb Max Depth 10" width="300">
+                <img src="screenshots/FASE_02/RRR/RRR_26.png" alt="Amb Max Depth 1" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_27.png" alt="Amb Max Depth 3" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_28.png" alt="Amb Max Depth 10" width="400">
     
     * **Pas 5: Afegir recursió al mètode RayPixel per a tindre en compte objectes transparents**
         
-        - **Tot i que el codi no està llegint la nu-t, on hauries de llegir-la?**
-            A la classe Material, al mètode read() s'ha de llegir també el paràmetre nu-t; si el fitxer json conté el paràmetre nut i aquest valor és de tipus double, s'ha d'assignar el valor a la variable nu-t del material.
-        
         - Resultats obtinguts al visualitzar el fitxer spheresMetalTransp.json i el setupRenderTwoSpheres.json. Max depth pren els valors 1, 2 i 3, i el nombre de samples és 10.
         
-            <img src="screenshots/FASE_02/RRR/RRR_09.png" alt="Amb Max Depth 1" width="300">
-            <img src="screenshots/FASE_02/RRR/RRR_10.png" alt="Amb Max Depth 2" width="300">
-            <img src="screenshots/FASE_02/RRR/RRR_11.png" alt="Amb Max Depth 3" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_09.png" alt="Amb Max Depth 1" width="350">
+            <img src="screenshots/FASE_02/RRR/RRR_10.png" alt="Amb Max Depth 2" width="350">
+            <img src="screenshots/FASE_02/RRR/RRR_11.png" alt="Amb Max Depth 3" width="350">
     
         - Modificant el punt de vista amb valors de lookFrom (-5, 0, 1) i lookAt (-2, 0, 0) i canviat el valor de kd a [0.7, 0.7, 0.7]
     
-            <img src="screenshots/FASE_02/RRR/RRR_12.png" alt="Amb Max Depth 3" width="300">
-
-        - **Per què si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?**
-            Si tenim el valor MAX_DEPTH a 1, això significa que només es farà un rebot de llum, és a dir, només es seguirà un raig de llum després de xocar amb l'objecte. Per tant, si l'objecte és opac, no es veurà res més enllà d'aquest objecte, ja que només es considera un únic rebot de llum.
+            <img src="screenshots/FASE_02/RRR/RRR_12.png" alt="Amb Max Depth 3" width="350">
         
         - Visualitzacions amb el fitxer fourSpheres.json i el setupRenderFourSpheres.json i nivells de recursivitat MAXDEPTH = 1, 2, i 4. Nombre de samples és 10.
         
-            <img src="screenshots/FASE_02/RRR/RRR_13.png" alt="Amb Max Depth 1" width="300">
-            <img src="screenshots/FASE_02/RRR/RRR_14.png" alt="Amb Max Depth 2" width="300">
-            <img src="screenshots/FASE_02/RRR/RRR_15.png" alt="Amb Max Depth 4" width="300">
-    
-        - **Si assignes el color ambient global enlloc del de background en els rajos secundaris que no intersequen amb res. Com et canvia la visualització? Raona el per què?**
-            Si assignem el color ambient global en lloc del color de fons (background) en els rajos secundaris que no intersequen amb cap objecte, la visualització canvia perquè tots els píxels que no estan directament en la línia de visió dels objectes de la nostra escena reben el mateix color ambient, creant una mena d'il·luminació uniforme en la imatge. Això pot ser útil per crear un efecte d'illuminació ambiental a la nostra escena, però també pot provocar que la imatge aparegui una mica "plana" i sense profunditat.
+            <img src="screenshots/FASE_02/RRR/RRR_13.png" alt="Amb Max Depth 1" width="350">
+            <img src="screenshots/FASE_02/RRR/RRR_14.png" alt="Amb Max Depth 2" width="350">
+            <img src="screenshots/FASE_02/RRR/RRR_15.png" alt="Amb Max Depth 4" width="350">
             
         - Visualització de l'escena anterior fent que els rajos secundaris que no intersequen amb l'escena rebin el color ambient global.
         
-            <img src="screenshots/FASE_02/RRR/RRR_16.png" alt="Amb Max Depth 1" width="300">
+            <img src="screenshots/FASE_02/RRR/RRR_16.png" alt="Amb Max Depth 1" width="350">
     
         - Visualització de l'escena anterior fent que no es ponderi el color local.
     
-            <img src="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="300">
-            <img src="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="300">
-            <img src="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="300">
-
-        - **Raona per què en aquests casos l'escena es veu més clara**
-            Si no es pondera el color local amb (1- colorScattered) els materials transparents no absorveixen la llum que travessa l'objecte, cosa que significa que la llum passa per ells sense ser atenuada. Això pot fer que les escenes semblin més brillants i clares en general, però també afecta negativament en la percepció de la profunditat i oclusió de la imatge.
+            <img src="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="350">
+            <img src="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="350">
+            <img src="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="350">
     
         
 * **Fase 3**:
