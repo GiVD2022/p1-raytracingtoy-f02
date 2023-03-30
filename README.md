@@ -244,6 +244,12 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     * **Pas 2**: Triangle
 
     ![image](https://user-images.githubusercontent.com/69910092/228960658-47d03eff-3096-46dd-9f6d-c450367d9112.png)
+    
+    * **Pas 3**: Mesh
+
+    ![image](https://user-images.githubusercontent.com/69910092/228964838-c6d70d92-44d0-46cd-9a63-fb397de6b0ff.png)
+    
+    Tetera del campus amb Normal Shading i ombres.
 
     * **Pas 3b. Tests per trobar què és mes eficaç: Boundong Box o Sphere?**
         - Codi utilitzat per a fer els tests:
