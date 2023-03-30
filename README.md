@@ -272,15 +272,19 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         c. Visualització dels "gizmos" tipus Sphere del fitxer data0.json
         
-        <img src="screenshots/FASE_01/REALDATA/sphere_gizmos.png" alt="" width="400">
+        <img src="screenshots/FASE_01/REALDATA/sphere_gizmos.png" alt="Visualització del gizmo esfera amb una dada" width="400">
         
         d. Visualització dels "gizmos" tipus Box del fitxer data_box0.json
         
-        <img src="screenshots/FASE_01/REALDATA/box_gizmos.png" alt="" width="400">
+        <img src="screenshots/FASE_01/REALDATA/box_gizmos.png" alt="Visualització del gizmo box amb una dada" width="400">
         
         e. Proves amb el fitxer data10.json
         
-        <img src="screenshots/FASE_01/REALDATA/all_spheres.png" alt="" width="400">
+        <img src="screenshots/FASE_01/REALDATA/all_spheres.png" alt="Visualització del gizmo esfera amb 10 dades" width="400">
+        
+        f. Modificació del fitxer data0.json per a afegir esfera i box com a gizmos. El fitxer resultant s'ha anomenat data0 _box_sphere.json
+        
+        <img src="screenshots/FASE_01/REALDATA/sphere_box_gizmo.png" alt="Visualització de gizmos esfera i box, d'una dada cadascuna" width="400">
     
 
 * **Fase 2**:
