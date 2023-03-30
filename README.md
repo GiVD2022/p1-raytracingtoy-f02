@@ -72,7 +72,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             - Núria Torquet
         - [X] Nou material transparent
             - Esther Ruano 
-    - Pas 4
+    - Pas 5
         - [ ] Adapta la visualització per mostrar dades des d'un fitxer
  - Fase 3
     - Pas 1
@@ -172,13 +172,9 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         * **3. Implementa *Phong Shading*. Què necessites canviar?**
             En general, la diferència més notable entre la implementació de Blinn-Phong shading i Phong shading és la forma en què es calcula el component especular. Mentre que Blinn-Phong utilitza el vector de vista i el vector de mitjana com a paràmetres per a la funció de distribució especular, Phong shading utilitza el vector de reflexió i el vector de vista.
             Concretament, la fórmula per al component especular en Blinn-Phong shading és:
-            ""
-            (info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(N,H), 0.0f), info.mat_ptr->beta)) * depthAttenuation;
-            ""
+            ```(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(N,H), 0.0f), info.mat_ptr->beta)) * depthAttenuation;```
             Mentre que en Phong shading és:
-            ""
-            (info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(R,V), 0.0f), info.mat_ptr->shininess)) * depthAttenuation;
-            ""
+            ```(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(R,V), 0.0f), info.mat_ptr->shininess)) * depthAttenuation;```
             A més, en Blinn-Phong s'utilitza un paràmetre "beta" per controlar la distribució especular, mentre que en Phong s'utilitza el paràmetre "shininess" per controlar la concentració del brillantor. Ara bé, a la pràctica s'ha utilitzat el mateix valor per als paràmetres "beta" i "shininess".        
         
         * **4. Implementa *Cel Shading*. Necessites afegir informació en el material?**
