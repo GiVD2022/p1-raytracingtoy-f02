@@ -64,7 +64,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - [X] Implementar Color i Normal Shadow
             - Pau Hernando
     - Pas 4
-        - [ ] Recursió per rajos secundaris
+        - [X] Recursió per rajos secundaris
             - Núria Torquet
         - [X] Nou material metàl·lic
             - Pau Baldillou
@@ -170,16 +170,36 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
     * **Pas 2**:
         * **3. Implementa *Phong Shading*. Què necessites canviar?**
-        
+            En general, la diferència més notable entre la implementació de Blinn-Phong shading i Phong shading és la forma en què es calcula el component especular. Mentre que Blinn-Phong utilitza el vector de vista i el vector de mitjana com a paràmetres per a la funció de distribució especular, Phong shading utilitza el vector de reflexió i el vector de vista.
+
+Concretament, la fórmula per al component especular en Blinn-Phong shading és:
+(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(N,H), 0.0f), info.mat_ptr->beta)) * depthAttenuation;
+
+Mentre que en Phong shading és:
+(info.mat_ptr->Ks * light->getIs() * pow(std::max(dot(R,V), 0.0f), info.mat_ptr->shininess)) * depthAttenuation;
+
+A més, en Blinn-Phong s'utilitza un paràmetre "beta" per controlar la distribució especular, mentre que en Phong s'utilitza el paràmetre "shininess" per controlar la concentració del brillantor. Ara bé, a la pràctica s'ha utilitzat el mateix valor per als paràmetres "beta" i "shininess".        
         * **4. Implementa *Cel Shading*. Necessites afegir informació en el material?**
             Sí. Cal afegir els diferents colors (més foscos i més clars) que volem que tingui cada material. Això ho hem fet creant una classe abstracta ```ToonMaterial``` que conté un vector de colors (vec3) de mida arbitrària (```colorGradient```). Aquests colors, ordenats segons la seva claror, són els que s'utilitzen per pintar les figures, depenent de l'angle d'incidència de la llum. La classe ```ToonMaterial``` hereta de ```Material```. Alhora, tots els altres materials són classes filles de ```ToonMaterial```.
+            
     * **Pas 3*:
         * **2. En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, quina component de la fórmula Blinn-Phong s'haurà de tenir en compte?**
+        En el cas que hi hagi un objecte entre la llum i el punt on s'està calculant la il·luminació, la component que s'haurà de tenir en compte és la difusa, ja que és la que es veu afectada per la presència d'ombres.
     * **Pas 4*:
         * **3. Tingues en compte que necessitaràs la *nu_t* per a definir el material transparent. Tot i que ara el codi no està llegint aquesta nu_t, on hauries de llegir-la?**
+        A la classe Material, al mètode read() s'ha de llegir també el paràmetre nu-t; si el fitxer json conté el paràmetre nut i aquest valor és de tipus double, s'ha d'assignar el valor a la variable nu-t del material.
         
+        **Per què si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?**
+        Si tenim el valor MAX_DEPTH a 1, això significa que només es farà un rebot de llum, és a dir, només es seguirà un raig de llum després de xocar amb l'objecte. Per tant, si l'objecte és opac, no es veurà res més enllà d'aquest objecte, ja que només es considera un únic rebot de llum.
+
         **Si assignes el color ambient global en lloc del de *background* en els rajos secundaris que no intersequen amb res, com et canvia la visualització? Raona el per què.**
-           
+        Si assignem el color ambient global en lloc del color de fons (background) en els rajos secundaris que no intersequen amb cap objecte, la visualització canvia perquè tots els píxels que no estan directament en la línia de visió dels objectes de la nostra escena reben el mateix color ambient, creant una mena d'il·luminació uniforme en la imatge. Això pot ser útil per crear un efecte d'illuminació ambiental a la nostra escena, però també pot provocar que la imatge aparegui una mica "plana" i sense profunditat.
+
+        **Raona per què en aquests casos l'escena es veu més clara**
+        Si no es pondera el color local amb (1- colorScattered) els materials transparents no absorveixen la llum que travessa l'objecte, cosa que significa que la llum passa per ells sense ser atenuada. Això pot fer que les escenes semblin més brillants i clares en general, però també afecta negativament en la percepció de la profunditat i oclusió de la imatge.
+        
+
+    
     
 ### Screenshots de cada fase
 * **Fase 0**:
@@ -278,9 +298,6 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
     * **Pas 5: Afegir recursió al mètode RayPixel per a tindre en compte objectes transparents**
         
-        - **Tot i que el codi no està llegint la nu-t, on hauries de llegir-la?**
-            A la classe Material, al mètode read() s'ha de llegir també el paràmetre nu-t; si el fitxer json conté el paràmetre nut i aquest valor és de tipus double, s'ha d'assignar el valor a la variable nu-t del material.
-        
         - Resultats obtinguts al visualitzar el fitxer spheresMetalTransp.json i el setupRenderTwoSpheres.json. Max depth pren els valors 1, 2 i 3, i el nombre de samples és 10.
         
             <img src="screenshots/FASE_02/RRR/RRR_09.png" alt="Amb Max Depth 1" width="300">
@@ -290,18 +307,12 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - Modificant el punt de vista amb valors de lookFrom (-5, 0, 1) i lookAt (-2, 0, 0) i canviat el valor de kd a [0.7, 0.7, 0.7]
     
             <img src="screenshots/FASE_02/RRR/RRR_12.png" alt="Amb Max Depth 3" width="300">
-
-        - **Per què si tens el MAX_DEPTH a 1, l'esfera no es veu transparent?**
-            Si tenim el valor MAX_DEPTH a 1, això significa que només es farà un rebot de llum, és a dir, només es seguirà un raig de llum després de xocar amb l'objecte. Per tant, si l'objecte és opac, no es veurà res més enllà d'aquest objecte, ja que només es considera un únic rebot de llum.
         
         - Visualitzacions amb el fitxer fourSpheres.json i el setupRenderFourSpheres.json i nivells de recursivitat MAXDEPTH = 1, 2, i 4. Nombre de samples és 10.
         
             <img src="screenshots/FASE_02/RRR/RRR_13.png" alt="Amb Max Depth 1" width="300">
             <img src="screenshots/FASE_02/RRR/RRR_14.png" alt="Amb Max Depth 2" width="300">
             <img src="screenshots/FASE_02/RRR/RRR_15.png" alt="Amb Max Depth 4" width="300">
-    
-        - **Si assignes el color ambient global enlloc del de background en els rajos secundaris que no intersequen amb res. Com et canvia la visualització? Raona el per què?**
-            Si assignem el color ambient global en lloc del color de fons (background) en els rajos secundaris que no intersequen amb cap objecte, la visualització canvia perquè tots els píxels que no estan directament en la línia de visió dels objectes de la nostra escena reben el mateix color ambient, creant una mena d'il·luminació uniforme en la imatge. Això pot ser útil per crear un efecte d'illuminació ambiental a la nostra escena, però també pot provocar que la imatge aparegui una mica "plana" i sense profunditat.
             
         - Visualització de l'escena anterior fent que els rajos secundaris que no intersequen amb l'escena rebin el color ambient global.
         
@@ -312,9 +323,6 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             <img src="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="300">
             <img src="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="300">
             <img src="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="300">
-
-        - **Raona per què en aquests casos l'escena es veu més clara**
-            Si no es pondera el color local amb (1- colorScattered) els materials transparents no absorveixen la llum que travessa l'objecte, cosa que significa que la llum passa per ells sense ser atenuada. Això pot fer que les escenes semblin més brillants i clares en general, però també afecta negativament en la percepció de la profunditat i oclusió de la imatge.
     
         
 * **Fase 3**:
