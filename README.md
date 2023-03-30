@@ -235,6 +235,12 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 
 * **Fase 1**: 
+    * **Pas1**. Box 
+    
+    ![image](https://user-images.githubusercontent.com/69910092/228960124-8ff69687-587e-4cf4-a167-c169edb43f55.png)
+    
+    Normal shading per mostrar bé les cares de la caixa.
+
     * **Pas 3b. Tests per trobar què és mes eficaç: Boundong Box o Sphere?**
         - Codi utilitzat per a fer els tests:
         
