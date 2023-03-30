@@ -594,6 +594,11 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     - Cilindre
 
     ![image](https://user-images.githubusercontent.com/69910092/228961086-0de78c19-5360-423c-93b1-fb63a0e393f6.png)
+    
+    - Esfera com a base
+    
+    <img width="400" alt="Captura de pantalla 2023-03-31 a las 1 29 33" src="https://user-images.githubusercontent.com/44063174/228987659-0d9492ee-ace9-4b8a-8457-d2bc95d57be1.png">
+
 
     
 
