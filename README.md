@@ -203,14 +203,14 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 * **Fase 0**:
    - Intersecció dels rajos amb una esfera
     
-    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="350">
-    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="350">
-    <img src="screenshots/FASE_00/10_esfera_depth_shading.png" alt="Depth shading una esfera" width="350">
+    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="400">
+    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="400">
+    <img src="screenshots/FASE_00/10_esfera_depth_shading.png" alt="Depth shading una esfera" width="400">
     
     - Intersecció dels rajos amb dues esferes
     
-    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="350">
-    <img src="screenshots/FASE_00/11_virtualscene_depth_shading.png" alt="Depth shading dues esferes" width="350">
+    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="400">
+    <img src="screenshots/FASE_00/11_virtualscene_depth_shading.png" alt="Depth shading dues esferes" width="400">
 
 
 * **Fase 1**: 
@@ -221,49 +221,49 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
             a. Si només es calcula la component ambient
             
-            <img src="screenshots/FASE_02/SS/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="350">
+            <img src="screenshots/FASE_02/SS/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="400">
             
             b. Si només es calcula la component difosa
             
-            <img src="screenshots/FASE_02/SS/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="350">
+            <img src="screenshots/FASE_02/SS/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
             
             c. Si només es calcula l'especular
             
-            <img src="screenshots/FASE_02/SS/BP_especular.png" alt="Blinn-Phong amb component especular" width="350">
+            <img src="screenshots/FASE_02/SS/BP_especular.png" alt="Blinn-Phong amb component especular" width="400">
             
             d. Ara les tres juntes
             
-            <img src="screenshots/FASE_02/SS/BP_tres.png" alt="Blinn-Phong amb les tres components" width="350">
+            <img src="screenshots/FASE_02/SS/BP_tres.png" alt="Blinn-Phong amb les tres components" width="400">
             
             e. I afegint atenuació amb profunditat
             
-            <img src="screenshots/FASE_02/SS/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="350">
+            <img src="screenshots/FASE_02/SS/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="400">
             
             f. I afegint l'ambient global
             
-            <img src="screenshots/FASE_02/SS/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="350">
+            <img src="screenshots/FASE_02/SS/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="400">
 
 
         - Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
             a. Si només es calcula la component ambient
             
-            <img src="screenshots/FASE_02/SS/P_ambient.png" alt="Phong amb component ambient" width="350">
+            <img src="screenshots/FASE_02/SS/P_ambient.png" alt="Phong amb component ambient" width="400">
             
             b. Si només es calcula la component difosa
             
-            <img src="screenshots/FASE_02/SS/P_difuse.png" alt="Blinn-Phong amb component difosa" width="350">
+            <img src="screenshots/FASE_02/SS/P_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
             
             c. Si només es calcula l'especular
             
-            <img src="screenshots/FASE_02/SS/P_especular.png" alt="Phong amb component especular" width="350">
+            <img src="screenshots/FASE_02/SS/P_especular.png" alt="Phong amb component especular" width="400">
             
             d. Ara les tres juntes
             
-            <img src="screenshots/FASE_02/SS/P_tres.png" alt="Phong amb les tres components" width="350">
+            <img src="screenshots/FASE_02/SS/P_tres.png" alt="Phong amb les tres components" width="400">
             
             e. I afegint atenuació amb profunditat
             
-            <img src="screenshots/FASE_02/SS/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="350">
+            <img src="screenshots/FASE_02/SS/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="400">
             
             f. Phong Shading no té llum ambient global, només té component ambient local
 
@@ -324,51 +324,51 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             
         - Visualització del fitxer spheres.json amb el setup setupRenderSpheres.json
         
-            <img src="screenshots/FASE_02/SS/visualitzacio_esferes.png" alt="Visualització del fitxer sheres" width="350">
+            <img src="screenshots/FASE_02/SS/visualitzacio_esferes.png" alt="Visualització del fitxer sheres" width="400">
             
         - Escena més complexa modificant el fitxer spheres.json amb 10 objectes
         
-            <img src="screenshots/FASE_02/SS/visualitzacio_alt.png" alt="Visualització del fitxer multiple_spheres" width="350">
+            <img src="screenshots/FASE_02/SS/visualitzacio_alt.png" alt="Visualització del fitxer multiple_spheres" width="400">
             
             
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
         - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
         
-        <img src="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="350">
-        <img src="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="350">
-        <img src="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="350">
+        <img src="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="400">
         
         - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
     
-        <img src="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="350">
-        <img src="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="350">
+        <img src="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="400">
     
     
         - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
     
-        <img src="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="350">
-        <img src="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="350">
-        <img src="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="350">
+        <img src="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="400">
+        <img src="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="400">
 
         - Visualitzacions dels shadings Phong, Cel i Normal amb mateix setup file i fitxer de dades.
             - Phong Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_20.png" alt="Amb Max Depth 1" width="350">
-                <img src="screenshots/FASE_02/RRR/RRR_21.png" alt="Amb Max Depth 3" width="350">
-                <img src="screenshots/FASE_02/RRR/RRR_22.png" alt="Amb Max Depth 10" width="350">
+                <img src="screenshots/FASE_02/RRR/RRR_20.png" alt="Amb Max Depth 1" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_21.png" alt="Amb Max Depth 3" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_22.png" alt="Amb Max Depth 10" width="400">
 
             - Normal Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_23.png" alt="Amb Max Depth 1" width="350">
-                <img src="screenshots/FASE_02/RRR/RRR_24.png" alt="Amb Max Depth 3" width="350">
-                <img src="screenshots/FASE_02/RRR/RRR_25.png" alt="Amb Max Depth 10" width="350">
+                <img src="screenshots/FASE_02/RRR/RRR_23.png" alt="Amb Max Depth 1" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_24.png" alt="Amb Max Depth 3" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_25.png" alt="Amb Max Depth 10" width="400">
             
             - Cel Shading:
 
-                <img src="screenshots/FASE_02/RRR/RRR_26.png" alt="Amb Max Depth 1" width="350">
-                <img src="screenshots/FASE_02/RRR/RRR_27.png" alt="Amb Max Depth 3" width="350">
-                <img src="screenshots/FASE_02/RRR/RRR_28.png" alt="Amb Max Depth 10" width="350">
+                <img src="screenshots/FASE_02/RRR/RRR_26.png" alt="Amb Max Depth 1" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_27.png" alt="Amb Max Depth 3" width="400">
+                <img src="screenshots/FASE_02/RRR/RRR_28.png" alt="Amb Max Depth 10" width="400">
     
     * **Pas 5: Afegir recursió al mètode RayPixel per a tindre en compte objectes transparents**
         
