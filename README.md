@@ -288,6 +288,17 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
 
 * **Fase 2**:
+    * **Pas 1. Aliasing i Gamma Correction:**
+        a. Apliquem anti aliasing fent la mitja per cada pixel
+        
+        b. Fem una correcció per tal d'aclarir la imatge
+        
+            - Resultat abans:
+                <img src="screenshots/FASE_02/without_aliasing.png" alt="Sense aplicar" width="400">
+                
+            - Resultat després:
+            <img src="screenshots/FASE_02/wit_aliasing.png" alt="Aplicat" width="400">
+    
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
         - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
 
@@ -470,7 +481,61 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             <img src="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="350">
             <img src="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="350">
             <img src="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="350">
+    * **Pas 6: Visualization mapping**
     
+        - Renderitzar el fitxer data0.json carregant el fitxer seripRenderData0,json com a setUp:
+        
+        <img src="screenshots/FASE_02/PAS5/data0.png" alt="data0.json" width="400">
+        
+        - Data file: dadesBCNOneValue.json , Load file: setupDataBCNOneValue.json
+        
+        <img src="screenshots/FASE_02/PAS5/one_value.png" alt="one value" width="400">
+        
+        
+        - Data file: dadesBCNZoom.json , Load file: setupDataBCN_Zoom.json
+        
+        <img src="screenshots/FASE_02/PAS5/zoom.png" alt="ZOOM" width="400">
+        
+        - Data file: dadesBCN.json , Load file: setupDataBCN.json, Fitted plane: Y = 0
+        
+        <img src="screenshots/FASE_02/PAS5/dadesBCN.png" alt="BCN" width="400">
+        
+        - Data file: dadesBCN.json , Load file: setupDataBCN.json, Fitted plane: Y = -1
+        
+        <img src="screenshots/FASE_02/PAS5/dadesBCN_lowPlane.png" alt="low Plane" width="400">
+        
+        - El mateix món virtual, però vist des del costat
+        
+        <img src="screenshots/FASE_02/PAS5/dadesBCN_costat.png" alt="costat" width="400">
+        
+        - Data file: dadesBCNMetal.json , Load file: setupDataBCNMetal.json
+        
+        <img src="screenshots/FASE_02/PAS5/metal.png" alt="metal" width="400">
+        
+        - Data file: dadesBCNTransparent.json , Load file: setupRenderData0.json, Max depth: 3
+        
+        <img src="screenshots/FASE_02/PAS5/transparent_different_setup.png" alt="deff setup" width="400">
+        
+        - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json
+        
+        <img src="screenshots/FASE_02/PAS5/transparent.png" alt="transparent" width="400">
+        
+        - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vup: (-1,0,0)
+        
+        <img src="screenshots/FASE_02/PAS5/transparent_-1_0_0.png" alt="(-1,0,0)" width="400">
+        
+        - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vup: (1,1,0)
+        
+        <img src="screenshots/FASE_02/PAS5/transparent_1_1_0.png" alt="(1,1,0)" width="400">
+        
+        - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vfov: 20
+        
+        <img src="screenshots/FASE_02/PAS5/transparent_20_vup.png" alt="vfov 20" width="400">
+        
+        - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vfov: 10
+        
+        <img src="screenshots/FASE_02/PAS5/transparent_10_vfov.png" alt="vfov 10" width="400">
+        
         
 * **Fase 3**:
     - **Amb el fitxer de setup setupDataEuropa.json quina de les dues imatges obtens? Raona per què.**
