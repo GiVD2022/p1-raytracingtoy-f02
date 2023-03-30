@@ -107,18 +107,19 @@ void SceneFactoryData::read(const QJsonObject &json)
                 }
             }
         }
-        mapping = make_shared<VisualMapping>();
-        mapping->read(json);
 
-        if (json.contains("attributes") && json["attributes"].isArray()) {
-          QJsonArray attributeMappingsArray = json["attributes"].toArray();
-          for (int propIndex = 0; propIndex < attributeMappingsArray.size(); propIndex++) {
-              QJsonObject propObject = attributeMappingsArray[propIndex].toObject();
-              mapping->readAttribute(propObject);
-              readData(propObject);
+    }
+    mapping = make_shared<VisualMapping>();
+    mapping->read(json);
 
-          }
-        }
+    if (json.contains("attributes") && json["attributes"].isArray()) {
+      QJsonArray attributeMappingsArray = json["attributes"].toArray();
+      for (int propIndex = 0; propIndex < attributeMappingsArray.size(); propIndex++) {
+          QJsonObject propObject = attributeMappingsArray[propIndex].toObject();
+          mapping->readAttribute(propObject);
+          readData(propObject);
+
+      }
     }
 }
 //! [0]
@@ -162,7 +163,9 @@ void SceneFactoryData::print(int indentation) const
     QTextStream(stdout) << indent << "scene:\t" << scene->name << "\n";
     QTextStream(stdout) << indent << "typeScene:\t" << SceneFactory::getNameType(currentType) << "\n";
     QTextStream(stdout) << indent << "base:\t\n";
-    scene->baseObject->print(indentation +2);
+    if(scene->baseObject != nullptr){
+        scene->baseObject->print(indentation +2);
+    }
     mapping->print(indentation+2);
 
     QTextStream(stdout) << indent << "Attributes:\t\n";
