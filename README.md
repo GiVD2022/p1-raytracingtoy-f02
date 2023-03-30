@@ -513,6 +513,10 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
       "cosineCutoff": 0.97,
       "exponent": 1.5
 
+    - Cilindre
+
+    ![image](https://user-images.githubusercontent.com/69910092/228961086-0de78c19-5360-423c-93b1-fb63a0e393f6.png)
+
     
 
 * **Més visualitzacions**:
