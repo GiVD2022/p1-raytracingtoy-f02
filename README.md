@@ -509,7 +509,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         - El mateix món virtual, però vist des del costat
         
-        <img src="screenshots/FASE_02/PAS5/dadesBCN_costat.png" alt="costat" width="400">
+        <img src="screenshots/FASE_02/PAS5/dadesBSN_costat.png" alt="costat" width="400">
         
         - Data file: dadesBCNMetal.json , Load file: setupDataBCNMetal.json
         
@@ -525,11 +525,11 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vup: (-1,0,0)
         
-        <img src="screenshots/FASE_02/PAS5/transparent_-1_0_0.png" alt="(-1,0,0)" width="400">
+        <img src="screenshots/FASE_02/PAS5/transparent_-1_0_0_vup.png" alt="(-1,0,0)" width="400">
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vup: (1,1,0)
         
-        <img src="screenshots/FASE_02/PAS5/transparent_1_1_0.png" alt="(1,1,0)" width="400">
+        <img src="screenshots/FASE_02/PAS5/transparent_1_1_0_vup.png" alt="(1,1,0)" width="400">
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vfov: 20
         
