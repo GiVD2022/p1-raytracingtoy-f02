@@ -293,7 +293,13 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
     trasl = vec3(new_x, new_y, new_z);
     // Si és una esfera, modifiquem la translació
     if (auto sphere = std::dynamic_pointer_cast<Sphere>(scene->baseObject)) {
-        trasl -= sphere->getCenter();
+        float phi = new_x * 2.0f * M_PI;
+        float theta = new_z * M_PI;
+
+        float x = sphere->getRadius() * std::sin(theta) * std::cos(phi);
+        float y = sphere->getRadius() * std::sin(theta) * std::sin(phi);
+        float z = sphere->getRadius() * std::cos(theta);
+        trasl = glm::vec3(x, y, z) + sphere->getCenter();
     }
 
 
