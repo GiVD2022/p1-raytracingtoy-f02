@@ -61,7 +61,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             - Esther Ruano
         - [X] Implementar Cel Shadow
             - Pau Baldillou
-        - [X] Implementar Color i Normal Shadow
+        - [X] Implementar Color, Normal i Depth Shadow
             - Pau Hernando
     - Pas 4
         - [X] Recursió per rajos secundaris
@@ -73,7 +73,8 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - [X] Nou material transparent
             - Esther Ruano
     - Pas 5
-        - [ ] Adapta la visualització per mostrar dades des d'un fitxer
+        - [X] Adapta la visualització per mostrar dades des d'un fitxer
+            - Pau Hernando
  - Fase 3
     - Pas 1
         - [X] Afegir nou material textura al pla base
@@ -160,7 +161,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         **3.a. Modifica la classe ```ObjectFactory``` per a carregar i crear malles poligonals en fora de ```Mesh```. En aquest cas, el ```read``` de la classe ```Mesh``` ja està implementat. Quan penses que és millor crear els triangles de la malla?**  
             Ho hem implementat de manera que no cal crear els triangles, doncs ho calculem directament amb les cares. Tanmateix, en cas que volguéssim fer servir els triangles, els calcularíem quan fem el ```read```, desprès de llegir les cares. D'aquesta manera, només cal fer-ho una vegada i és quan es carrega l'objecte, i no cada cop que volem fer hit. Si calculessim els triangles quan els necessitem al ```hit```, aleshores el nostre algorisme seria molt lent.
         ** 3.b. Implementa les dues possibilitats, la de la *bounding box* i la de la *bounding sphere*. Quina creus que teòricament és millor? Com funcionen en realitat?**  
-            ... tests ... En realitat, tot funcionarà de la forma de l'objecte. Si la nostra malla té una forma esfèrica, la *bounding sphere* serà més similar, fent-la més eficient a l'hora de calcular el hit previ. En canvi, si la malla és allargada (un el·lipsoide per exemple), la caixa serà millor. En la implementació actual, les caixes estan sempre aliniades amb els eixos. Això també podria fer que per una figura cúbica rotada de la manera adequada, la *bounding sphere* fos millor. 
+            En realitat, tot funcionarà de la forma de l'objecte. Si la nostra malla té una forma esfèrica, la *bounding sphere* serà més similar, fent-la més eficient a l'hora de calcular el hit previ. En canvi, si la malla és allargada (un el·lipsoide per exemple), la caixa serà millor. En la implementació actual, les caixes estan sempre aliniades amb els eixos. Això també podria fer que per una figura cúbica rotada de la manera adequada, la *bounding sphere* fos millor. Tot i així, hem decidit fer tests per veure quina de les dos opcions és més eficient, en quant a temps es refereix. Vam fer els test amb la teapot com a objecte, ja que vam considerar que era el més imparcial possible. Ens van donar uns resultats molt semblants, aixi que vam decidir implementar la bounding bo perquè és molt més senzill d'implementar i per tant es necessiten menys càluls.
             
     * **Pas 5**:
         * **5.c. Com calcularàs el centre del teu objecte en l'escena virtual? Com calcularàs la seva escala?**
@@ -234,6 +235,18 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 
 * **Fase 1**: 
+    * * **Pas 3b. Tests per trobar què és mes eficaç: Boundong box o spgere?**
+        - Codi utilitzat per a fer els tests:
+        
+        <img src="screenshots/FASE_01/test_code.png" alt="Codi utiliitzat per realitzar els tests" width="400">
+        
+        - Resultat per a la bounding Box:
+
+         <img src="screenshots/FASE_01/box_time.png" alt="Temps emprat amb la bounding box" width="400">
+
+        - Resultat per a la bounding Sphere:
+
+         <img src="screenshots/FASE_01/sphere_time.png" alt="Temps emprat amb la bounding sphere" width="400">
 
 * **Fase 2**:
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
