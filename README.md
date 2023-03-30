@@ -220,16 +220,27 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
 
             a. Si només es calcula la component ambient
+            
             <img src="screenshots/FASE_02/SS/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="300">
+            
             b. Si només es calcula la component difosa
+            
             <img src="screenshots/FASE_02/SS/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="300">
+            
             c. Si només es calcula l'especular
+            
             <img src="screenshots/FASE_02/SS/BP_especular.png" alt="Blinn-Phong amb component especular" width="300">
+            
             d. Ara les tres juntes
+            
             <img src="screenshots/FASE_02/SS/BP_tres.png" alt="Blinn-Phong amb les tres components" width="300">
+            
             e. I afegint atenuació amb profunditat
+            
             <img src="screenshots/FASE_02/SS/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="300">
+            
             f. I afegint l'ambient global
+            
             <img src="screenshots/FASE_02/SS/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="300">
 
 
