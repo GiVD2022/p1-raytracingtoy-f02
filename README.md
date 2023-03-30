@@ -217,6 +217,36 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
 * **Fase 2**:
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
+        - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
+
+            a. Si només es calcula la component ambient
+            <img src="screenshots/FASE_02/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="300">
+            b. Si només es calcula la component difosa
+            <img src="screenshots/FASE_02/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="300">
+            c. Si només es calcula l'especular
+            <img src="screenshots/FASE_02/BP_especular.png" alt="Blinn-Phong amb component especular" width="300">
+            d. Ara les tres juntes
+            <img src="screenshots/FASE_02/BP_tres.png" alt="Blinn-Phong amb les tres components" width="300">
+            e. I afegint atenuació amb profunditat
+            <img src="screenshots/FASE_02/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="300">
+            f. I afegint l'ambient global
+            <img src="screenshots/FASE_02/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="300">
+
+
+        - Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
+            a. Si només es calcula la component ambient
+            <img src="screenshots/FASE_02/P_ambient.png" alt="Phong amb component ambient" width="300">
+            b. Si només es calcula la component difosa
+            <img src="screenshots/FASE_02/P_difuse.png" alt="Blinn-Phong amb component difosa" width="300">
+            c. Si només es calcula l'especular
+            <img src="screenshots/FASE_02/P_especular.png" alt="Phong amb component especular" width="300">
+            d. Ara les tres juntes
+            <img src="screenshots/FASE_02/P_tres.png" alt="Phong amb les tres components" width="300">
+            e. I afegint atenuació amb profunditat
+            <img src="screenshots/FASE_02/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="300">
+            f. Phong Shading no té llum ambient global, només té component ambient local
+
+
         - Cel Shading i les seves ombres (Pas 3)
 
             ![Captura de Pantalla 2023-03-20 a las 21 14 03](https://user-images.githubusercontent.com/69910092/226461156-e1d1c1fa-fd01-4c8f-91ab-8ff6ee3161ef.png "Component ambient") 
@@ -254,7 +284,32 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             ![Captura de Pantalla 2023-03-20 a las 21 36 41](https://user-images.githubusercontent.com/69910092/226461176-0803796c-25bb-4497-a74b-0646fc1fec5b.png "Tot junt, bola vermella") 
 
             La mateixa imatge amb una bola vermella i més samples.
+    
+    * **Pas 3. Afegeix ombres**
 
+        - Blinn Phong Shadow des de dos punts de vista
+        
+            <img src="screenshots/FASE_02/BP_shadow01.png" alt="Blinn-Phong shadow amb x=0" width="300">
+            <img src="screenshots/FASE_02/BP_shadow02.png" alt="Blinn-Phong shadow amb x=2" width="300">
+            
+        - Phong Shadow des de dos punts de vista
+        
+            <img src="screenshots/FASE_02/P_shadow01.png" alt="Blinn-Phong amb les tres components" width="300">
+            <img src="screenshots/FASE_02/P_shadow02.png" alt="Blinn-Phong amb les tres components" width="300">
+            
+        - Normal Shadow
+        
+            <img src="screenshots/FASE_02/NORMAL_shadow.png" alt="Blinn-Phong amb les tres components" width="300">
+            
+        - Visualització del fitxer spheres.json amb el setup setupRenderSpheres.json
+        
+            <img src="screenshots/FASE_02/visualitzacio_esferes.png" alt="Visualització del fitxer sheres" width="300">
+            
+        - Escena més complexa modificant el fitxer spheres.json amb 10 objectes
+        
+            <img src="screenshots/FASE_02/visualitzacio_alt.png" alt="Visualització del fitxer multiple_spheres" width="300">
+            
+            
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
         - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
