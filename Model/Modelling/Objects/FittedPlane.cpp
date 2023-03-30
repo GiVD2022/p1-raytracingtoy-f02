@@ -25,7 +25,7 @@ bool FittedPlane::hit(Ray &r, float tmin, float tmax, HitInfo &info) const {
     vec3 p = r.pointAtParameter(t);
 
     // comprovem si el punt d'intersecció està dins del rectangle definit per pmin i pmax
-    if (p[0] < pmin[0] || p[0] > pmax[0] || p[1] < pmin[1] || p[1] > pmax[1]) {
+    if (p[0] < pmin[0] || p[0] > pmax[0] || p[2] < pmin[1] || p[2] > pmax[1]) {
         return false;
     }
 
@@ -34,6 +34,9 @@ bool FittedPlane::hit(Ray &r, float tmin, float tmax, HitInfo &info) const {
     info.p = p;
     info.normal = normal;
     info.mat_ptr = material.get();
+
+    //Moure perque el (0,0) sigui a baix esquerra i pregngui valors entre 0 i 1
+    info.uv = vec2((p[0] - pmin[0])/(pmax[0] - pmin[0]), (p[2] - pmin[1])/(pmax[1] - pmin[1])) ;
 
     return true;
 }

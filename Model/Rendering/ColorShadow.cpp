@@ -15,5 +15,4 @@ vec3 ColorShadow::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared_
     }
     vec3 color = lightDiffuse;
     return color;
-
 }

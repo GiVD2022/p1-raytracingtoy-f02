@@ -15,7 +15,7 @@ vec3 PhongShading::shading(shared_ptr<Scene> scene, HitInfo& info, vector<shared
         // Calculate the diffuse component
         vec3 L = normalize(light->vectorL(info.p)); //normalized
         vec3 N = normalize(info.normal);
-        lightDiffuse += (info.mat_ptr->Kd * light->getId() * std::max(dot(L, N), 0.0f))* depthAttenuation;
+        lightDiffuse += ((info.mat_ptr->getDiffuse(info.uv)) * light->getId() * std::max(dot(L, N), 0.0f))* depthAttenuation;
 
 
         // Calculate the specular component

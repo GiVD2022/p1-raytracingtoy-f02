@@ -267,14 +267,14 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // a. Calcula primer l'escala
     vec3 sc;
-    float scale = 0.2 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+    float scale = 1 + 1.85 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
 
     if(mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().SPHERE || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().TRIANGLE ){
-        // Perque el major valor tingui radi 1 i la més petita radi 0.0.089 (0.2^(2/3))
+        // Perque el major valor tingui radi 2 (2.85^(2/3)) i la més petita radi 1 (1^(2/3))
         sc = vec3(scale);
     } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().CYLINDER){
         //only scale y
-        sc = vec3(0.1, scale, 0.1);
+        sc = vec3(0.5, scale, 0.5);
     } else {
         QTextStream(stdout)<< "UNKNOWN GYZMO SceneFactoryData::ObjectMaps\n";
     }
@@ -284,14 +284,15 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
     // centre de l'esfera a y = 0
     // Per defecte, l'obj base és un pla
     vec3 trasl;
-    float new_x = mapping->Vxmin+ ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * mv_width);
+    float new_x = mapping->Vxmin + 1 + ((dades[i].second.at(j).x - mapping->Rxmin) / mr_width * (mv_width - 2));
     float new_y = 0.f;
-    float new_z = mapping->Vzmin + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * mv_depth);
+    float new_z = mapping->Vzmin + 1 + ((dades[i].second.at(j).y - mapping->Rzmin) / mr_depth * (mv_depth -2 ));
     trasl = vec3(new_x, new_y, new_z);
     // Si és una esfera, modifiquem la translació
     if (auto sphere = std::dynamic_pointer_cast<Sphere>(scene->baseObject)) {
         trasl -= sphere->getCenter();
     }
+
 
     QTextStream(stdout) << "  "  << "scale:\t" << sc[0] << ", "<< sc[1] << ", "<< sc[2] << "\n";
     QTextStream(stdout) << "  "  << "traslation:\t" << trasl[0] << ", "<< trasl[1] << ", "<< trasl[2] << "\n";
@@ -323,8 +324,10 @@ shared_ptr<Material> SceneFactoryData::materialMaps(int i,  int j) {
     return MaterialFactory::getInstance().createMaterial(propinfo->material->Ka,
                                                          cm->getColor(idx),
                                                          propinfo->material->Ks,
+                                                         propinfo->material->kt,
                                                          propinfo->material->shininess,
-                                                         propinfo->material->opacity, tMat);
+                                                         propinfo->material->opacity,
+                                                         propinfo->material->mu_t,tMat);
 }
 
 vec3 SceneFactoryData::getPuntBase(ObjectFactory::OBJECT_TYPES gyzmo, vec2 puntReal) {

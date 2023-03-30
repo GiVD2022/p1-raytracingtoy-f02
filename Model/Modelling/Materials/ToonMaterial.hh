@@ -11,6 +11,7 @@ public:
     ToonMaterial(vec3 d);
     ToonMaterial(vec3 a, vec3 d, vec3 s, float shininess);
     ToonMaterial(vec3 a, vec3 d, vec3 s, float shininess, float opacity);
+    ToonMaterial(vec3 a, vec3 d, vec3 s, vec3 t, float shininess, float opacity, float mu);
     virtual ~ToonMaterial();
 
     virtual void read (const QJsonObject &json);
