@@ -293,14 +293,14 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         a. Apliquem anti aliasing fent la mitja per cada pixel
         
         b. Fem una correcció per tal d'aclarir la imatge
-        
-            - Resultat abans:
-            
-            <img src="screenshots/FASE_02/without_aliasing.png" alt="Sense aplicar" width="400">
-                
-            - Resultat després:
-            
-            <img src="screenshots/FASE_02/with_aliasing.png" alt="Aplicat" width="400">
+
+        - Resultat abans:          
+
+        <img src="screenshots/FASE_02/without_aliasing.png" alt="Sense aplicar" width="400">
+
+        - Resultat després:
+
+        <img src="screenshots/FASE_02/with_aliasing.png" alt="Aplicat" width="400">
     
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
         - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
