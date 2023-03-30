@@ -235,15 +235,25 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
         - Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
             a. Si només es calcula la component ambient
+            
             <img src="screenshots/FASE_02/SS/P_ambient.png" alt="Phong amb component ambient" width="300">
+            
             b. Si només es calcula la component difosa
+            
             <img src="screenshots/FASE_02/SS/P_difuse.png" alt="Blinn-Phong amb component difosa" width="300">
+            
             c. Si només es calcula l'especular
+            
             <img src="screenshots/FASE_02/SS/P_especular.png" alt="Phong amb component especular" width="300">
+            
             d. Ara les tres juntes
+            
             <img src="screenshots/FASE_02/SS/P_tres.png" alt="Phong amb les tres components" width="300">
+            
             e. I afegint atenuació amb profunditat
+            
             <img src="screenshots/FASE_02/SS/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="300">
+            
             f. Phong Shading no té llum ambient global, només té component ambient local
 
 
