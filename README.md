@@ -70,8 +70,8 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             - Pau Baldillou
         - [X] Recursió per objectes transparents
             - Núria Torquet
-        - [X] Nou material transparent
-            - Esther Ruano 
+        - [X] Nou material transparent
+            - Esther Ruano
     - Pas 5
         - [ ] Adapta la visualització per mostrar dades des d'un fitxer
  - Fase 3
