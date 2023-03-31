@@ -241,18 +241,14 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 * **Fase 0**:
    - Intersecció dels rajos amb una esfera
     
-    <img width="524" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228995916-3f43dd82-3cb7-4b52-a6e8-b93a2d7aa81c.png">
+    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="400">
+    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="400">
+    <img src="screenshots/FASE_00/10_esfera_depth_shading.png" alt="Depth shading una esfera" width="400">
     
-    <img width="527" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228995970-51424a74-84be-493b-9ea1-d554552a6387.png">
-    
-    <img width="618" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996034-bbac938d-9a0b-4d78-9af0-bb5d930d1bc5.png">
-
     - Intersecció dels rajos amb dues esferes
     
-    <img width="529" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996091-4abf6208-6c1c-407b-a3b8-88d551fa5179.png">
-    
-    <img width="523" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996201-7b7debcd-ea44-4ed8-9282-9d7b59c1e465.png">
-
+    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="400">
+    <img src="screenshots/FASE_00/11_virtualscene_depth_shading.png" alt="Depth shading dues esferes" width="400">
 
 
 * **Fase 1**: 
@@ -275,45 +271,37 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     * **Pas 3b. Tests per trobar què és mes eficaç: Boundong Box o Sphere?**
         - Codi utilitzat per a fer els tests:
         
-        ![imagen](https://user-images.githubusercontent.com/44063174/228996287-6ff3c3ac-37cd-4d7f-837f-99202a7598c5.png)
-
+        <img src="screenshots/FASE_01/test_code.png" alt="Codi utiliitzat per realitzar els tests" width="400">
         
         - Resultat per a la bounding Box:
 
-         ![imagen](https://user-images.githubusercontent.com/44063174/228996315-4397111a-c903-431c-99a7-77e08720c429.png)
-
+         <img src="screenshots/FASE_01/box_time.png" alt="Temps emprat amb la bounding box" width="400">
 
         - Resultat per a la bounding Sphere:
 
-         ![imagen](https://user-images.githubusercontent.com/44063174/228996360-132fb4bb-77d4-4b4a-ab63-8863ec5e202c.png)
-
+         <img src="screenshots/FASE_01/sphere_time.png" alt="Temps emprat amb la bounding sphere" width="400">
          
     * **Pas 5. Creació de l'escena a partir de dades geolocalitzades**
     
         b. Visualització del pla afitat amb el fitxer fittedPlane.json
     
-        <img width="600" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996406-9514fa35-4ab2-47c9-870e-02ec08895790.png">
-
+        <img src="screenshots/FASE_01/REALDATA/fitted_plane.png" alt="Visualització del fitted plane definit en fitted_plane.json" width="400">
         
         c. Visualització dels "gizmos" tipus Sphere del fitxer data0.json
         
-        <img width="600" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996433-9a640585-fc97-41e4-b74b-4db8b693954a.png">
-
+        <img src="screenshots/FASE_01/REALDATA/sphere_gizmos.png" alt="Visualització del gizmo esfera amb una dada" width="400">
         
         d. Visualització dels "gizmos" tipus Box del fitxer data_box0.json
         
-        <img width="600" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996447-9f114f92-501f-4500-b653-b0753c66138c.png">
-
+        <img src="screenshots/FASE_01/REALDATA/box_gizmos.png" alt="Visualització del gizmo box amb una dada" width="400">
         
         e. Proves amb el fitxer data10.json
         
-        <img width="601" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996482-9404fe87-9db8-4fb4-b9d5-67e3791943a3.png">
-
+        <img src="screenshots/FASE_01/REALDATA/all_spheres.png" alt="Visualització del gizmo esfera amb 10 dades" width="400">
         
         f. Modificació del fitxer data0.json per a afegir esfera i box com a gizmos. El fitxer resultant s'ha anomenat data0 _box_sphere.json
         
-        <img width="601" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996504-3b330364-f507-4687-895e-d9be610f3e7a.png">
-
+        <img src="screenshots/FASE_01/REALDATA/sphere_box_gizmo.png" alt="Visualització de gizmos esfera i box, d'una dada cadascuna" width="400">
     
 
 * **Fase 2**:
@@ -324,73 +312,60 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
         - Resultat abans:          
 
-        ![imagen](https://user-images.githubusercontent.com/44063174/228996549-90b2f492-a879-48ca-bf4e-7b1548f783f4.png)
-
+        <img src="screenshots/FASE_02/without_aliasing.png" alt="Sense aplicar" width="400">
 
         - Resultat després:
 
-        ![imagen](https://user-images.githubusercontent.com/44063174/228996563-e8135ff4-3e9b-49c5-b79b-5ba562b16921.png)
-
+        <img src="screenshots/FASE_02/with_aliasing.png" alt="Aplicat" width="400">
     
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
         - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
 
             a. Si només es calcula la component ambient
             
-            <img width="403" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996594-dbc403a7-f009-4e23-8792-0628295f9716.png">
-
+            <img src="screenshots/FASE_02/SS/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="400">
             
             b. Si només es calcula la component difosa
             
-            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996624-7872534a-8434-4283-9db8-5980645570b5.png">
-
+            <img src="screenshots/FASE_02/SS/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
             
             c. Si només es calcula l'especular
             
-            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996642-b1bcef88-33b6-4568-957c-8799a9b563f5.png">
-
+            <img src="screenshots/FASE_02/SS/BP_especular.png" alt="Blinn-Phong amb component especular" width="400">
             
             d. Ara les tres juntes
             
-            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996667-9aba5049-acdb-4393-9d2d-bef81df4cdba.png">
-
+            <img src="screenshots/FASE_02/SS/BP_tres.png" alt="Blinn-Phong amb les tres components" width="400">
             
             e. I afegint atenuació amb profunditat
             
-            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996695-05e3561f-433f-4da2-a7a3-ee59b77e95f8.png">
-
+            <img src="screenshots/FASE_02/SS/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="400">
             
             f. I afegint l'ambient global
             
-            <img width="401" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996714-aac37930-ec34-4b12-8976-9fd73a7792a7.png">
-
+            <img src="screenshots/FASE_02/SS/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="400">
 
 
         - Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
             a. Si només es calcula la component ambient
             
-            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996821-7cada7cb-ea7f-4256-8c3a-4aa2d5ccc259.png">
-
+            <img src="screenshots/FASE_02/SS/P_ambient.png" alt="Phong amb component ambient" width="400">
             
             b. Si només es calcula la component difosa
             
-            <img width="401" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996829-c410f098-1e34-4963-9b9d-471f36599353.png">
-
+            <img src="screenshots/FASE_02/SS/P_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
             
             c. Si només es calcula l'especular
             
-            <img width="400" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996857-75a6480f-a24f-4faa-bfc7-4febb6df4eef.png">
-
+            <img src="screenshots/FASE_02/SS/P_especular.png" alt="Phong amb component especular" width="400">
             
             d. Ara les tres juntes
             
-            <img width="400" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996883-b3637893-7d1e-4bc5-b2b9-ed9ca2b4ce1c.png">
-
+            <img src="screenshots/FASE_02/SS/P_tres.png" alt="Phong amb les tres components" width="400">
             
             e. I afegint atenuació amb profunditat
             
-            <img width="401" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996897-b4c0d7e0-f7b8-4c2f-b22d-65e5cad9e3a7.png">
-
+            <img src="screenshots/FASE_02/SS/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="400">
             
             f. Phong Shading no té llum ambient global, només té component ambient local
 
@@ -437,13 +412,13 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
         - Blinn Phong Shadow des de dos punts de vista
         
-            <img src="screenshots/FASE_02/SS/BP_shadow01.png" alt="Blinn-Phong shadow amb x=0" width="350">
-            <img src="screenshots/FASE_02/SS/BP_shadow02.png" alt="Blinn-Phong shadow amb x=2" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228997295-c91583a1-de92-4be3-baa4-e6c7da8981f3.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228997307-52d8551b-95e0-4871-824e-2cbe69d0c903.png)
             
         - Phong Shadow des de dos punts de vista
         
-            <img src="screenshots/FASE_02/SS/P_shadow01.png" alt="Blinn-Phong amb les tres components" width="350">
-            <img src="screenshots/FASE_02/SS/P_shadow02.png" alt="Blinn-Phong amb les tres components" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228997210-392b9c4a-b61b-4505-8caa-ac068af3e60e.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228997223-7f637622-79e0-48f6-a14d-1034714ba15d.png)
             
         - Normal Shadow
         
@@ -451,134 +426,134 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
             
         - Visualització del fitxer spheres.json amb el setup setupRenderSpheres.json
         
-            <img src="screenshots/FASE_02/SS/visualitzacio_esferes01.png" alt="Visualització del fitxer sheres" width="400">
-            <img src="screenshots/FASE_02/SS/visualitzacio_esferes02.png" alt="Visualització del fitxer sheres" width="400">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996936-2fa8628c-2c3d-4209-9fa9-13566e3f9460.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996928-9a61c3bc-8b48-423f-a294-f7f251862fd7.png)
             
         - Escena més complexa modificant el fitxer spheres.json (reanomenat spheres_10.json) amb 10 objectes i Blinn-Phong Shading
         
-            <img src="screenshots/FASE_02/SS/visualitzacio_alt01.png" alt="Visualització del fitxer multiple_spheres" width="400">
-            <img src="screenshots/FASE_02/SS/visualitzacio_alt02.png" alt="Visualització del fitxer multiple_spheres" width="400">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996908-aebf6c7d-7bd4-4639-a1d4-73f70bea86e1.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996894-33007279-841c-42cf-9f0d-ef8742a516e1.png)
             
     * **Pas 4: Afegir recursió al mètode RayPixel per a tindre en compte els rajos reflectits**
         
         - Resultats obtinguts amb dues esferes amb material Lambertià, valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderTwoSpheres.json i fitxer de dades twoSpheres.json
         
-        <img src="screenshots/FASE_02/RRR/RRR_01.png" alt="Amb Max Depth 1" width="400">
-        <img src="screenshots/FASE_02/RRR/RRR_02.png" alt="Amb Max Depth 3" width="400">
-        <img src="screenshots/FASE_02/RRR/RRR_03.png" alt="Amb Max Depth 10" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996796-45db1147-051e-4c27-b613-f1df10f1acff.png)
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996787-682ae01f-c14f-45b7-9a73-edfe77cd2d5a.png)
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996769-68c0abeb-1794-41e5-bc15-04c9a6aa3a4f.png)
         
         - Resultats obtinguts al assignar la intensitat ambient global als rajos secundaris que no intersequen amb l'escena.
     
-        <img src="screenshots/FASE_02/RRR/RRR_04.png" alt="Amb Max Depth 1" width="400">
-        <img src="screenshots/FASE_02/RRR/RRR_05.png" alt="Amb Max Depth 10" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996757-bd3738d5-6ec9-43b1-9d5d-40e0188d31ac.png)
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996751-2ab5ca38-14c1-46eb-a112-85c711f960bd.png)
     
     
         - Resultats obtinguts al visualitzar dues esferes lambertianes i una de metàl.lica, amb valors de Max Depth 1, 3 i 10 i nombre de samples 10. Shading Blinn-Phong, fitxer de setup setupRenderSpheres.json i fitxer de dades threeSpheres.json
     
-        <img src="screenshots/FASE_02/RRR/RRR_06.png" alt="Amb Max Depth 1" width="400">
-        <img src="screenshots/FASE_02/RRR/RRR_07.png" alt="Amb Max Depth 3" width="400">
-        <img src="screenshots/FASE_02/RRR/RRR_08.png" alt="Amb Max Depth 10" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996737-b7a7c77b-9c14-4061-9848-552b1bfc05b0.png)
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996719-769e4185-502b-41a9-9999-601203dcce2c.png)
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996711-cabea17d-7129-4199-891b-d8ec6c82ef4a.png)
 
         - Visualitzacions dels shadings Phong, Cel i Normal amb mateix setup file i fitxer de dades.
             - Phong Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_20.png" alt="Amb Max Depth 1" width="400">
-                <img src="screenshots/FASE_02/RRR/RRR_21.png" alt="Amb Max Depth 3" width="400">
-                <img src="screenshots/FASE_02/RRR/RRR_22.png" alt="Amb Max Depth 10" width="400">
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996689-72bd8d25-4256-448d-b34d-1574e5f21f40.png)
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996673-499329b2-cab6-4380-b4df-33655624b8c0.png)
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996664-64134f03-caba-4096-8b51-f9e975bce831.png)
 
             - Normal Shading:
             
-                <img src="screenshots/FASE_02/RRR/RRR_23.png" alt="Amb Max Depth 1" width="400">
-                <img src="screenshots/FASE_02/RRR/RRR_24.png" alt="Amb Max Depth 3" width="400">
-                <img src="screenshots/FASE_02/RRR/RRR_25.png" alt="Amb Max Depth 10" width="400">
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996654-0d34a679-d235-42d8-b6cb-6eac26b5d4a1.png)
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996643-dfac9452-d5c7-473b-9d9e-fba7bdec511b.png)
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996635-84d615da-940b-4ce5-a73a-28e220718045.png)
             
             - Cel Shading:
 
-                <img src="screenshots/FASE_02/RRR/RRR_26.png" alt="Amb Max Depth 1" width="400">
-                <img src="screenshots/FASE_02/RRR/RRR_27.png" alt="Amb Max Depth 3" width="400">
-                <img src="screenshots/FASE_02/RRR/RRR_28.png" alt="Amb Max Depth 10" width="400">
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996555-fbd785b2-c793-42dc-a83b-41dfd9fa1c5c.png)
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996550-707edd74-c4ca-4257-a4b0-a19a94729254.png)
+                ![imagen](https://user-images.githubusercontent.com/80753129/228996538-e375095c-0547-4e57-92f9-71a600a7ebe4.png)
     
     * **Pas 5: Afegir recursió al mètode RayPixel per a tindre en compte objectes transparents**
         
         - Resultats obtinguts al visualitzar el fitxer spheresMetalTransp.json i el setupRenderTwoSpheres.json. Max depth pren els valors 1, 2 i 3, i el nombre de samples és 10.
         
-            <img src="screenshots/FASE_02/RRR/RRR_09.png" alt="Amb Max Depth 1" width="350">
-            <img src="screenshots/FASE_02/RRR/RRR_10.png" alt="Amb Max Depth 2" width="350">
-            <img src="screenshots/FASE_02/RRR/RRR_11.png" alt="Amb Max Depth 3" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996514-d3b1e36b-afe6-4d0a-8a13-da023a7dcaf5.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996500-54c2b034-17bf-441f-87af-48572e5b8814.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996486-69b52789-63d3-4fd3-8130-afc34e1fc9b0.png)
     
         - Modificant el punt de vista amb valors de lookFrom (-5, 0, 1) i lookAt (-2, 0, 0) i canviat el valor de kd a [0.7, 0.7, 0.7]
     
-            <img src="screenshots/FASE_02/RRR/RRR_12.png" alt="Amb Max Depth 3" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996463-a2eef42f-8ec9-4d18-8daa-a718173ef49f.png)
         
         - Visualitzacions amb el fitxer fourSpheres.json i el setupRenderFourSpheres.json i nivells de recursivitat MAXDEPTH = 1, 2, i 4. Nombre de samples és 10.
         
-            <img src="screenshots/FASE_02/RRR/RRR_13.png" alt="Amb Max Depth 1" width="350">
-            <img src="screenshots/FASE_02/RRR/RRR_14.png" alt="Amb Max Depth 2" width="350">
-            <img src="screenshots/FASE_02/RRR/RRR_15.png" alt="Amb Max Depth 4" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996449-13aff28b-ac1c-481b-92a6-b931083cdc81.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996442-ca567ef0-9323-4c18-99fc-00451020983c.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996430-f08f76c7-8e9c-466b-86c8-bb40bf3acbd3.png)
             
         - Visualització de l'escena anterior fent que els rajos secundaris que no intersequen amb l'escena rebin el color ambient global.
         
-            <img src="screenshots/FASE_02/RRR/RRR_16.png" alt="Amb Max Depth 1" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996417-76239bb5-4630-494e-b275-eae0b96b3395.png)
     
         - Visualització de l'escena anterior fent que no es ponderi el color local.
     
-            <img src="screenshots/FASE_02/RRR/RRR_17.png" alt="Amb Max Depth 1" width="350">
-            <img src="screenshots/FASE_02/RRR/RRR_18.png" alt="Amb Max Depth 2" width="350">
-            <img src="screenshots/FASE_02/RRR/RRR_19.png" alt="Amb Max Depth 4" width="350">
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996403-02617a86-4340-47d5-95c2-d2dbdd485924.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996390-250c864c-926e-437f-9045-3070388a5e85.png)
+            ![imagen](https://user-images.githubusercontent.com/80753129/228996372-be203014-0898-418b-9105-995e5d16573d.png)
     * **Pas 6: Visualization mapping**
     
         - Renderitzar el fitxer data0.json carregant el fitxer seripRenderData0,json com a setUp:
         
-        <img src="screenshots/FASE_02/PAS5/data0.png" alt="data0.json" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996190-e93693c2-6e15-49c0-a541-8f8e699d2b35.png)
         
         - Data file: dadesBCNOneValue.json , Load file: setupDataBCNOneValue.json
         
-        <img src="screenshots/FASE_02/PAS5/one_value.png" alt="one value" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996178-3eefec79-98d9-4ac0-aab5-b3f04e15fe8f.png)
         
         
         - Data file: dadesBCNZoom.json , Load file: setupDataBCN_Zoom.json
         
-        <img src="screenshots/FASE_02/PAS5/zoom.png" alt="ZOOM" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996168-6ef4c107-a50d-4e00-a4f6-7ddd6707a4f9.png)
         
         - Data file: dadesBCN.json , Load file: setupDataBCN.json, Fitted plane: Y = 0
         
-        <img src="screenshots/FASE_02/PAS5/dadesBCN.png" alt="BCN" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996157-65ffe613-930e-48ec-a090-4faeb8be3559.png)
         
         - Data file: dadesBCN.json , Load file: setupDataBCN.json, Fitted plane: Y = -1
         
-        <img src="screenshots/FASE_02/PAS5/dadesBCN_lowPlane.png" alt="low Plane" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996138-c3e20c53-5cb6-4435-a205-3fb8b7d8d817.png)
         
         - El mateix món virtual, però vist des del costat
         
-        <img src="screenshots/FASE_02/PAS5/dadesBSN_costat.png" alt="costat" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996116-cfe99bec-aebc-4151-95f8-ce1a5d15edd3.png)
         
         - Data file: dadesBCNMetal.json , Load file: setupDataBCNMetal.json
         
-        <img src="screenshots/FASE_02/PAS5/metal.png" alt="metal" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996095-2753a132-de8e-499b-94d1-1c711340bd99.png)
         
         - Data file: dadesBCNTransparent.json , Load file: setupRenderData0.json, Max depth: 3
         
-        <img src="screenshots/FASE_02/PAS5/transparent_different_setup.png" alt="deff setup" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996079-7ada2026-4f64-4e8c-83d7-7ead3912378f.png)
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json
         
-        <img src="screenshots/FASE_02/PAS5/transparent.png" alt="transparent" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996054-65e104f5-5d79-470a-b8fb-a2206cf1b977.png)
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vup: (-1,0,0)
         
-        <img src="screenshots/FASE_02/PAS5/transparent_-1_0_0_vup.png" alt="(-1,0,0)" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996043-4a73170e-b988-4567-99a1-14bf9e3e6b01.png)
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vup: (1,1,0)
         
-        <img src="screenshots/FASE_02/PAS5/transparent_1_1_0_vup.png" alt="(1,1,0)" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228996030-e7b82374-0d16-41cf-8013-077540e399e4.png)
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vfov: 20
         
-        <img src="screenshots/FASE_02/PAS5/transparent_20_vup.png" alt="vfov 20" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995986-eccb4792-3b88-4dcc-b532-54f02a031e3a.png)
         
         - Data file: dadesBCNTransparent.json , Load file: setupDataBCNTransparent.json, vfov: 10
         
-        <img src="screenshots/FASE_02/PAS5/transparent_10_vfov.png" alt="vfov 10" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995952-135575bf-3e22-46af-99a9-3249d42f9cc3.png)
         
 
 * **Fase 3**:
@@ -586,33 +561,33 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     
         - Carregar dadesEuropa.json amb setupDataEuropa.json
 
-        <img src="screenshots/FASE_03/Pas1_0.PNG" alt="Visualitzacio inicial de dades europa" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995881-015850a1-d2db-487a-ad80-545503da47e9.png)
         
         - Carregar dadesEuropaTextured.json amb setupDataEuropa.json
         
-        <img src="screenshots/FASE_03/Pas1_1.PNG" alt="Visualitzacio amb textura de dades europa" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995869-d3a21d74-8d26-4031-af5b-7bb321f9249c.png)
     
     * **Pas 2: Prova amb diferents jocs de dades i mapes**
         - Carregar dadesBCNOneValueTexture.json amb setupDataBCN.json
         
-        <img src="screenshots/FASE_03/Pas2_0.PNG" alt="OneValue amb textura" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995855-a814624d-1a94-4af6-ae2d-fd5407016ff8.png)
         
         - Carregar dadesBCNOneValueTexture.json amb setupDataBCN_Zoom.json
         
-        <img src="screenshots/FASE_03/Pas2_1.PNG" alt="Zoom amb textura" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995833-bdb09cbb-8d6f-433f-90ef-474c15d25d1b.png)
         
         - Carregar dadesBCNTexture.json amb setupDataBCN.json
         
-        <img src="screenshots/FASE_03/Pas2_2.PNG" alt="DadesBCN amb textura" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995817-82ecd84c-1ba7-4068-8c6c-0fc43e8fc889.png)
         
         - Esferes d'altres tipus: dadesEuropaCustom.json amb setupDataEuropa.json
         
-        <img src="screenshots/FASE_03/Pas2_3.PNG" alt="Mes dades d'Europa" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995792-8c379d66-e132-4ae1-bcc9-53251712d4ce.png)
   
     * **Pas 3: Prova amb diferents jocs de dades i mapes**
         - Nou joc de dades: dadesDeltaTextured.json amb setupDataDelta.json
         
-        <img src="screenshots/FASE_03/Pas3_0.PNG" alt="Ànecs al delta" width="400">
+        ![imagen](https://user-images.githubusercontent.com/80753129/228995702-33585325-d9bd-4cc1-99b4-28e3162a6483.png)
 
     
 
