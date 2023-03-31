@@ -100,7 +100,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     if (temp < tmax && temp > tmin) { //xoc amb el pla
         vec3 punt_xoc = raig.pointAtParameter(temp);
           if ( ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) ) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
-              info.t = punt_xoc.t;
+              info.t = temp;
               info.p = punt_xoc;
               info.normal = normal;
               info.mat_ptr = material.get();
@@ -130,7 +130,7 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     if (temp < tmax && temp > tmin) { //xoc amb el pla
         vec3 punt_xoc = raig.pointAtParameter(temp);
           if ( ( ( pow( (punt_xoc.x - center.x), 2) + pow(punt_xoc.z - center.z, 2) ) < pow(radius,2)) && ( !algun_xoc || temp < info.t) ){ // dins el cilindre
-              info.t = punt_xoc.t;
+              info.t = temp;
               info.p = punt_xoc;
               info.normal = normal;
               info.mat_ptr = material.get();

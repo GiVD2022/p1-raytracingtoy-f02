@@ -270,10 +270,13 @@ shared_ptr<Object> SceneFactoryData::objectMaps(int i, int j) {
 
     // a. Calcula primer l'escala
     vec3 sc;
-    float scale = 1 + 1.85 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+
+    float scale = 0.25 + 0.8 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
+    // Per Zoom i OneValue
+    // Perque el major valor tingui radi 2.3 (1.75^(3/2)) i la més petita radi 0.35 (0.5^(2/3))
+    //float scale = 0.5 + 1.25 * ((dades[i].second.at(j).z - mapping->attributeMapping[0]->minValue) / (mapping->attributeMapping[i]->maxValue - mapping->attributeMapping[i]->minValue));
 
     if(mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().SPHERE || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().TRIANGLE ){
-        // Perque el major valor tingui radi 2 (2.85^(2/3)) i la més petita radi 1 (1^(2/3))
         sc = vec3(scale);
     } else if (mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().BOX || mapping->attributeMapping[i]->gyzmo ==  ObjectFactory::getInstance().CYLINDER){
         //only scale y
