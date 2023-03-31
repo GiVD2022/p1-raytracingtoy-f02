@@ -241,14 +241,18 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 * **Fase 0**:
    - Intersecció dels rajos amb una esfera
     
-    <img src="screenshots/FASE_00/05_esfera_color_shading.png" alt="Color shading una esfera" width="400">
-    <img src="screenshots/FASE_00/06_esfera_normal_shading.png" alt="Normal shading una esfera" width="400">
-    <img src="screenshots/FASE_00/10_esfera_depth_shading.png" alt="Depth shading una esfera" width="400">
+    <img width="524" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228995916-3f43dd82-3cb7-4b52-a6e8-b93a2d7aa81c.png">
     
+    <img width="527" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228995970-51424a74-84be-493b-9ea1-d554552a6387.png">
+    
+    <img width="618" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996034-bbac938d-9a0b-4d78-9af0-bb5d930d1bc5.png">
+
     - Intersecció dels rajos amb dues esferes
     
-    <img src="screenshots/FASE_00/08_virtualscene_color_shading.png" alt="Color shading dues esferes" width="400">
-    <img src="screenshots/FASE_00/11_virtualscene_depth_shading.png" alt="Depth shading dues esferes" width="400">
+    <img width="529" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996091-4abf6208-6c1c-407b-a3b8-88d551fa5179.png">
+    
+    <img width="523" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996201-7b7debcd-ea44-4ed8-9282-9d7b59c1e465.png">
+
 
 
 * **Fase 1**: 
@@ -271,37 +275,45 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     * **Pas 3b. Tests per trobar què és mes eficaç: Boundong Box o Sphere?**
         - Codi utilitzat per a fer els tests:
         
-        <img src="screenshots/FASE_01/test_code.png" alt="Codi utiliitzat per realitzar els tests" width="400">
+        ![imagen](https://user-images.githubusercontent.com/44063174/228996287-6ff3c3ac-37cd-4d7f-837f-99202a7598c5.png)
+
         
         - Resultat per a la bounding Box:
 
-         <img src="screenshots/FASE_01/box_time.png" alt="Temps emprat amb la bounding box" width="400">
+         ![imagen](https://user-images.githubusercontent.com/44063174/228996315-4397111a-c903-431c-99a7-77e08720c429.png)
+
 
         - Resultat per a la bounding Sphere:
 
-         <img src="screenshots/FASE_01/sphere_time.png" alt="Temps emprat amb la bounding sphere" width="400">
+         ![imagen](https://user-images.githubusercontent.com/44063174/228996360-132fb4bb-77d4-4b4a-ab63-8863ec5e202c.png)
+
          
     * **Pas 5. Creació de l'escena a partir de dades geolocalitzades**
     
         b. Visualització del pla afitat amb el fitxer fittedPlane.json
     
-        <img src="screenshots/FASE_01/REALDATA/fitted_plane.png" alt="Visualització del fitted plane definit en fitted_plane.json" width="400">
+        <img width="600" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996406-9514fa35-4ab2-47c9-870e-02ec08895790.png">
+
         
         c. Visualització dels "gizmos" tipus Sphere del fitxer data0.json
         
-        <img src="screenshots/FASE_01/REALDATA/sphere_gizmos.png" alt="Visualització del gizmo esfera amb una dada" width="400">
+        <img width="600" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996433-9a640585-fc97-41e4-b74b-4db8b693954a.png">
+
         
         d. Visualització dels "gizmos" tipus Box del fitxer data_box0.json
         
-        <img src="screenshots/FASE_01/REALDATA/box_gizmos.png" alt="Visualització del gizmo box amb una dada" width="400">
+        <img width="600" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996447-9f114f92-501f-4500-b653-b0753c66138c.png">
+
         
         e. Proves amb el fitxer data10.json
         
-        <img src="screenshots/FASE_01/REALDATA/all_spheres.png" alt="Visualització del gizmo esfera amb 10 dades" width="400">
+        <img width="601" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996482-9404fe87-9db8-4fb4-b9d5-67e3791943a3.png">
+
         
         f. Modificació del fitxer data0.json per a afegir esfera i box com a gizmos. El fitxer resultant s'ha anomenat data0 _box_sphere.json
         
-        <img src="screenshots/FASE_01/REALDATA/sphere_box_gizmo.png" alt="Visualització de gizmos esfera i box, d'una dada cadascuna" width="400">
+        <img width="601" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996504-3b330364-f507-4687-895e-d9be610f3e7a.png">
+
     
 
 * **Fase 2**:
@@ -312,60 +324,73 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
         - Resultat abans:          
 
-        <img src="screenshots/FASE_02/without_aliasing.png" alt="Sense aplicar" width="400">
+        ![imagen](https://user-images.githubusercontent.com/44063174/228996549-90b2f492-a879-48ca-bf4e-7b1548f783f4.png)
+
 
         - Resultat després:
 
-        <img src="screenshots/FASE_02/with_aliasing.png" alt="Aplicat" width="400">
+        ![imagen](https://user-images.githubusercontent.com/44063174/228996563-e8135ff4-3e9b-49c5-b79b-5ba562b16921.png)
+
     
     * **Pas 2. Considera les llums puntuals a la teva escena i implementa el shading de Blinn-Phong:**
         - Blinn Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
 
             a. Si només es calcula la component ambient
             
-            <img src="screenshots/FASE_02/SS/BP_ambient.png" alt="Blinn-Phong amb component ambient" width="400">
+            <img width="403" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996594-dbc403a7-f009-4e23-8792-0628295f9716.png">
+
             
             b. Si només es calcula la component difosa
             
-            <img src="screenshots/FASE_02/SS/BP_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
+            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996624-7872534a-8434-4283-9db8-5980645570b5.png">
+
             
             c. Si només es calcula l'especular
             
-            <img src="screenshots/FASE_02/SS/BP_especular.png" alt="Blinn-Phong amb component especular" width="400">
+            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996642-b1bcef88-33b6-4568-957c-8799a9b563f5.png">
+
             
             d. Ara les tres juntes
             
-            <img src="screenshots/FASE_02/SS/BP_tres.png" alt="Blinn-Phong amb les tres components" width="400">
+            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996667-9aba5049-acdb-4393-9d2d-bef81df4cdba.png">
+
             
             e. I afegint atenuació amb profunditat
             
-            <img src="screenshots/FASE_02/SS/BP_atenuacio.png" alt="Blinn-Phong amb atenuació amb profunditat" width="400">
+            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996695-05e3561f-433f-4da2-a7a3-ee59b77e95f8.png">
+
             
             f. I afegint l'ambient global
             
-            <img src="screenshots/FASE_02/SS/BP_global.png" alt="Blinn-Phong amb l'ambient global" width="400">
+            <img width="401" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996714-aac37930-ec34-4b12-8976-9fd73a7792a7.png">
+
 
 
         - Phong Shading usant el fitxer twoSpheres.json i el fitxer de setup setupRenderTwoSpheres.json
             a. Si només es calcula la component ambient
             
-            <img src="screenshots/FASE_02/SS/P_ambient.png" alt="Phong amb component ambient" width="400">
+            <img width="402" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996821-7cada7cb-ea7f-4256-8c3a-4aa2d5ccc259.png">
+
             
             b. Si només es calcula la component difosa
             
-            <img src="screenshots/FASE_02/SS/P_difuse.png" alt="Blinn-Phong amb component difosa" width="400">
+            <img width="401" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996829-c410f098-1e34-4963-9b9d-471f36599353.png">
+
             
             c. Si només es calcula l'especular
             
-            <img src="screenshots/FASE_02/SS/P_especular.png" alt="Phong amb component especular" width="400">
+            <img width="400" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996857-75a6480f-a24f-4faa-bfc7-4febb6df4eef.png">
+
             
             d. Ara les tres juntes
             
-            <img src="screenshots/FASE_02/SS/P_tres.png" alt="Phong amb les tres components" width="400">
+            <img width="400" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996883-b3637893-7d1e-4bc5-b2b9-ed9ca2b4ce1c.png">
+
             
             e. I afegint atenuació amb profunditat
             
-            <img src="screenshots/FASE_02/SS/P_atenuacio.png" alt="Phong amb atenuació amb profunditat" width="400">
+            <img width="401" alt="imagen" src="https://user-images.githubusercontent.com/44063174/228996897-b4c0d7e0-f7b8-4c2f-b22d-65e5cad9e3a7.png">
+
             
             f. Phong Shading no té llum ambient global, només té component ambient local
 
