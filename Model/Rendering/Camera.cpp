@@ -7,6 +7,7 @@ Camera::Camera() {
     auto vup = vec3(0,1,0);
     auto lookat = vec3(0,0,0);
     auto lookfrom = vec3(0,0,2);
+    defocus_blur = false;
     computeAtributes(lookfrom, lookat, vup, vfov, viewportX/viewportY, viewportX, false, 1.0);
 }
 
@@ -24,7 +25,7 @@ Camera::Camera(
 void Camera::changeAttributeMappings(vec3 lookfrom,
                               vec3 lookat,
                               double vfov) {
-    computeAtributes(lookfrom, lookat, this->v, vfov, viewportX/viewportY, viewportX, false, 1.0);
+    computeAtributes(lookfrom, lookat, vup, vfov, viewportX/viewportY, viewportX, false, 1.0);
 }
 
 void Camera::computeAtributes(vec3 lookfrom,
@@ -35,6 +36,7 @@ void Camera::computeAtributes(vec3 lookfrom,
                                bool defocus_blur, double lensRadius)
 {
     this->vfov = vfov;
+    this->vup = vup;
     auto theta = (vfov)*M_PI/180.0;
     auto h = tan(theta/2);
     float window_height = 2.0 * h;

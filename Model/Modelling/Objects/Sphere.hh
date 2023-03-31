@@ -8,6 +8,7 @@
 #include "Object.hh"
 #include "Model/Modelling/Animation.hh"
 #include "Model/Modelling/TG/TranslateTG.hh"
+#include "Model/Modelling/TG/ScaleTG.hh"
 
 class Sphere: public Object  {
 public:
@@ -17,6 +18,7 @@ public:
     //Crea una esfera unitaria centrada al punt (0,0,0) i de radi 1
     Sphere(float data);
     virtual ~Sphere() {}
+
     virtual bool hit(Ray& r, float tmin, float tmax, HitInfo& info) const override;
     virtual void aplicaTG(shared_ptr<TG> tg) override;
 
@@ -25,8 +27,10 @@ public:
     virtual void print(int indentation) const override;
 
 
-    vec3  getCenter() { return center;};
+    vec3  getCenter() { return center;}
     float getRadius() { return radius;}
+    vec3 getPMin();
+    vec3 getPMax();
 
 private:
     // Centre de l'esfera

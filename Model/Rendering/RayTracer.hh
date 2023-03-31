@@ -5,8 +5,10 @@
 #include <stdlib.h>
 
 #include "Controller.hh"
+#include "Model/Modelling/Materials/Material.hh"
+#include "Model/Modelling/Materials/Transparent.hh"
 #include "SetUp.hh"
-
+#include "glm/gtc/random.hpp"
 #include "glm/glm.hpp"
 
 using namespace std;
@@ -26,15 +28,14 @@ class RayTracer {
 
         RayTracer(QImage *i);
         void setPixel(int x, int y, vec3 color);
-
+        vec3 getMeanColor(int x, int y, int width, int heigth,shared_ptr<Camera> camera);
         void run();
 
 private:
         // Funció d'inicialització del raytracing.
         void init();
-
         // Funcio recursiva que calcula el color. Inicialment
         // es crida a cada pixel de forma no recursiva.
-        vec3 RayPixel (Ray &ray);
+        vec3 RayPixel (Ray &ray, int depth);
 };
 

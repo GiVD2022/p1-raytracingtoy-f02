@@ -17,6 +17,7 @@ void AttributeMapping::read(const QJsonObject &json)
     if (json.contains("minValue") && json["minValue"].isDouble()) {
         minValue = json["minValue"].toDouble();
     }
+
     if (json.contains("maxValue") && json["maxValue"].isDouble()) {
         maxValue = json["maxValue"].toDouble();
     }

@@ -5,12 +5,12 @@
    "type": "FITTEDPLANE",
    "normal": [0.0, 1.0, 0.0],
    "point": [0.0, 0.5, 0.0],
-   "pmin": [-5.0, -5.0],
-   "pmax": [5.0, 5.0],
+   "pmin": [-10.0, -10.0],
+   "pmax": [10.0, 10.0],
    "material": {
        "type": "MaterialTextura",
        "ka": [0.2, 0.2, 0.2],
-       "kd": [0.7,0.6,0.5],
+       "kd": [0.7, 0.6, 0.5],
        "ks": [0.7, 0.7, 0.7],
        "shininess": 10.0,
        "textureFile": "://resources/map.png"
@@ -21,7 +21,7 @@
   "maxPoint": [2.2955,  41.4903]
 },
 "Virtual": {
-  "minPoint": [-10,  0.5, -10],
+  "minPoint": [-10,  -0.5, -10],
   "maxPoint": [ 10,  0.5,  10]
 },
 "attributes": [

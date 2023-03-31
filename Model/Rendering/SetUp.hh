@@ -10,7 +10,7 @@
 
 #include "Model/Rendering/ShadingFactory.hh"
 #include "Model/Rendering/ShadingStrategy.hh"
-#include "Model/Rendering/ColorShading.hh"
+
 
 class SetUp : public Serializable
 {
@@ -42,6 +42,7 @@ public:
     void setTopBackground(vec3 color);
     void setDownBackground(vec3 color);
     void setSamples(int s);
+    void setMAXDEPTH(int s);
     void setReflections(bool b);
     void setRefractions(bool b);
     void setShadows(bool b);

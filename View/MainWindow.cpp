@@ -28,6 +28,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // Connect to Data Loaders and Generators
     // TO DO: Fase 1: Ampliar els menús per obtenir nous tipus d'objectes
     QObject::connect(ui->actionNew_Sphere, SIGNAL(triggered()), builder, SLOT(newSphere()));
+    QObject::connect(ui->actionNew_Triangle, SIGNAL(triggered()), builder, SLOT(newTriangle()));
+    QObject::connect(ui->actionNew_Box, SIGNAL(triggered()), builder, SLOT(newBox()));
+    QObject::connect(ui->actionNew_Cylinder, SIGNAL(triggered()), builder, SLOT(newCylinder()));
     QObject::connect(ui->actionGenerate_Scene, SIGNAL(triggered()), builder, SLOT(newSimulatedScene()));
     QObject::connect(ui->actionOpen_Virtual_Scene, SIGNAL(triggered()), builder, SLOT(newVirtualScene()));
     QObject::connect(ui->actionOpen_Data, SIGNAL(triggered()), builder, SLOT(newDataScene()));
@@ -41,13 +44,13 @@ MainWindow::MainWindow(QWidget *parent) :
     // Connect with different shaders
     // TO DO Fase 0: Connectar els menús ja existents amb els nous shadings
     QObject::connect(ui->actionColor_Shading, SIGNAL(triggered()), builder, SLOT(activaColorShading()));
-    //QObject::connect(ui->actionDepth_Shading, SIGNAL(triggered()), this, SLOT(activaDepthShader()));
-    //QObject::connect(ui->actionNormal_Shading, SIGNAL(triggered()), this, SLOT(activaNormalShader()));
+    QObject::connect(ui->actionDepth_Shading, SIGNAL(triggered()), builder, SLOT(activaDepthShader()));
+    QObject::connect(ui->actionNormal_Shading, SIGNAL(triggered()), builder, SLOT(activaNormalShader()));
 
     // TO DO Fase 2: connectar els shadings d'il·luminació Phong, Bling-Phong i d'altres
-    //    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), this, SLOT(activaPhongShader()));
-    //    QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), this, SLOT(activaBlinn_Phong()));
-    //    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), this, SLOT(activaCell_Shading()));
+    QObject::connect(ui->actionPhong_Shading, SIGNAL(triggered()), builder, SLOT(activaPhongShading()));
+    QObject::connect(ui->actionBlinn_Phong, SIGNAL(triggered()), builder, SLOT(activaBlinn_Phong()));
+    QObject::connect(ui->actionCell_Shading, SIGNAL(triggered()), builder, SLOT(activaCell_Shading()));
     //    QObject::connect(ui->actionGooch_Shading, SIGNAL(triggered()), this, SLOT(activaGooch_Shading()));
 
 
@@ -107,6 +110,13 @@ void MainWindow::on_valSamples_valueChanged(int arg1)
     Q_UNUSED(arg1);
     auto visSetUp = Controller::getInstance()->getSetUp();
     visSetUp->setSamples(ui->valSamples->value());
+}
+
+void MainWindow::on_valMaxDepth_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+    auto visSetUp = Controller::getInstance()->getSetUp();
+    visSetUp->setMAXDEPTH(ui->valMaxDepth->value());
 }
 
 void MainWindow::on_valReflections_stateChanged()

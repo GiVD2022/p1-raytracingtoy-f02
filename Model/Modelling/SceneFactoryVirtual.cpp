@@ -1,4 +1,5 @@
 #include "SceneFactoryVirtual.hh"
+#include <iostream>
 
 
 SceneFactoryVirtual::SceneFactoryVirtual():SceneFactory()
@@ -6,12 +7,13 @@ SceneFactoryVirtual::SceneFactoryVirtual():SceneFactory()
 }
 
 shared_ptr<Scene>  SceneFactoryVirtual::createScene() {
+    std::cout << "Fa creat scene sense param" << std::endl;
     scene= make_shared<Scene>();
     return scene;
 }
 
 shared_ptr<Scene> SceneFactoryVirtual::createScene(QString filename) {
-
+    std::cout << "Fa creat scene amb param" << std::endl;
     scene= make_shared<Scene>();
     load(filename);
     print(0);

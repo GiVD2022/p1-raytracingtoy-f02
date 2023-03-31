@@ -5,6 +5,7 @@
 #include "Animation.hh"
 #include "Objects/Object.hh"
 #include "Objects/Sphere.hh"
+#include "Objects/FittedPlane.hh"
 
 #include "Materials/Material.hh"
 
@@ -27,8 +28,8 @@ public:
     } MATERIAL_TYPES;
 
     // AMPLIACIO: Posible objecte que no sigui un pla afitat: una esfera
-    shared_ptr<Object> basePlane;
-    shared_ptr<Sphere> baseSphere;
+    // Possible base objects: a fitted plane or a sphere
+    shared_ptr<Object> baseObject;
 
     QString name;
 
@@ -63,10 +64,8 @@ public:
 
     // TODO FASE 2:
     // Incloure bases a l'escena: FittedPlane
-    // void setBasePlane(shared_ptr<FittedPlane> plane);
-
     // AMPLIACIO: Posible objecte que no sigui un fitted plane: una esfera
-    // void setBaseSphere(shared_ptr<Sphere> sphere);
+    void setBaseObject(shared_ptr<Object> baseObject);
 
 
 };

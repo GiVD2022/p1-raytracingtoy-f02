@@ -1,9 +1,24 @@
 #include "Scene.hh"
+#include <iostream>
 
 Scene::Scene()
 {
     pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+}
+
+Scene::Scene(shared_ptr<Object> base): baseObject(nullptr)
+{
+    pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
+    pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    // Check the type of base object
+    if (auto plane = std::dynamic_pointer_cast<FittedPlane>(base)) {
+        baseObject = plane;
+    } else if (auto sphere = std::dynamic_pointer_cast<Sphere>(base)) {
+        baseObject = sphere;
+    } else {
+        throw std::invalid_argument("Invalid base object type.");
+    }
 }
 
 
@@ -15,8 +30,30 @@ bool Scene::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
     // Si un objecte es intersecat pel raig, el parametre  de tipus HitInfo conte
     // la informació sobre la interseccio.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
+    bool hit_anything = false;
+    float closest_t = tmax;
+    HitInfo temp_info;
 
-    return true;
+    if(baseObject != nullptr && baseObject->hit(raig, tmin, closest_t, temp_info)) {
+        info = temp_info;
+        hit_anything = true;
+        closest_t = temp_info.t;
+    }
+    for (const auto& object : objects) {
+        if (object->hit(raig, tmin, closest_t, temp_info)) {
+            hit_anything = true;
+            closest_t = temp_info.t;
+            info = temp_info;
+        }
+    }
+
+    if (hit_anything) {
+        // Pintar l'esfera de color lila
+        if (info.mat_ptr->Kd == vec3(1.0f, 0.0f, 1.0f)) {
+            info.mat_ptr->Kd = vec3(0.5f, 0.0f, 0.5f);
+        }
+    }
+    return hit_anything;
 }
 
 
@@ -30,4 +67,16 @@ void Scene::setDimensions(vec3 p1, vec3 p2) {
     pmin = p1;
     pmax = p2;
 }
+
+void Scene::setBaseObject(shared_ptr<Object> base) {
+    // Check the type of base object
+    if (auto plane = std::dynamic_pointer_cast<FittedPlane>(base)) {
+        baseObject = plane;
+    } else if (auto sphere = std::dynamic_pointer_cast<Sphere>(base)) {
+        baseObject = sphere;
+    } else {
+        throw std::invalid_argument("Invalid base object type.");
+    }
+}
+
 

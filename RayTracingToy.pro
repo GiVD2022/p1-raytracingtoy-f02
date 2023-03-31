@@ -20,29 +20,50 @@ SOURCES += \
     Main.cpp \
     Model/Builder.cpp \
     Model/Modelling/Animation.cpp \
+    Model/Modelling/Lights/DirectionalLight.cpp \
     Model/Modelling/Lights/Light.cpp \
     Model/Modelling/Lights/LightFactory.cpp \
     Model/Modelling/Lights/PointLight.cpp \
+    Model/Modelling/Lights/SpotLight.cpp \
     Model/Modelling/Materials/ColorMapStatic.cpp \
     Model/Modelling/Materials/Lambertian.cpp \
     Model/Modelling/Materials/Material.cpp \
     Model/Modelling/Materials/MaterialFactory.cpp \
+    Model/Modelling/Materials/MaterialTextura.cpp \
+    Model/Modelling/Materials/Metal.cpp \
     Model/Modelling/Materials/Texture.cpp \
+    Model/Modelling/Materials/ToonMaterial.cpp \
+    Model/Modelling/Materials/Transparent.cpp \
+    Model/Modelling/Objects/Box.cpp \
+    Model/Modelling/Objects/Cylinder.cpp \
     Model/Modelling/Objects/Face.cpp \
+    Model/Modelling/Objects/FittedPlane.cpp \
     Model/Modelling/Objects/Mesh.cpp \
     Model/Modelling/Objects/Object.cpp \
     Model/Modelling/Objects/ObjectFactory.cpp \
     Model/Modelling/Objects/Plane.cpp \
     Model/Modelling/Objects/Sphere.cpp \
+    Model/Modelling/Objects/Triangle.cpp \
     Model/Modelling/Scene.cpp \
     Model/Modelling/SceneFactory.cpp \
     Model/Modelling/SceneFactoryData.cpp \
     Model/Modelling/SceneFactoryVirtual.cpp \
+    Model/Modelling/TG/ScaleTG.cpp \
     Model/Modelling/TG/TG.cpp \
     Model/Modelling/TG/TranslateTG.cpp \
+    Model/Rendering/BlinnPhongShading.cpp \
+    Model/Rendering/BlinnPhongShadow.cpp \
     Model/Rendering/Camera.cpp \
+    Model/Rendering/CelShadow.cpp \
+    Model/Rendering/Celshading.cpp \
     Model/Rendering/ColorShading.cpp \
     Model/Rendering/ColorShadow.cpp \
+    Model/Rendering/DepthShading.cpp \
+    Model/Rendering/DepthShadow.cpp \
+    Model/Rendering/NormalShading.cpp \
+    Model/Rendering/NormalShadow.cpp \
+    Model/Rendering/PhongShading.cpp \
+    Model/Rendering/PhongShadow.cpp \
     Model/Rendering/RayTracer.cc \
     Model/Rendering/SetUp.cpp \
     Model/Rendering/ShadingFactory.cpp \
@@ -59,31 +80,52 @@ HEADERS += \
     Model/Builder.hh \
     Model/Modelling/Animation.hh \
     Model/Modelling/Hitable.hh \
+    Model/Modelling/Lights/DirectionalLight.hh \
     Model/Modelling/Lights/Light.hh \
     Model/Modelling/Lights/LightFactory.hh \
     Model/Modelling/Lights/PointLight.hh \
+    Model/Modelling/Lights/SpotLight.hh \
     Model/Modelling/Materials/ColorMap.hh \
     Model/Modelling/Materials/ColorMapStatic.hh \
     Model/Modelling/Materials/Lambertian.hh \
     Model/Modelling/Materials/Material.hh \
     Model/Modelling/Materials/MaterialFactory.hh \
+    Model/Modelling/Materials/MaterialTextura.hh \
+    Model/Modelling/Materials/Metal.h \
     Model/Modelling/Materials/Texture.hh \
+    Model/Modelling/Materials/ToonMaterial.hh \
+    Model/Modelling/Materials/Transparent.hh \
+    Model/Modelling/Objects/Box.hh \
+    Model/Modelling/Objects/Cylinder.hh \
     Model/Modelling/Objects/Face.hh \
+    Model/Modelling/Objects/FittedPlane.hh \
     Model/Modelling/Objects/Mesh.hh \
     Model/Modelling/Objects/Object.hh \
     Model/Modelling/Objects/ObjectFactory.hh \
     Model/Modelling/Objects/Plane.hh \
     Model/Modelling/Objects/Sphere.hh \
+    Model/Modelling/Objects/Triangle.hh \
     Model/Modelling/Ray.hh \
     Model/Modelling/Scene.hh \
     Model/Modelling/SceneFactory.hh \
     Model/Modelling/SceneFactoryData.hh \
     Model/Modelling/SceneFactoryVirtual.hh \
+    Model/Modelling/TG/ScaleTG.hh \
     Model/Modelling/TG/TG.hh \
     Model/Modelling/TG/TranslateTG.hh \
+    Model/Rendering/BlinnPhongShading.hh \
+    Model/Rendering/BlinnPhongShadow.hh \
     Model/Rendering/Camera.hh \
+    Model/Rendering/CelShadow.h \
+    Model/Rendering/Celshading.hh \
     Model/Rendering/ColorShading.hh \
     Model/Rendering/ColorShadow.hh \
+    Model/Rendering/DepthShading.h \
+    Model/Rendering/DepthShadow.hh \
+    Model/Rendering/NormalShading.h \
+    Model/Rendering/NormalShadow.hh \
+    Model/Rendering/PhongShading.hh \
+    Model/Rendering/PhongShadow.hh \
     Model/Rendering/RayTracer.hh \
     Model/Rendering/SetUp.hh \
     Model/Rendering/ShadingFactory.hh \
@@ -541,6 +583,8 @@ FORMS += \
     main.ui
 
 DISTFILES += \
+    .gitignore \
+    resources/box.json \
     resources/dadesBCN.json \
     resources/dadesBCNOneValue.json \
     resources/data0.json \
@@ -548,6 +592,7 @@ DISTFILES += \
     resources/mapBCN.png \
     resources/mapZoom.png \
     resources/meshExample.json \
+    resources/metallSpheres.json \
     resources/oneSphere.json \
     resources/setupDataBCN.json \
     resources/setupDataBCNOneValue.json \
