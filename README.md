@@ -555,7 +555,6 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         
         <img src="screenshots/FASE_02/PAS5/transparent_10_vfov.png" alt="vfov 10" width="400">
         
-        
 
 * **Fase 3**:
     * **Pas 1: Afegeix un nou material de textura al pla base**
