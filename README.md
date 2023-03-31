@@ -113,7 +113,7 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
     * **Cel Shading**. Hem implementat el Cel shading per un nombre arbitrari de tons per cada objecte. Aquests tons es llegeixen del material de l'objecte al JSON de l'escena. Necessites afegir informació al material? Sí, hem creat una classe abstracta "ToonMaterial". Aquesta classe hereta de Material i alhora és la mare de tots els altres materials. En aquesta classe hem afegit l'atribut "gradientColor" que és un vector de colors. Hem hagut d'implementar els mètodes de llegir i escriure a fitxer. Aquestes funcions criden a les respectives funcions de Material, però a més llegeixen o escriuen el vector de tonalitats. 
     A part del Cel shading com a tal, hem implementat també les extensions explicades a classe, on hem incorporat la component especular, i la llum ambient. A més, hem afegit la silueta dels objectes, que surten ressaltats dins l'escena.
     Per admetre un nombre arbitrari d'intervals, per calcular el color en cada punt calculem $t = \lfloor n \cdot x \rfloor$ on x ès el cosinus entre l'angle de llum i la normal, i n el nombre d'intervals. Aleshores t és l'índex de l'interval corresponent. En cas que el cosinus sigui 1, hem decidit posar el color més clar del que disposem.
-    * **SceneFactoryData**: //explicar quines dimensions i translacions hem decidit.
+    * **SceneFactoryData**:  Hem pres una sèrie de decisions respecte les escales i transicions. En primer lloc, hem decidit no omplir del tot el pla: En una vora d'una unitat d'amplada al voltant del fitted plane no hi haurà cap centre. Això evita que objectes es quedin "fent equilibris" a la vora. Per altra banda, per calcular l'escala ho hem fet de dues maneres: en els arxius dadesEuropa.json, dadesBCNZoom.json i dades BCNOneValue.json hem donat valor mínim 0.35 i valor màxim 2.3 als radis de les esferes. Als altres arxius el mínim ha estat 0.125 i el maxim 1.07. Hem considerat aquests dos casos per separat perquè el primer ens proporciona visualitzacions més semblants a les de l'enunciat, mentre que el segon ens permet mostrar més dades ja que els gyzmos queden més petits.
     
     * **Llum direccional**. Hem implementat una nova classe de llum, la direccional. Aquesta no té posició, doncs està situada a l'infinit. A més, la seva atenuació sempre és 1, pel mateix motiu. Té 2 atributs propis: intensitat i direcció.
     * **Llum spotlight**. Hem implementat una nova classe de llum, la spotlight (o focus). Al igual que la point light, aquesta sí que té posició. I similarment a la direccional, també té una direcció, ja que, a diferència de la point light, no il·lumina en totes direccions. Les llums spotlight, només il·luminen en una regió cònica amb vèrtex la posició de la llum i direcció la recta que seria l'eix de revolució. El con es defineix amb l'angle d'il·luminació (que és l'angle entre la direcció de la llum i la vora del con). Per tot això, la nova classe té com a atributs la posició, la direcció, l'angle de tall (a partir del qual considerarem que un punt no està il·luminat) i l'exponent (que controla com concentrada és la llum).
@@ -218,8 +218,24 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         * **Raona per què en aquests casos l'escena es veu més clara**
         Si no es pondera el color local amb (1- colorScattered) els materials transparents no absorveixen la llum que travessa l'objecte, cosa que significa que la llum passa per ells sense ser atenuada. Això pot fer que les escenes semblin més brillants i clares en general, però també afecta negativament en la percepció de la profunditat i oclusió de la imatge.
         
-
-    
+* **Fase 3**:
+    * **Pas 1**:
+        * **Amb el fitxer de setup setupDataEuropa.json quina de les dues imatges obtens? Raona per què.**
+        Ens trobem en la situació de l'esquerra: és fàcil de veure, si mirem dadesEuropa.json, trobem que el pla correspon a l'equació {y=-1}, i està afitat per valors d'x i z entre -50 i 50. Com que és un fitxer de tipus RealData, per les esferes en coneixem el valor x i z del centre, i li donem valor y = 0 per defecte al centre. A més, en funció de quin escalat triem, l'imatge obtinguda s'assemblarà més a la de l'enunciat; si fem servir la dels gyzmos les esferes no travessaran el plan, en canvi amb l'altre sí. Es pot veure a la secció de captures com, efectivament, som a la de l'esquerra.
+        * **Qui calcularà les coordenades (u, v) del punt d’intersecció amb el pla?**
+        Les calcularà la classe fitted plane i les desarà a l'atribut uv de la classe HitInfo, perquè hi pugui accedir el shading corresponent.
+        * **Quina de les dues visualitzacions obtens?**
+        Obtenim la segona visualització, que correspon a la imatge de sota a l'enunciat. A la secció de captures es troba la imatge amb l'escala gran, ja que dona una visualització més semblant a la de l'enunciat.
+     * **Pas 2**:
+        Captures dispobibles a la secció de captures.
+        * **Prova també a posar les esferes metàl·liques i transparents, com feies a la Fase 2.**
+        Hem afegit quatre esferes transparents a DadesEuropa.json, i n'adjuntem les visualitzacions a la secció de captures.
+     * **Pas 3**:
+        * **Cal incloure com a mínim un nou joc de dades amb un mínim d’una propietat, amb un mínim de 15 dades i amb algun altre mapa**
+        Hem creat un arxiu anomenat dadesDeltaTextured.json i un setupDataDelta.json. Modelen la població d'ànec xiulador (esferes transparents), així com l'ànec blanc (box metal·lics), l'ànec griset (cilindres lambertians) al Delta de l'Ebre. Hem inclòs el mapa a la carpeta de "resources". 
+     * **Pas 4**:
+        * **Genera noves escenes i resultats finals de la pràctica**
+        Les generarem durant la pròxima setmana i les penjarem al padlet de l'assignatura.
     
 ### Screenshots de cada fase
 * **Fase 0**:
@@ -540,34 +556,39 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
         <img src="screenshots/FASE_02/PAS5/transparent_10_vfov.png" alt="vfov 10" width="400">
         
         
-* **Fase 3**:
-    - **Amb el fitxer de setup setupDataEuropa.json quina de les dues imatges obtens? Raona per què.**
-    
-      Ens trobem en la situació de la dreta: és fàcil de veure, si mirem dadesEuropa.json, trobem que el pla correspon a l'equació {y=-1}, i està afitat per valors d'x i z entre -50 i 50. Com que és un fitxer de tipus RealData, per les esferes en coneixem el valor x i z del centre, i li donem valor y = 0 per defecte al centre. A més, pel nostre escalat, l'esfera més gran tindrà radi = 1. Per tant, cap de les esferes travessarà el pla com es veu a la imatge 1. 
-      
-    - **Qui calcularà les coordenades (u, v) del punt d’intersecció amb el pla?**
-    
-      Les calcularà la classe fitted plane i les desarà a l'atribut uv de la classe HitInfo, perquè hi pugui accedir el shading corresponent.
-      
-    - **Quina de les dues visualitzacions obtens? **
-    
-      Obtenim la segona visualització:
-      
-      ![imagen](https://user-images.githubusercontent.com/80753129/227035406-78d659d9-ff69-4768-8ae6-e33469b71009.png "Visualització Fase 3 1.3")
-      
-    - **Visualitzacions associades a dadesBCN_Zoom i dadesBCN**
-       ![imagen](https://user-images.githubusercontent.com/80753129/227382648-703f0c93-9b22-420a-bb83-43fcc99a51b6.png)
-  
-    - **Prova també a posar les esferes metàl·liques i transparents, com feies a la Fase 2**
-      
-      Hem afegit quatre esferes transparents, i n'adjuntem les visualitzacions a continuació. Corresponen al fitxer dadesEuropaCustom.json, amb el setup setupDataEuropa.json
-      
-      ![imagen](https://user-images.githubusercontent.com/80753129/227384815-20342c98-d36f-4ebe-b27a-165c915cb3e7.png)
 
-    - **Cal incloure com a mínim un nou joc de dades amb un mínim d’una propietat, amb un mínim de 15 dades i amb algun altre mapa**
+* **Fase 3**:
+    * **Pas 1: Afegeix un nou material de textura al pla base**
     
-      Creem un arxiu anomenat fase31.json i un setupFase31.json. Modelen la població d'ànec xiulador (esferes transparents), així com l'ànec blanc (box metal·lics), l'ànec griset (cilindres lambertians) al Delta de l'Ebre.
-      ![imagen](https://user-images.githubusercontent.com/80753129/227723119-793a260c-6e7d-4864-8bd6-a15be05aa83b.png)
+        - Carregar dadesEuropa.json amb setupDataEuropa.json
+
+        <img src="screenshots/FASE_03/Pas1_0.PNG" alt="Visualitzacio inicial de dades europa" width="400">
+        
+        - Carregar dadesEuropaTextured.json amb setupDataEuropa.json
+        
+        <img src="screenshots/FASE_03/Pas1_1.PNG" alt="Visualitzacio amb textura de dades europa" width="400">
+    
+    * **Pas 2: Prova amb diferents jocs de dades i mapes**
+        - Carregar dadesBCNOneValueTexture.json amb setupDataBCN.json
+        
+        <img src="screenshots/FASE_03/Pas2_0.PNG" alt="OneValue amb textura" width="400">
+        
+        - Carregar dadesBCNOneValueTexture.json amb setupDataBCN_Zoom.json
+        
+        <img src="screenshots/FASE_03/Pas2_1.PNG" alt="Zoom amb textura" width="400">
+        
+        - Carregar dadesBCNTexture.json amb setupDataBCN.json
+        
+        <img src="screenshots/FASE_03/Pas2_2.PNG" alt="DadesBCN amb textura" width="400">
+        
+        - Esferes d'altres tipus: dadesEuropaCustom.json amb setupDataEuropa.json
+        
+        <img src="screenshots/FASE_03/Pas2_3.PNG" alt="Mes dades d'Europa" width="400">
+  
+    * **Pas 3: Prova amb diferents jocs de dades i mapes**
+        - Nou joc de dades: dadesDeltaTextured.json amb setupDataDelta.json
+        
+        <img src="screenshots/FASE_03/Pas3_0.PNG" alt="Ànecs al delta" width="400">
 
     
 
@@ -595,11 +616,9 @@ En aquest fitxer cal que feu l'informe de la pràctica 1.
 
     ![image](https://user-images.githubusercontent.com/69910092/228961086-0de78c19-5360-423c-93b1-fb63a0e393f6.png)
     
-    - Esfera com a base
-    
-    <img width="400" alt="Captura de pantalla 2023-03-31 a las 1 29 33" src="https://user-images.githubusercontent.com/44063174/228987659-0d9492ee-ace9-4b8a-8457-d2bc95d57be1.png">
-
-
+    - Cilindre com a gyzmo
+        Obrint l'arxiu test_plane_spheres_cylinder_box.json com a dataFile trobem una sèrie de gyzmos de cada mena, tots lambertians, i les interseccions entre ells. La següent visualització s'obté amb el setup setupDataEuropa.json i la càmera a (0,3,3):
+        ![imagen](https://user-images.githubusercontent.com/80753129/228991649-3e64ecb9-e376-41ea-b9e6-153202337664.png)
     
 
 * **Més visualitzacions**:
