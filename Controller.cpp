@@ -21,7 +21,8 @@ bool Controller::createScene(SceneFactory::SCENE_TYPES currentType, QString name
         break;
     case SceneFactory::SCENE_TYPES::TEMPORALVW:
         // TO DO:  Afegir les factories de escenes temporals amb les animacions
-        return false;
+        std::cout << "Crea escena temporal virtual" << std::endl;
+        sf = make_shared<SceneFactoryVirtual>();
       break;
     default:
         break;
