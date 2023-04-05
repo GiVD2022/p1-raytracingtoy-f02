@@ -1,0 +1,117 @@
+{
+"scene": "Caniques a la platja",
+"typeScene": "VIRTUAL",
+"objects": [
+{
+  "name": "Base",
+  "type": "FITTEDPLANE",
+   "normal": [0.0, 1.0, 0.0],
+   "point": [0.0, -0.25, 0.0],
+   "pmin": [-12.0, -10.0],
+   "pmax": [12.0, 10.0],
+   "material": {
+	   "type": "MATERIALTEXTURA",
+	   "ka": [0.1, 0.1, 0.1],
+	   "kd": [0.7,0.4,0.4],
+	   "ks": [1.0, 1.0, 1.0],
+	   "shininess": 500.0,
+	   "textureFile": "://resources/sand_texture.jpg"
+   }
+},
+{
+  "name": "Canica rosa",
+  "type": "sphere",
+  "center": [-2.25, 0.0, -4.0],
+  "radius": 1.5,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.1, 0.2, 0.5],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/textura_1.png"
+    }
+},
+
+{
+"name": "Canica verda",
+"type":  "sphere",
+  "center": [1.5,0,-4.5],
+  "radius": 1.5,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [1, 1,1],
+    "ks": [0.7, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/textura_2.jpeg"
+    }
+},
+{
+"name": "Canica lila",
+"type":  "sphere",
+  "center": [-1.75,0.0,0.25],
+  "radius": 1,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [1, 1,1],
+    "ks": [0.7, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/textura_3.jpg"
+    }
+},
+{
+"name": "Canica blanca",
+"type":  "sphere",
+  "center": [1,0.0,0.5],
+  "radius": 1,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.7,0.6,0.5],
+    "ks": [0.7, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.3, 0.3, 0.3],
+    "nut": 1.5,
+    "textureFile": "://resources/textura_4.jpg"
+    }
+  },
+  {
+"name": "Canica de vidre",
+"type":  "sphere",
+  "center": [-3,0.0,-2],
+  "radius": 1.25,
+  "material": {
+    "type": "transparent",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.7,0.6,0.5],
+    "ks": [0.7, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.5, 0.5, 0.5],
+    "nut": 1.4
+    }
+  },
+  {
+"name": "Canica de vidre 2",
+"type":  "sphere",
+  "center": [1.75,0.0,-2],
+  "radius": 1.25,
+  "material": {
+    "type": "transparent",
+    "ka": [0.2, 0.2, 0.2],
+    "kd": [0.7,0.6,0.5],
+    "ks": [0.7, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.8, 0.8, 0.8],
+    "nut": 1.2
+    }
+  }
+]
+}

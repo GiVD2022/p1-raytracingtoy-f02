@@ -6,5 +6,10 @@
         <file>resources/mapBCN.png</file>
         <file>resources/mapZoom.png</file>
         <file>resources/mapDelta.png</file>
+        <file>resources/textura_2.jpeg</file>
+        <file>resources/textura_1.png</file>
+        <file>resources/sand_texture.jpg</file>
+        <file>resources/textura_3.jpg</file>
+        <file>resources/textura_4.jpg</file>
     </qresource>
 </RCC>

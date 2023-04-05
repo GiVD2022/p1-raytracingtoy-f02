@@ -1,4 +1,5 @@
 #include "Sphere.hh"
+#include <QtMath>
 #include <iostream>
 
 Sphere::Sphere() {
@@ -30,6 +31,9 @@ bool Sphere::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
             info.normal = (info.p - center) / radius;
             info.mat_ptr = material.get();
             // TODO Fase 3: Cal calcular les coordenades de textura
+            float theta = qAtan2(info.p.z,info.p.x);
+            float phi  = qAsin((info.p.y - center.y)/radius);
+            info.uv = vec2(0.5 + theta/(2*PI), 0.5 + phi /PI );
 
             return true;
         }
@@ -40,6 +44,10 @@ bool Sphere::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
             info.normal = (info.p - center) / radius;
             info.mat_ptr = material.get();
             // TODO Fase 3: Cal calcular les coordenades de textura
+            float theta = qAtan2(info.p.z - center.z,info.p.x-center.x);
+            float phi  = qAsin((info.p.y - center.y)/radius);
+
+            info.uv = vec2(0.5 - theta/(2*PI), 0.5 + phi /PI );
 
             return true;
         }

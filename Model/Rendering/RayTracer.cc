@@ -1,5 +1,6 @@
 #include "RayTracer.hh"
 #include <iostream>
+#include <vector>
 #define EPS 0.001f
 
 RayTracer::RayTracer(QImage *i):
@@ -90,6 +91,9 @@ vec3 RayTracer::RayPixel(Ray &ray, int depth) {
                 // Some scatters do not return ray
                if(length(scattered_ray.getDirection()) > FLT_EPSILON){
                    color += RayPixel(scattered_ray, depth + 1) * attenuation;
+               } else if (setup->getLights().size() == 0){
+                   //Blinn phong will only call getDifuse if some light exists
+                   color = attenuation;
                }
             }
         }

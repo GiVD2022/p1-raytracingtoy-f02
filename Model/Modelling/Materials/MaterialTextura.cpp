@@ -29,6 +29,7 @@ bool MaterialTextura::scatter(const Ray& r_in, const HitInfo& rec, vec3& color, 
 
 void MaterialTextura::read(const QJsonObject &json){
 Material::read(json);
+QTextStream(stdout)<< "llegint com a textura \n";
 if (json.contains("textureFile") && json["textureFile"].isString())
     textura = make_shared<Texture>(json["textureFile"].toString());
 }
