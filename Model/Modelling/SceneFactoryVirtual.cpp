@@ -1,4 +1,5 @@
 #include "SceneFactoryVirtual.hh"
+#include "Model/Modelling/TG/RotateTG.hh"
 #include <iostream>
 
 
@@ -106,6 +107,7 @@ void SceneFactoryVirtual::read(const QJsonObject &json)
                             anim->frameIni = animObject["frameIni"].toInt();
                         if (animObject.contains("frameFinal") && animObject["frameFinal"].isDouble())
                             anim->frameFinal = animObject["frameFinal"].toInt();
+
                         if (animObject.contains("translation") && animObject["translation"].isArray()) {
                             QJsonArray translationArray = animObject["translation"].toArray();
                             shared_ptr<TG> tg = make_shared<TranslateTG>(vec3(translationArray[0].toDouble(), translationArray[1].toDouble(), translationArray[2].toDouble()));
@@ -116,6 +118,12 @@ void SceneFactoryVirtual::read(const QJsonObject &json)
                             shared_ptr<TG> tg = make_shared<ScaleTG>(vec3(scaleArray[0].toDouble(), scaleArray[0].toDouble(), scaleArray[0].toDouble()));
                             anim->transf = tg;
                         }
+                        if (animObject.contains("rotation") && animObject["rotation"].isArray()) {
+                            QJsonArray rotationArray = animObject["rotation"].toArray();
+                            shared_ptr<TG> tg = make_shared<RotateTG>(rotationArray[0].toDouble(), vec3(rotationArray[1].toDouble(), rotationArray[2].toDouble(), rotationArray[3].toDouble()));
+                            anim->transf = tg;
+                        }
+
                         o->addAnimation(anim);
                     }
                 }

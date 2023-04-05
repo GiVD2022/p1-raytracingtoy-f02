@@ -22,7 +22,7 @@
     {
       "frameIni": 0,
       "frameFinal": 15,
-      "translation": [0.05, 0.05, 0.05]
+      "rotation": [30, 0, 1, 0]
     },
     {
       "frameIni": 16,
