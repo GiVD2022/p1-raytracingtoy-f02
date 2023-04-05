@@ -3,8 +3,8 @@
 #include "Object.hh"
 #include "Model/Modelling/Animation.hh"
 #include "Model/Modelling/TG/TranslateTG.hh"
-
 #include "Model/Modelling/TG/ScaleTG.hh"
+#include "Model/Modelling/TG/RotateTG.hh"
 #include "Plane.hh"
 
 class Triangle: public Object

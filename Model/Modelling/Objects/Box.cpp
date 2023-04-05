@@ -87,9 +87,15 @@ void Box::aplicaTG(shared_ptr<TG> t) {
         half_size *= scale; // Apply scaling to half size
         pmin = center - half_size; // Calculate new min point
         pmax = center + half_size; // Calculate new max point
+    } else if (auto rotateTG = dynamic_pointer_cast<RotateTG>(t)) {
+        glm::mat4 rotation = rotateTG->getTG();
+        vec3 center = (pmax + pmin) * 0.5f; // Calculate box center
+        vec3 half_size = (pmax - pmin) * 0.5f; // Calculate box half size
+        vec3 new_half_size = vec3(glm::length(rotation * vec4(half_size, 0.0)));
+        pmin = center - new_half_size; // Calculate new min point
+        pmax = center + new_half_size; // Calculate new max point
     }
 }
-
 
 void Box::read (const QJsonObject &json)
 {

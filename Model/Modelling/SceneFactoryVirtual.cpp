@@ -113,12 +113,12 @@ void SceneFactoryVirtual::read(const QJsonObject &json)
                             shared_ptr<TG> tg = make_shared<TranslateTG>(vec3(translationArray[0].toDouble(), translationArray[1].toDouble(), translationArray[2].toDouble()));
                             anim->transf = tg;
                         }
-                        if (animObject.contains("scale") && animObject["scale"].isArray()) {
+                        else if (animObject.contains("scale") && animObject["scale"].isArray()) {
                             QJsonArray scaleArray = animObject["scale"].toArray();
                             shared_ptr<TG> tg = make_shared<ScaleTG>(vec3(scaleArray[0].toDouble(), scaleArray[0].toDouble(), scaleArray[0].toDouble()));
                             anim->transf = tg;
                         }
-                        if (animObject.contains("rotation") && animObject["rotation"].isArray()) {
+                        else if (animObject.contains("rotation") && animObject["rotation"].isArray()) {
                             QJsonArray rotationArray = animObject["rotation"].toArray();
                             shared_ptr<TG> tg = make_shared<RotateTG>(rotationArray[0].toDouble(), vec3(rotationArray[1].toDouble(), rotationArray[2].toDouble(), rotationArray[3].toDouble()));
                             anim->transf = tg;

@@ -9,6 +9,7 @@
 #include "Model/Modelling/Animation.hh"
 #include "Model/Modelling/TG/TranslateTG.hh"
 #include "Model/Modelling/TG/ScaleTG.hh"
+#include "Model/Modelling/TG/RotateTG.hh"
 
 class Sphere: public Object  {
 public:

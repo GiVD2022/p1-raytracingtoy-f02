@@ -87,8 +87,19 @@ void Triangle::aplicaTG(shared_ptr<TG> t) {
         vertexs[0] = center + scale * (vertexs[0] - center);
         vertexs[1] = center + scale * (vertexs[1] - center);
         vertexs[2] = center + scale * (vertexs[2] - center);
+    } else if (auto rotateTG = dynamic_pointer_cast<RotateTG>(t)) {
+        glm::mat4 rotation = rotateTG->getTG();
+        vec3 center = (vertexs[0] + vertexs[1] + vertexs[2]) / 3.f;
+        vec4 vertex0(vertexs[0] - center, 1.0);
+        vec4 vertex1(vertexs[1] - center, 1.0);
+        vec4 vertex2(vertexs[2] - center, 1.0);
+        vertex0 = rotation * vertex0;
+        vertex1 = rotation * vertex1;
+        vertex2 = rotation * vertex2;
+        vertexs[0] = vec3(vertex0.x, vertex0.y, vertex0.z) + center;
+        vertexs[1] = vec3(vertex1.x, vertex1.y, vertex1.z) + center;
+        vertexs[2] = vec3(vertex2.x, vertex2.y, vertex2.z) + center;
     }
-
 }
 
 void Triangle::read (const QJsonObject &json)

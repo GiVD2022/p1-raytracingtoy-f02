@@ -62,14 +62,23 @@ bool Plane::hit(Ray &raig, float tmin, float tmax, HitInfo &info) const{
 
 
 void Plane::aplicaTG(shared_ptr<TG> t) {
-    if (dynamic_pointer_cast<shared_ptr<TranslateTG>>(t)) {
-
-        // Nomes movem el punt de pas
+    if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
+        // Only move the point of the plane
         vec4 newp(this->point, 1.0);
-        newp = t->getTG() * newp;
+        newp = translateTG->getTG() * newp;
         this->point.x = newp.x;
         this->point.y = newp.y;
         this->point.z = newp.z;
+    } else if (auto rotateTG = dynamic_pointer_cast<RotateTG>(t)) {
+        // Apply rotation to the plane normal
+        glm::vec4 newn(normal, 1.0);
+        newn = glm::transpose(glm::inverse(rotateTG->getTG())) * newn;
+        normal = glm::normalize(glm::vec3(newn.x, newn.y, newn.z));
+    } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
+        // Apply scaling to the plane normal
+        glm::vec4 newn(normal, 1.0);
+        newn = glm::transpose(glm::inverse(scaleTG->getTG())) * newn;
+        normal = glm::normalize(glm::vec3(newn.x, newn.y, newn.z));
     }
 }
 

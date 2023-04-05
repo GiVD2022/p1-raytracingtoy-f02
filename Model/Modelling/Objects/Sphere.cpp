@@ -55,6 +55,11 @@ void Sphere::aplicaTG(shared_ptr<TG> t) {
     } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
         glm::vec3 scale = scaleTG->scale;
         radius *= std::sqrt(scale.x * scale.y * scale.z); // Apply scaling to radius
+    } else if (auto rotateTG = dynamic_pointer_cast<RotateTG>(t)) {
+        glm::mat4 rotation = rotateTG->getTG();
+        glm::vec4 c(center, 1.0);
+        c = rotation * c;
+        center.x = c.x; center.y = c.y; center.z = c.z;
     }
 }
 

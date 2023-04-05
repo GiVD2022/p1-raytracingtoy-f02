@@ -1,16 +1,14 @@
-#ifndef ROTATETG_HH
-#define ROTATETG_HH
+#pragma once
 
 #include "TG.hh"
 
 class RotateTG : public TG
 {
 public:
-    glm::vec3 axis;
     float angle;
+    glm::vec3 axis;
+
     RotateTG(float angle, glm::vec3 axis);
     virtual ~RotateTG();
 
 };
-
-#endif // ROTATETG_HH
