@@ -146,20 +146,20 @@ bool Cylinder::hit(Ray &raig, float tmin, float tmax, HitInfo& info) const {
 
 void Cylinder::aplicaTG(shared_ptr<TG> t) {
     if (auto translateTG = dynamic_pointer_cast<TranslateTG>(t)) {
-        QTextStream(stdout)<<"Translating cylinder \n";
         vec4 c(center, 1.0);
         c = translateTG->getTG() * c;
         center.x = c.x; center.y = c.y; center.z = c.z;
     } else if (auto scaleTG = dynamic_pointer_cast<ScaleTG>(t)) {
-        QTextStream(stdout)<<"Scaling cylinder \n";
         glm::vec3 scale = scaleTG->scale;
         radius *= std::sqrt(scale.x * scale.z); // Apply scaling to radius
         height *= scale.y;
-    } else {
-        QTextStream(stdout) << "This print should never be displayed; Cylinder::aplicaTG \n";
+    } else if (auto rotateTG = dynamic_pointer_cast<RotateTG>(t)) {
+        glm::mat4 rotation = rotateTG->getTG();
+        glm::vec4 new_center(center, 1.0);
+        new_center = rotation * new_center;
+        center = glm::vec3(new_center.x, new_center.y, new_center.z);
     }
 }
-
 
 void Cylinder::read (const QJsonObject &json)
 {

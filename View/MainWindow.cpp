@@ -197,8 +197,9 @@ void MainWindow::runAnimation() {
     // es crida el render i es guarden
     // tantes imatges com a frames s'han calculat (exemple amb MAXFRAMES = 5 a Animation.hh)
 
-    Controller::getInstance()->createScene(MAXFRAMES);
-    for (int i=0; i<MAXFRAMES; i++) {
+    builder->newTemporalVirtualScene();
+    double numInstances = Controller::getInstance()->getScene()->numInstances;
+    for (int i=0; i<numInstances; i++) {
         QImage *image = new QImage(width, height, QImage::Format_RGB888);
         Controller::getInstance()->update(i);
         Controller::getInstance()->rendering(image);

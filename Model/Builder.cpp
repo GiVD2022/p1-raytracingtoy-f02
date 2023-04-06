@@ -73,6 +73,18 @@ void Builder::newVirtualScene()
     }
 }
 
+void Builder::newTemporalVirtualScene()
+{
+    QString fileName = QFileDialog::getOpenFileName();
+    if (!fileName.isNull()) {
+        QMessageBox msgBox;
+        if(Controller::getInstance()->createScene(SceneFactory::SCENE_TYPES::TEMPORALVW, fileName))
+            msgBox.setText("Temporal Virtual Scene well loaded.");
+        else msgBox.setText("Scene NOT loaded. Error reading data.");
+        msgBox.exec();
+    }
+}
+
 
 void Builder::newDataScene()
 {

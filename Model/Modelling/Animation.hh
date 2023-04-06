@@ -3,7 +3,7 @@
 #include "glm/glm.hpp"
 #include "Model/Modelling/TG/TG.hh"
 #include <vector>
-#define MAXFRAMES 5
+#define MAXFRAMES 10
 
 #include <memory>
 

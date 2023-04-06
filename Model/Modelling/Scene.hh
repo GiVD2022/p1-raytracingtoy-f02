@@ -36,6 +36,8 @@ public:
     // dimensions de l'escena virtual que es renderintza: capsa mínima contenidora
     vec3 pmin, pmax;
 
+    double numInstances;
+
     // Vector d'objectes continguts a l'escena
     std::vector<shared_ptr<Object>> objects;
 

@@ -16,6 +16,7 @@ public slots:
     void newCylinder();
     void newSimulatedScene();
     void newVirtualScene();
+    void newTemporalVirtualScene();
     void newDataScene();
     void loadSettings();
     void activaColorShading();

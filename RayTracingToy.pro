@@ -47,7 +47,9 @@ SOURCES += \
     Model/Modelling/Scene.cpp \
     Model/Modelling/SceneFactory.cpp \
     Model/Modelling/SceneFactoryData.cpp \
+    Model/Modelling/SceneFactoryTemporalVirtual.cpp \
     Model/Modelling/SceneFactoryVirtual.cpp \
+    Model/Modelling/TG/RotateTG.cpp \
     Model/Modelling/TG/ScaleTG.cpp \
     Model/Modelling/TG/TG.cpp \
     Model/Modelling/TG/TranslateTG.cpp \
@@ -109,7 +111,9 @@ HEADERS += \
     Model/Modelling/Scene.hh \
     Model/Modelling/SceneFactory.hh \
     Model/Modelling/SceneFactoryData.hh \
+    Model/Modelling/SceneFactoryTemporalVirtual.hh \
     Model/Modelling/SceneFactoryVirtual.hh \
+    Model/Modelling/TG/RotateTG.hh \
     Model/Modelling/TG/ScaleTG.hh \
     Model/Modelling/TG/TG.hh \
     Model/Modelling/TG/TranslateTG.hh \
@@ -598,6 +602,7 @@ DISTFILES += \
     resources/setupDataBCNOneValue.json \
     resources/setupRenderOneSphere.json \
     resources/setupRenderSpheres.json \
+    resources/sphereAnim.json \
     resources/spheres.json \
     resources/twoSpheres.json
 
