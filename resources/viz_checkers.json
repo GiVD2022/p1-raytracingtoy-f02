@@ -1,0 +1,358 @@
+{
+"scene": "Checkers above earth",
+"typeScene": "VIRTUAL",
+"objects": [
+{
+  "name": "Base",
+  "type": "FITTEDPLANE",
+   "normal": [0.0, 1.0, 0.0],
+   "point": [0.0, 0.0, 0.0],
+   "pmin": [-4.0, -4.0],
+   "pmax": [4.0, 4.0],
+   "material": {
+	   "type": "MATERIALTEXTURA",
+	   "ka": [0.1, 0.1, 0.1],
+	   "kd": [0.7,0.4,0.4],
+	   "ks": [1.0, 1.0, 1.0],
+	   "shininess": 500.0,
+	   "textureFile": "://resources/checkers.png"
+   }
+},
+{
+  "name": "fitxa_negra_1",
+  "type": "sphere",
+  "center": [-3.5, 0.0, -3.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_2",
+  "type": "sphere",
+  "center": [-3.5, 0.0, -1.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_negra_3",
+  "type": "sphere",
+  "center": [-3.5, 0.0, 0.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_negra_4",
+  "type": "sphere",
+  "center": [-3.5, 0.0, 2.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_negra_5",
+  "type": "sphere",
+  "center": [-2.5, 0.0, -2.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_6",
+  "type": "sphere",
+  "center": [-2.5, 0.0, -0.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_7",
+  "type": "sphere",
+  "center": [-2.5, 0.0, 1.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_8",
+  "type": "sphere",
+  "center": [-2.5, 0.0, 3.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_negra_9",
+  "type": "sphere",
+  "center": [-1.5, 0.0, -3.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_10",
+  "type": "sphere",
+  "center": [-1.5, 0.0, -1.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_11",
+  "type": "sphere",
+  "center": [-1.5, 0.0, 0.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_negra_12",
+  "type": "sphere",
+  "center": [-1.5, 0.0, 2.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.10, 0.10, 0.1],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_1",
+  "type": "sphere",
+  "center": [1.5, 0.0, -3.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_2",
+  "type": "sphere",
+  "center": [1.5, 0.0, -1.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_blanca_3",
+  "type": "sphere",
+  "center": [1.5, 0.0, 0.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_blanca_4",
+  "type": "sphere",
+  "center": [1.5, 0.0, 2.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_blanca_5",
+  "type": "sphere",
+  "center": [2.5, 0.0, -2.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_6",
+  "type": "sphere",
+  "center": [2.5, 0.0, -0.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_7",
+  "type": "sphere",
+  "center": [2.5, 0.0, 1.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_8",
+  "type": "sphere",
+  "center": [2.5, 0.0, 3.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+}
+,
+{
+  "name": "fitxa_blanca_9",
+  "type": "sphere",
+  "center": [3.5, 0.0, -3.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_10",
+  "type": "sphere",
+  "center": [3.5, 0.0, -1.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_11",
+  "type": "sphere",
+  "center": [3.5, 0.0, 0.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "fitxa_blanca_12",
+  "type": "sphere",
+  "center": [3.5, 0.0, 2.5],
+  "radius": 0.4,
+  "material": {
+    "type": "LAMBERTIAN",
+    "ka": [0.10, 0.10, 0.1],
+    "kd": [0.9, 0.0, 0.0],
+    "ks": [1.0, 1.0, 1.0],
+    "shininess": 10.0
+    }
+},
+{
+  "name": "earth",
+  "type": "sphere",
+  "center": [0.0, -8.0, 0.0],
+  "radius": 7.0,
+  "material": {
+      "type": "MATERIALTEXTURA",
+      "ka": [0.0, 0.0, 0.0],
+      "kd": [0.0, 0.0, 0.0],
+      "ks": [0.0, 0.0, 0.0],
+      "shininess": 5.0,
+      "kt": [0.0, 0.0, 0.0],
+      "nut": 0.0,
+      "textureFile": "://resources/earth.png"
+  }
+}
+]
+}
