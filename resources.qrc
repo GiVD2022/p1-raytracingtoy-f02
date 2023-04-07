@@ -15,5 +15,19 @@
         <file>resources/king.obj</file>
         <file>resources/earth_clouds.jpeg</file>
         <file>resources/earth.png</file>
+        <file>resources/grass_texture.jpg</file>
+        <file>resources/tennis_ball.jpg</file>
+        <file>resources/tennis_reduced.jpg</file>
+        <file>resources/bowling.png</file>
+        <file>resources/bowling_v2.png</file>
+        <file>resources/bowling_reduced_v2.png</file>
+        <file>resources/basketball.png</file>
+        <file>resources/beach_ball.jpg</file>
+        <file>resources/football.jpg</file>
+        <file>resources/pool_ball.jpg</file>
+        <file>resources/football_v2.jpg</file>
+        <file>resources/football_amplied.jpg</file>
+        <file>resources/football_reduced.jpg</file>
+        <file>resources/jabulani.jpg</file>
     </qresource>
 </RCC>
