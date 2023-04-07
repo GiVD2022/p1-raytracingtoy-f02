@@ -1,0 +1,102 @@
+{
+"scene": "Balls",
+"typeScene": "VIRTUAL",
+"objects": [
+{
+  "name": "Base",
+  "type": "FITTEDPLANE",
+   "normal": [0.0, 1.0, 0.0],
+   "point": [0.0, -0.25, 0.0],
+   "pmin": [-12.0, -10.0],
+   "pmax": [12.0, 10.0],
+   "material": {
+	   "type": "MATERIALTEXTURA",
+	   "ka": [0.1, 0.1, 0.1],
+	   "kd": [0.7,0.4,0.4],
+	   "ks": [1.0, 1.0, 1.0],
+	   "shininess": 500.0,
+	   "textureFile": "://resources/grass_texture.jpg"
+   }
+},
+{
+  "name": "Pilota de tenis",
+  "type": "sphere",
+  "center": [3.5, 0.5, 1.0],
+  "radius": 0.5,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.1, 0.1, 0.1],
+    "kd": [1, 1, 1],
+    "ks": [0.0, 0.0, 0.0],
+    "shininess": 0.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/tennis_reduced.jpg"
+    }
+    
+},
+{
+  "name": "Bola de bolos",
+  "type": "sphere",
+  "center": [2.75,1.0, -2],
+  "radius": 1.5,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.1, 0.1, 0.1],
+    "kd": [1, 1, 1],
+    "ks": [0.2, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/bowling_v2.png"
+    }
+ },
+{
+  "name": "Basquet",
+  "type": "sphere",
+  "center": [-0.5, 1.5, -2.5],
+  "radius": 1.5,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.1, 0.1, 0.1],
+    "kd": [1, 1, 1],
+    "ks": [0.2, 0.2, 0.2],
+    "shininess": 3.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/basketball.png"
+    }
+ },{
+  "name": "Futbol",
+  "type": "sphere",
+  "center": [-3.5, 1.0, -1.75],
+  "radius": 1.25,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.1, 0.1, 0.1],
+    "kd": [1, 1, 1],
+    "ks": [0.2, 0.2, 0.2],
+    "shininess": 3.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 0.0,
+    "textureFile": "://resources/jabulani.jpg"
+    }
+ },
+{
+  "name": "Bola de billar",
+  "type": "sphere",
+  "center": [-3.5, 0.5, 1.0],
+  "radius": 0.5,
+  "material": {
+    "type": "MATERIALTEXTURA",
+    "ka": [0.1, 0.1, 0.1],
+    "kd": [1, 1, 1],
+    "ks": [0.2, 0.7, 0.7],
+    "shininess": 10.0,
+    "kt": [0.0, 0.0, 0.0],
+    "nut": 1.5,
+    "textureFile": "://resources/pool_ball.jpg"
+    }
+ }
+]
+}
