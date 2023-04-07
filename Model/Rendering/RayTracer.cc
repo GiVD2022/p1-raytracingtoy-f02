@@ -43,6 +43,9 @@ void RayTracer::run() {
             setPixel(x, y, color);
         }
     }
+
+    //show camera settings
+    setup->getCamera()->print(2);
 }
 
 
