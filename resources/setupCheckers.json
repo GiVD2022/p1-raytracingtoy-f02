@@ -1,11 +1,12 @@
 {
 "camera": {
-    "lookFrom": [4.0, 4.0, 4.0],
-    "lookAt:": [0, 0, 0],
+    "lookFrom": [-5.0, 4, 5.0],
+    "lookAt": [0, -2, 0],
     "vup": [0, 1, 0],
     "vfov": 70.0,
-    "aspectRatio": 1.77,
-    "pixelsX": 400
+    "aspectRatio": 1,
+    "pixelsX": 400,
+    "pixelsY": 400
 },
 "globalLight": [ 0.1, 0.1, 0.1],
 "lights" : [
@@ -28,9 +29,15 @@
        }
  ],
  "background": true,
- "MAXDEPTH": 1,
+ "MAXDEPTH": 10,
  "colorTopBackground": [0.22, 0.31, 0.45],
- "colorDownBackground": [ 0.0, 0.0, 0.22]
+ "colorDownBackground": [ 0.0, 0.0, 0.22],
+ "shading": "BlinnPhong",
+ "shadows" : true,
+ "reflections" : true,
+ "refractions" : true,
+ "textures" : true,
+ "numSamples" : 20
 }
 
 
