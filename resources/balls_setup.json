@@ -1,6 +1,6 @@
 {
 "camera": {
-    "lookFrom": [-1.0, 4, 8],
+    "lookFrom": [-2.0, 6, 9],
     "lookAt": [0, 0, 0],
     "vup": [0, 1, 0],
     "vfov": 70.0,
